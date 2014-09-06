@@ -7,14 +7,16 @@
 
 from BaseModule import *
 from easygui import *
+from GenerateCode import *
 
-global Unique_Code
+global UniqueCode
 
 EmployeeCreated = False
 NameComplete = False
 DepartmentComplete = False
 DOBComplete = False
 GenderComplete = False
+SalaryComplete = False
 
 
 def CreateRecord():
@@ -83,6 +85,25 @@ def CreateRecord():
                 else:
                     GenderComplete == True
                     break
+        while SalaryComplete == False:
+            salary = enterbox(msg='Input Employee Salary: ', title='Employee Tracker', default='', strip=True, image=None, root=None)
+            if isNone(salary) == True:
+                msgbox(msg='Please enter a salary.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+            elif isInt(salary) != True:
+                msgbox(msg='Please enter a valid salary.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+            else:
+                salaryCheck = enterbox(msg='Reenter Employee Salary: ', title='Employee Tracker', default='', strip=True, image=None, root=None)
+                if isNone(salaryCheck) == True:
+                    msgbox(msg='Please enter a salary.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+                elif isInt(salaryCheck) != True:
+                    msgbox(msg='Please enter a valid salary.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+                elif salary != salaryCheck:
+                    msgbox(msg='The salaries didnt match. Please try again.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+                else:
+                    SalaryComplete == True
+                    break
+        UniqueCode = GenerateCode()
+        
             
 
 #TODO : Salary
