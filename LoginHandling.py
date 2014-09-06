@@ -8,15 +8,20 @@
 #============================================================
 #====================   Login Handling   ====================
 #============================================================
-    
+
+from easygui import *
+
+import getpass
+
+global LoginAttempt
+global LoginSuccessful
+
+LoginAttempt = 0
+LoginSuccessful = False
+
+
 def Login():
-    from easygui import *
-    global LoginAttempt
-    LoginAttempt = 0
-    global LoginSuccessful
-    LoginSuccessful = False
     while True:
-        import getpass
         Password = passwordbox(msg='Password: ', title='Employee Tracker', default='', image=None, root=None)
         with open('AdminPass.txt','r') as f:
             AdminPass = f.readline()
