@@ -14,6 +14,8 @@ EmployeeCreated = False
 NameComplete = False
 DepartmentComplete = False
 DOBComplete = False
+GenderComplete = False
+
 
 def CreateRecord():
     while EmployeeCreated == False:
@@ -68,8 +70,21 @@ def CreateRecord():
                 else:
                     DOBComplete == True
                     break
+        while GenderComplete == False:
+            gender = choicebox(msg='Choose Employee Gender', title='Employee Tracker', choices=('M','F'))
+            if isNone(gender) == True:
+                msgbox(msg='Please enter a Gender.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+            else:
+                genderCheck = choicebox(msg='Choose Employee Gender', title='Employee Tracker', choices=('M','F'))
+                if isNone(genderCheck) == True:
+                    msgbox(msg='Please enter a Gender.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+                elif gender != genderCheck:
+                    msgbox(msg='The Genders didnt match. Please try again.', title='Employee Tracker', ok_button='OK', image=None, root=None)
+                else:
+                    GenderComplete == True
+                    break
             
 
-#TODO : Gender, Salary
+#TODO : Salary
 #TODO : Unique Code
 #TODO : Update base files.
