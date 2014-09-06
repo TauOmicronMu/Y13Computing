@@ -103,9 +103,6 @@ def CreateRecord():
                     SalaryComplete == True
                     break
         UniqueCode = GenerateCode()
-        
-            
 
-#TODO : Salary
-#TODO : Unique Code
+#TODO : Create employee record.
 #TODO : Update base files.
