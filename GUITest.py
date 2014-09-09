@@ -1,6 +1,10 @@
 from Tkinter import Tk, Frame, Menu, Label, PhotoImage
 from Tkinter import *
 
+def ClearLabels():
+    label.pack_forget()
+    label2.pack_forget()
+
 class Splash(Frame):
   
     def __init__(self, parent):
@@ -13,14 +17,16 @@ class Splash(Frame):
     def initialiseUI(self):
 
         Image = PhotoImage(file="EmpTrackerImage.gif")
+        global label
         label = Label(self.parent, image=Image, relief=RAISED)
         label.image = Image
         label.pack()
 
         Image2 = PhotoImage(file="CopyrightNotice.gif")
-        label = Label(self.parent, image=Image2)
-        label.image = Image2
-        label.pack()
+        global label2
+        label2 = Label(self.parent, image=Image2)
+        label2.image = Image2
+        label2.pack()
       
         self.parent.title("Employee Tracker 1.0.0 (c)")
         
@@ -63,9 +69,10 @@ class Splash(Frame):
                 
     def onExit(self):
         self.quit()
-
+        
 def main():
-    
+
+    global app
     root = Tk()
     root.geometry("900x600+200+50")
     app = Splash(root)
