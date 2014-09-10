@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{87d8bc48-8ebe-422e-9093-888cab03c10a}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>BaseModule.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="CopyrightNotice.gif" />
+    <Content Include="EmpTrackerImage.gif" />
+    <Content Include="EmpTrackerImageLeft.gif" />
+    <Content Include="EmpTrackerImageRight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseModule.py" />
+    <Compile Include="CreateRecord.py" />
+    <Compile Include="LoginForm.py" />
+    <Compile Include="GenerateCode.py" />
+    <Compile Include="GUITest.py" />
+    <Compile Include="InitialSetup.py" />
+    <Compile Include="LoginHandling.py" />
+    <Compile Include="Main.py" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>

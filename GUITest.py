@@ -69,15 +69,4 @@ class Splash(Frame):
                 
     def onExit(self):
         self.quit()
-        
-def main():
 
-    global app
-    root = Tk()
-    root.geometry("900x600+200+50")
-    app = Splash(root)
-    root.mainloop()  
-
-
-if __name__ == '__main__':
-    main()  

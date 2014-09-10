@@ -9,6 +9,8 @@
 #====================   Login Handling   ====================
 #============================================================
 
+#OBSOLETE, Don't use.
+
 from easygui import *
 
 import getpass
