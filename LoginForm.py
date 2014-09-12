@@ -1,6 +1,7 @@
 from Tkinter import *
 from Constants import *
 from TimeStamp import *
+from RegisterScreen import *
 
 class LoginScreen(Frame):
 
@@ -14,7 +15,7 @@ class LoginScreen(Frame):
         self.initialiseUI()
 
     def initialiseUI(self):
-
+        
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialising LoginScreen UI \n")
 
@@ -82,9 +83,15 @@ class LoginScreen(Frame):
     def registerAccount(self):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Register Button Pressed\n")
-        self.root.destroy()
+        self.parent.destroy()
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Login Window Terminated\n")
-        pass
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+        app = RegisterScreen(root)
+        root.mainloop()
+        
             
             
