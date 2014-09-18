@@ -72,6 +72,7 @@ class LoginScreen(Frame):
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
 
     def tryLogin(self):
+
         from TimeStamp import *
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Login Button Pressed\n")

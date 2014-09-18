@@ -1,5 +1,8 @@
 from Tkinter import Tk, Frame, Menu, Label, PhotoImage
 from Tkinter import *
+from TimeStamp import *
+from logging import *
+from Constants import *
 
 def ClearLabels():
     label.pack_forget()
@@ -69,4 +72,6 @@ class Splash(Frame):
                 
     def onExit(self):
         self.quit()
+
+
 

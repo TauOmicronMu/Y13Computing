@@ -1,6 +1,7 @@
 from Tkinter import *
 from Constants import *
 from TimeStamp import *
+from LoginForm import *
 
 class RegisterScreen(Frame):
 
@@ -48,6 +49,12 @@ class RegisterScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Create Button \n")
 
+        BackButton = Button(text=u"Back")
+        BackButton['command'] = lambda: self.goBack()
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded Return/Back Button \n")
+
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmpCodeLabel.grid(row=2, column=6)
         EmpCodeEntry.grid(row=2, column=7)
@@ -58,22 +65,20 @@ class RegisterScreen(Frame):
         AdminPassLabel.grid(row=5, column=6)
         AdminPassEntry.grid(row=5, column=7)
         RegisterButton.grid(row=8, column=7)
+        BackButton.grid(row=9, column=7)
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
 
-        
-
-
-def main():
-
-    root = Tk()
-    root.geometry(WINDOW_GEOMETRY)
-    with open("Log.txt", "a") as f:
-        f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
-    app = RegisterScreen(root)
-    root.mainloop()
-
-if __name__ == '__main__':
-    main()  
-    
+    def goBack(self):
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Back Button Pressed\n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Register Window Terminated\n")
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+        app = LoginScreen(root)
+        root.mainloop()
