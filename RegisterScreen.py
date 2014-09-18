@@ -2,7 +2,6 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 from LoginForm import *
-from Main import *
 
 class RegisterScreen(Frame):
 
