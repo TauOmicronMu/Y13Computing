@@ -1,7 +1,6 @@
 from Tkinter import *
 from Constants import *
 from TimeStamp import *
-from LoginForm import *
 
 class RegisterScreen(Frame):
 
@@ -82,3 +81,6 @@ class RegisterScreen(Frame):
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
+
+from LoginForm import *
+
