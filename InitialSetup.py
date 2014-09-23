@@ -52,6 +52,10 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             totalExpenditure = int(totalExpenditureList[0])
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Total Expenditure\n")
+        with open("LoginNames.txt", "a") as f:
+            ReservedNames = RESERVED_NAMES
+            for name in RESERVED_NAMES:
+                f.write(name + "\n")
     else:
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initiating first-time setup\n")

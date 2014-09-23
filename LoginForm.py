@@ -18,6 +18,20 @@ class LoginScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialising LoginScreen UI \n")
 
+        menubar = Menu(self.parent)
+        self.parent.config(menu=menubar)
+
+        fileMenu = Menu(menubar)
+        
+        fileMenu.add_command(label="Quit", underline=0, command=self.onExit)
+
+        fileMenu.add_separator()
+
+        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Menubar Initialised \n")
+
         self.parent.title(WINDOW_TITLE)
 
         global UsernameEntry
@@ -70,6 +84,14 @@ class LoginScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
 
+    def onExit(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Quit Selected \n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Window Terminated \n")
+    
     def tryLogin(self):
 
         from TimeStamp import *
@@ -79,7 +101,13 @@ class LoginScreen(Frame):
             f.write(TimeStamp() + " Attempted Login: Username = " + str(UsernameEntry.get()) + "\n")
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Attempted Login: Password = " + str(hash(PasswordEntry.get())) + "\n")
-
+        if UsernameEntry.get() == "" and PasswordEntry.get() == "":
+            self.parent.destroy()
+            root =Tk()
+            root.geometry(WINDOW_GEOMETRY)
+            app = Splash(root)
+            root.mainloop()
+            
     def registerAccount(self):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Register Button Pressed\n")
@@ -94,3 +122,4 @@ class LoginScreen(Frame):
         root.mainloop()
 
 from RegisterScreen import *
+from MainScreen import *
