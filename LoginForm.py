@@ -29,6 +29,10 @@ class LoginScreen(Frame):
 
         fileMenu.add_separator()
 
+        fileMenu.add_command(label="Help", underline=0, command = self.loginHelp)
+
+        fileMenu.add_separator()
+
         menubar.add_cascade(label="File", underline=0, menu=fileMenu)
 
         with open("Log.txt", "a") as f:
@@ -76,8 +80,8 @@ class LoginScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Register Button \n")
 
-        HelpButton = Button(text=u"?")
-        HelpButton['command'] = lambda: self.loginHelp()
+       # HelpButton = Button(text=u"?")
+       # HelpButton['command'] = lambda: self.loginHelp()
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Register Button \n")
@@ -91,7 +95,7 @@ class LoginScreen(Frame):
         PasswordEntry.grid(row=3, column=7)
         LoginButton.grid(row=4, column=8)
         RegisterButton.grid(row=6, column=7)
-        HelpButton.grid(row=7, column=9)
+        #HelpButton.grid(row=7, column=9)
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
@@ -108,8 +112,8 @@ class LoginScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Login Help Button Pressed\n")
         msgbox(msg="From here, you can log into your employee account.", title=WINDOW_TITLE, ok_button="OK")   
-        return
-    
+        return 
+        
     def tryLogin(self):
 
         from TimeStamp import *
