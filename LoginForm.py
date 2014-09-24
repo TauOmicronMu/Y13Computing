@@ -67,11 +67,20 @@ class LoginScreen(Frame):
         LoginButton = Button(text=u'Login')
         LoginButton['command'] = lambda: self.tryLogin()
 
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded Login Button \n")
+
         RegisterButton = Button(text=u"Register New Employee Account")
         RegisterButton['command'] = lambda: self.registerAccount()
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Login Button \n")
+            f.write(TimeStamp() + " Loaded Register Button \n")
+
+        HelpButton = Button(text=u"?")
+        HelpButton['command'] = lambda: self.loginHelp()
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded Register Button \n")
         
         AnchorLabel.grid(pady=35,padx=90,row=0,column=0)
         LogoLeft.grid(pady=20, padx=0,row=1,column=6)
@@ -82,6 +91,7 @@ class LoginScreen(Frame):
         PasswordEntry.grid(row=3, column=7)
         LoginButton.grid(row=4, column=8)
         RegisterButton.grid(row=6, column=7)
+        HelpButton.grid(row=7, column=9)
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
@@ -93,6 +103,12 @@ class LoginScreen(Frame):
         self.parent.destroy()
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Window Terminated \n")
+
+    def loginHelp(self):
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Login Help Button Pressed\n")
+        msgbox(msg="From here, you can log into your employee account.", title=WINDOW_TITLE, ok_button="OK")   
+        return
     
     def tryLogin(self):
 
