@@ -2,6 +2,8 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 
+import pickle
+
 class LoginScreen(Frame):
 
     def __init__(self, parent):
@@ -101,12 +103,16 @@ class LoginScreen(Frame):
             f.write(TimeStamp() + " Attempted Login: Username = " + str(UsernameEntry.get()) + "\n")
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Attempted Login: Password = " + str(hash(PasswordEntry.get())) + "\n")
-        if UsernameEntry.get() == "" and PasswordEntry.get() == "":
-            self.parent.destroy()
-            root =Tk()
-            root.geometry(WINDOW_GEOMETRY)
-            app = Splash(root)
-            root.mainloop()
+        LoginDict = pickle.load(open( "LoginData.p", "rb"))
+        if UsernameEntry.get() in LoginDict:
+            if str(LoginDict[UsernameEntry.get()]) == str(hash(PasswordEntry.get())):
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " Successful Login. \n")
+                self.parent.destroy()
+                root =Tk()
+                root.geometry(WINDOW_GEOMETRY)
+                app = Splash(root)
+                root.mainloop()
             
     def registerAccount(self):
         with open("Log.txt", "a") as f:

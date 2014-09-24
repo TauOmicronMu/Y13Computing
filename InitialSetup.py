@@ -8,6 +8,8 @@
 from Constants import *
 from TimeStamp import *
 
+import pickle
+
 def Setup(): #Procedure defining the Initial Setup for EmpTracker.
 
     from easygui import *
@@ -53,6 +55,8 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Total Expenditure\n")
     else:
+        LoginData = {}
+        pickle.dump( LoginData, open( "LoginData.p", "wb" ) )
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initiating first-time setup\n")
         with open("LoginNames.txt", "a") as f:

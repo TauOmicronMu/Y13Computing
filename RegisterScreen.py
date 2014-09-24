@@ -36,6 +36,12 @@ class RegisterScreen(Frame):
 
         self.parent.title(WINDOW_TITLE)
 
+        global EmpLoginEntry
+        global EmpLoginEntryTwo
+        global EmpPassEntry
+        global EmpPassEntryTwo
+        global AdminPassEntry
+
         AnchorLabel = Label()
 
         InstructionLabel = Label(text=u'<Insert instructions here>')
@@ -47,7 +53,7 @@ class RegisterScreen(Frame):
         EmpLoginEntryTwo = Entry()
         
         EmpPassLabel = Label(text=u'Employee Password', anchor=CENTER)
-        EmpPassEntry = Entry()
+        EmpPassEntry = Entry(show="*")
 
         EmpPassLabelTwo = Label(text=u'Reenter Employee Password', anchor=CENTER)
         EmpPassEntryTwo = Entry(show="*")
@@ -116,18 +122,42 @@ class RegisterScreen(Frame):
         root.mainloop()
 
     def createAccount(self):
-
+        
+        LoginDict = pickle.load(open( "LoginData.p", "rb"))
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded LoginData.p \n")
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Account Creation initiated \n")
         if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
-            with open('LoginNames.txt', 'r') as f:
-                LoginNames = f.readlines()
-                for name in LoginNames:
-                    if EmpLoginEntry.get() == name:
-                        msgbox(msg="(That Employee Login is already in use.)", title=WINDOW_TITLE, ok_button="OK")   
-                        return
-                    else:
-                        pass
+            if EmpLoginEntry.get() in LoginDict:
+                msgbox(msg="That Employee Login is already in use.", title=WINDOW_TITLE, ok_button="OK")   
+                return
+        else:
+            msgbox(msg="The Login fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
+            return
+        if EmpPassEntry.get() == EmpPassEntryTwo.get():
+            with open("AdminPass.txt", 'r') as f:
+                AdminPassHash = f.readline()
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
+            if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
+                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get())})
+                pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
+                msgbox(msg="Employee Account Created.", title=WINDOW_TITLE, ok_button="OK")
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
+                return
+            else:
+                msgbox(msg="Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
+                return
+        else:
+            msgbox(msg="The Password Fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Account Creation - Password Mismatch. \n")
+            return
+                
                 
                   
 
