@@ -80,6 +80,18 @@ class RegisterScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Return/Back Button \n")
 
+        EmpLoginHelpButton = Button(text=u"?")
+        EmpLoginHelpButton['command'] = lambda: self.displayEmpLoginHelp()
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded 1st Button \n")
+
+        EmpPassHelpButton = Button(text=u"?")
+        EmpPassHelpButton['command'] = lambda: self.displayEmpPassHelp()
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded 2nd Button \n")
+
         global EmpLoginEntry
         global EmpLoginEntryTwo
 
@@ -94,6 +106,8 @@ class RegisterScreen(Frame):
         EmpPassEntryTwo.grid(row=5, column=7)
         AdminPassLabel.grid(row=6, column=6)
         AdminPassEntry.grid(row=6, column=7)
+        EmpLoginHelpButton.grid(row=2, column=8)
+        EmpPassHelpButton.grid(row=4, column=8)
         RegisterButton.grid(row=9, column=7)
         BackButton.grid(row=10, column=7)
 
@@ -121,6 +135,20 @@ class RegisterScreen(Frame):
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
+
+    def displayEmpPassHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
+            msgbox(msg="Employee Passwords must be 8 Characters Long, and contain 1 uppercase character, 1 lowercase character and 1 digit.", title=WINDOW_TITLE, ok_button="OK")   
+            return
+
+    def displayEmpLoginHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
+            msgbox(msg="This is the Employee's unique login.", title=WINDOW_TITLE, ok_button="OK")   
+            return
 
     def createAccount(self):
         
