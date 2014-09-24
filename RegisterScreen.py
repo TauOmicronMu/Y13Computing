@@ -2,6 +2,7 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 from easygui import *
+from re import *
 
 class RegisterScreen(Frame):
 
@@ -136,21 +137,37 @@ class RegisterScreen(Frame):
             msgbox(msg="The Login fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
             return
         if EmpPassEntry.get() == EmpPassEntryTwo.get():
-            with open("AdminPass.txt", 'r') as f:
-                AdminPassHash = f.readline()
-                with open("Log.txt", "a") as f:
-                    f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
-            if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
-                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get())})
-                pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
-                msgbox(msg="Employee Account Created.", title=WINDOW_TITLE, ok_button="OK")
-                with open("Log.txt", "a") as f:
-                    f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
-                return
+            if re.search(r'\d', EmpPassEntry.get()):
+                if re.search(r'[A-Z]', EmpPassEntry.get()):
+                    if re.search(r'[a-z]', EmpPassEntry.get()):
+                        if len(EmpPassEntry.get()) >= 8:
+                            with open("AdminPass.txt", 'r') as f:
+                                AdminPassHash = f.readline()
+                                with open("Log.txt", "a") as f:
+                                    f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
+                            if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
+                                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get())})
+                                pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
+                                msgbox(msg="Employee Account Created.", title=WINDOW_TITLE, ok_button="OK")
+                                with open("Log.txt", "a") as f:
+                                    f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
+                                return
+                            else:
+                                msgbox(msg="Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
+                                with open("Log.txt", "a") as f:
+                                    f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
+                                return
+                        else:
+                            msgbox(msg="Your password must contain at least 8 characters.", title=WINDOW_TITLE, ok_button="OK")
+                            return
+                    else:
+                        msgbox(msg="Your password must contain at least 1 Lowercase letter.", title=WINDOW_TITLE, ok_button="OK")
+                        return
+                else:
+                    msgbox(msg="Your password must contain at least 1 Uppercase letter.", title=WINDOW_TITLE, ok_button="OK")
+                    return
             else:
-                msgbox(msg="Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
-                with open("Log.txt", "a") as f:
-                    f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
+                msgbox(msg="Your password must contain at least 1 Digit.", title=WINDOW_TITLE, ok_button="OK")
                 return
         else:
             msgbox(msg="The Password Fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
