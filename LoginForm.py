@@ -111,8 +111,8 @@ class LoginScreen(Frame):
     def loginHelp(self):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Login Help Button Pressed\n")
-        msgbox(msg="From here, you can log into your employee account.", title=WINDOW_TITLE, ok_button="OK")   
-        return 
+            x = msgbox(msg="From here, you can log into your employee account.", title=WINDOW_TITLE, ok_button="OK")   
+        
         
     def tryLogin(self):
 
