@@ -140,6 +140,10 @@ class LoginScreen(Frame):
                     f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n")
                 app = Splash(root)
                 root.mainloop()
+            else:
+                CreatePopup("Invalid Username/Password")
+        else:
+            CreatePopup("Invalid Username/Password")
             
     def registerAccount(self):
         with open("Log.txt", "a") as f:
