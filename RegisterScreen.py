@@ -38,8 +38,6 @@ class RegisterScreen(Frame):
 
         self.parent.title(WINDOW_TITLE)
 
-        global EmpLoginEntry
-        global EmpLoginEntryTwo
         global EmpPassEntry
         global EmpPassEntryTwo
         global AdminPassEntry
@@ -92,9 +90,6 @@ class RegisterScreen(Frame):
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded 2nd Button \n")
-
-        global EmpLoginEntry
-        global EmpLoginEntryTwo
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmpLoginLabel.grid(row=2, column=6)
