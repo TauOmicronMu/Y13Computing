@@ -1,6 +1,7 @@
 from Tkinter import *
 from Constants import *
 from TimeStamp import *
+from CreatePopup import *
 
 import pickle
 
@@ -110,8 +111,8 @@ class LoginScreen(Frame):
 
     def loginHelp(self):
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Login Help Button Pressed\n")
-            x = msgbox(msg="From here, you can log into your employee account.", title=WINDOW_TITLE, ok_button="OK")   
+            f.write(TimeStamp() + " Login Help Option Pressed\n")
+            CreatePopup("From here, you can log into your employee account.")   
         
         
     def tryLogin(self):
