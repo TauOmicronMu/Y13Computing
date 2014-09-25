@@ -6,4 +6,4 @@ WINDOW_TITLE = "Employee Tracker 1.0.0 (c)"
 
 LOG_FILENAME = "Log.txt"
 
-RESERVED_NAMES = ["Administrator", "Admin"]
+RESERVED_NAMES = ["Administrator", "Admin"] #This will Disallow names.

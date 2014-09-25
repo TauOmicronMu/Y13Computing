@@ -162,6 +162,9 @@ class RegisterScreen(Frame):
                 if EmpLoginEntry.get() in LoginDict:
                     CreatePopup("That Employee Login is already in use.") 
                     return
+                elif EmpLoginEntry.get() in RESERVED_NAMES:
+                    CreatePopup("That Employee Login is already in use.") 
+                    return
             else:
                 CreatePopup("The Login fields didn't match.")
                 return
