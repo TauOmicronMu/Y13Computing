@@ -43,8 +43,7 @@ class Splash(Frame):
         
         empMenu = Menu(menubar)       
         
-        empMenu.add_command(label="Create new Employee")
-        empMenu.add_command(label="Display all Employee Records")
+        empMenu.add_command(label="Create new Employee", command=self.CreateEmployee)
         empMenu.add_command(label="Search for an Employee Record")
         
         empMenu.add_separator()
@@ -99,6 +98,21 @@ class Splash(Frame):
             f.write(TimeStamp() + " Login Help Option Pressed\n")
             CreatePopup("This is the main screen. From here, you can perform numerous operations. Use the menu bar to find them.")
 
+    def CreateEmployee(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Create Employee Selected\n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Main Screen Terminated\n")
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+        app = CreateEmployeeScreen(root)
+        root.mainloop()
+        
 from LoginForm import *
+from CreateEmployeeScreen import *
 
 
