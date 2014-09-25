@@ -7,6 +7,8 @@
 
 from Constants import *
 from TimeStamp import *
+from Tkinter import *
+from InitSetupPopup import *
 
 import pickle
 
@@ -89,27 +91,15 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             f.close()
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Created TotalExpenditure.txt\n")
-        while True:
-            with open("Log.txt", "a") as f:
-                f.write(TimeStamp() + " First time Admin password Setup\n")
-            AdminPass = passwordbox(msg='Input a Password for the Administrator: ', title=WINDOW_TITLE, default='', image=None, root=None)
-            with open("Log.txt", "a") as f:
-                f.write(TimeStamp() + " Allowing Password input (1)\n")
-            AdminPassCheck = passwordbox(msg='Please confirm the Password: ', title=WINDOW_TITLE, default='', image=None, root=None)
-            with open("Log.txt", "a") as f:
-                f.write(TimeStamp() + " Allowing Password input (2)\n")
-            if AdminPass == AdminPassCheck:
-                with open('AdminPass.txt','w') as f:
-                    f.write("%s" %hash(AdminPass))
-                    with open("Log.txt", "a") as f:
-                        f.write(TimeStamp() + " Saved hashed Admin Pass to Adminpass.txt\n")
-                break
-            else:
-                msgbox(msg='The passwords didnt match.', title=WINDOW_TITLE, ok_button='OK',image=None, root = None)
-                with open("Log.txt", "a") as f:
-                    f.write(TimeStamp() + " Password Creation failed : Mismatch\n")
-            
-                f = open('InitialSetup.txt','w') #Creates the file "InitialSetup.txt"
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " First time Admin password Setup\n")
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Initialising Popup window.\n") 
+        app = InitSetupPopup(root)
+        root.mainloop()
+        f = open('InitialSetup.txt','w') #Creates the file "InitialSetup.txt"
         with open('InitialSetup.txt','w') as f:
             f.write("True") #Writes "True" to the file "InitialSetup.txt", which will be used to check whether setup is complete.
             f.close()
