@@ -24,8 +24,12 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
     Setup = False
     array = [] #Creates a blank array, which is used to store employee's data-dictionaries.
 
+    with open("CurrentEmployee.txt", "w") as f:
+        f.write("")
     with open("Log.txt", "a") as f:
         f.write(TimeStamp() + "=====RESTART=====\n")
+    with open("Log.txt", "a") as f:
+        f.write(TimeStamp() + "Created/Wiped CurrentEmployee.txt\n")
     f = open('EmpCodeList.txt','w')
     with open('EmpCodeList.txt','w') as f:
         f.close()
@@ -56,15 +60,15 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             totalExpenditure = int(totalExpenditureList[0])
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Total Expenditure\n")
+        with open('CurrentEmployee.txt','w') as f:
+            f.write("")
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Wiped CurrentEmployee.txt\n")
     else:
         LoginData = {}
         pickle.dump( LoginData, open( "LoginData.p", "wb" ) )
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initiating first-time setup\n")
-        with open("LoginNames.txt", "a") as f:
-            ReservedNames = RESERVED_NAMES
-            for name in RESERVED_NAMES:
-                f.write(name + "\n")
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Created LoginNames.txt \n")
         f = open('EmpDatabase.txt','a') #Ensures that the file "EmpDatabase.txt" exists.

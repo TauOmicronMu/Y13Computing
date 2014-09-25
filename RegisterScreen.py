@@ -180,12 +180,12 @@ class RegisterScreen(Frame):
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
                                 LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get())})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
-                                msgbox(msg="Employee Account Created.", title=WINDOW_TITLE, ok_button="OK")
+                                CreatePopup("Employee Account Created.")
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
                                 return
                             else:
-                                CreatePopup("Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
+                                CreatePopup("Incorrect Admin Password.")
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
                                 return

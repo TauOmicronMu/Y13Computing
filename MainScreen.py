@@ -1,12 +1,8 @@
-from Tkinter import Tk, Frame, Menu, Label, PhotoImage
 from Tkinter import *
 from TimeStamp import *
 from logging import *
 from Constants import *
-
-def ClearLabels():
-    label.pack_forget()
-    label2.pack_forget()
+from CreatePopup import *
 
 class Splash(Frame):
   
@@ -38,10 +34,12 @@ class Splash(Frame):
 
         fileMenu = Menu(menubar)
         
-        fileMenu.add_command(label="Save All", underline=0)
-        fileMenu.add_command(label="Save & Exit", underline=0)
+        fileMenu.add_command(label="Logout", underline=0)
+        fileMenu.add_command(label="Quit", underline=0, command=self.Quit)
 
         fileMenu.add_separator()
+
+        fileMenu.add_command(label="Help", underline=0, command=self.Help)
         
         empMenu = Menu(menubar)       
         
@@ -70,8 +68,19 @@ class Splash(Frame):
   
         expMenu.add_separator()
                 
-    def onExit(self):
-        self.quit()
+    def Quit(self):
+        
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Quit Selected \n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Window Terminated \n")
+
+    def Help(self):
+        
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Login Help Option Pressed\n")
+            CreatePopup("This is the main screen. From here, you can perform numerous operations. Use the menu bar to find them.")
 
 
 

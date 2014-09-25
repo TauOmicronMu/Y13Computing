@@ -129,6 +129,10 @@ class LoginScreen(Frame):
             if str(LoginDict[UsernameEntry.get()]) == str(hash(PasswordEntry.get())):
                 with open("Log.txt", "a") as f:
                     f.write(TimeStamp() + " Successful Login. \n")
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " Updated Current Employee.txt \n")
+                with open("CurrentEmployee.txt", "w") as f:
+                    f.write(UsernameEntry.get())
                 self.parent.destroy()
                 root =Tk()
                 root.geometry(WINDOW_GEOMETRY)
