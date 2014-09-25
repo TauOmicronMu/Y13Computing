@@ -54,6 +54,9 @@ class CreateEmployeeScreen(Frame):
         global EmployeeSalaryEntry
         global EmployeeSalaryEntryTwo
 
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Globalised Entry buttons \n")
+
         AnchorLabel = Label()
        
         EmployeeNameLabel = Label(text=u'Employee Name', anchor=E)
@@ -141,46 +144,78 @@ class CreateEmployeeScreen(Frame):
 
         if isNone(EmployeeNameEntry.get()) == True or isNone(EmployeeNameEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Name.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Employee Issue: No Name \n")
             return
         elif EmployeeNameEntry.get() != EmployeeNameEntryTwo.get():
             CreatePopup("The Employee Names didn't match.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Name Mismatch \n")
             return
         elif isNone(EmployeeDepartmentEntry.get()) == True or isNone(EmployeeDepartmentEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Department.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: No Department \n")
             return
         elif EmployeeDepartmentEntry.get() != EmployeeDepartmentEntryTwo.get():
             CreatePopup("The Employee Departments didn't match.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Department Mismatch \n")
             return
         elif isNone(EmployeeDOBEntry.get()) or isNone(EmployeeDOBEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's DOB")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: No DOB \n")
             return
         elif not DOBCheck(EmployeeDOBEntry.get()) == True:
             CreatePopup("Please enter a valid DOB.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Invalid DOB \n")
             return
         elif EmployeeDOBEntry.get() != EmployeeDOBEntry.get():
             CreatePopup("The Employee DOB's didn't match.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: DOB Mismatch \n")
             return
         elif isNone(EmployeeGenderEntry.get()) == True or isNone(EmployeeGenderEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Gender.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: No Gender \n")
             return
         elif not GenderCheck(EmployeeGenderEntry.get()) == True:
             CreatePopup("Please enter a valid gender.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Invalid Gender \n")
             return
         elif EmployeeGenderEntry.get() != EmployeeGenderEntryTwo.get():
             CreatePopup("The Employee Genders didn't match.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Gender Mismatch \n")
             return
         elif isNone(EmployeeSalaryEntry.get()) == True or isNone(EmployeeSalaryEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Salary.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: No Salary \n")
             return
         elif not SalaryCheck(EmployeeSalaryEntry.get()) == True:
             CreatePopup("Please enter a valid Salary.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Invalid Salary \n")
             return
         elif EmployeeSalaryEntry.get() != EmployeeSalaryEntryTwo.get():
             CreatePopup("The Employee Salaries didn't match.")
+            with open("Log.txt", "a") as f:
+                f.write(TimeStamp() + " Create Emp Issue: Salary Mismatch \n")
             return
         CurrentDatabase = pickle.load(open( "EmpDatabase.p", "rb"))
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Loaded EmpDatabase.p \n")
         CurrentDatabase.update({"Name":EmployeeNameEntry.get(),"Department":EmployeeDepartmentEntry.get(),"DOB":EmployeeDOBEntry.get(),"Gender":EmployeeGenderEntry.get(),"Salary":EmployeeSalaryEntry.get()})
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Added %s " %CurrentDatabase + " \n")
         pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "wb"))
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Saved new Database \n")
         CreatePopup("Employee Record Created.")
         return
 
