@@ -6,7 +6,7 @@ def CreatePopup(message):
     Popup = Toplevel()
     Popup.title(WINDOW_TITLE)
 
-    msg = Message(Popup, text=message, width=200, justify=CENTER, padx=10, pady=10)
+    msg = Message(Popup, text=message, width=350, justify=CENTER, padx=10, pady=10)
     msg.pack()
 
     button = Button(Popup, text="Dismiss", command=Popup.destroy)

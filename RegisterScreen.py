@@ -3,6 +3,7 @@ from Constants import *
 from TimeStamp import *
 from easygui import *
 from re import *
+from CreatePopup import *
 
 class RegisterScreen(Frame):
 
@@ -140,14 +141,14 @@ class RegisterScreen(Frame):
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
-            msgbox(msg="Employee Passwords must be 8 Characters Long, and contain 1 uppercase character, 1 lowercase character and 1 digit.", title=WINDOW_TITLE, ok_button="OK")   
+            CreatePopup("Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit.")   
             return
 
     def displayEmpLoginHelp(self):
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
-            msgbox(msg="This is the Employee's unique login.", title=WINDOW_TITLE, ok_button="OK")   
+            CreatePopup("This is the Employee's unique login.") 
             return
 
     def createAccount(self):
