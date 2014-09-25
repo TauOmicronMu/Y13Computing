@@ -61,9 +61,9 @@ class LoginScreen(Frame):
             f.write(TimeStamp() + " Loaded EmpTrackerImageRight.gif \n")
 
         AnchorLabel = Label()
-        UsernameLabel = Label(text=u'Username',anchor=CENTER)
+        UsernameLabel = Label(text=u'Username',anchor=W)
         UsernameEntry = Entry()
-        PasswordLabel = Label(text=u'Password',anchor=CENTER)
+        PasswordLabel = Label(text=u'Password',anchor=W)
         PasswordEntry = Entry(show="*")
 
         with open("Log.txt", "a") as f:
@@ -112,7 +112,7 @@ class LoginScreen(Frame):
     def loginHelp(self):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Login Help Option Pressed\n")
-            CreatePopup("From here, you can log into your employee account.")   
+            CreatePopup("From here, you can log into your employee account. Both usernames, and passwords are case sensitive. To use the software, you will need to create an account.")   
         
         
     def tryLogin(self):
@@ -136,6 +136,8 @@ class LoginScreen(Frame):
                 self.parent.destroy()
                 root =Tk()
                 root.geometry(WINDOW_GEOMETRY)
+                with open("Log.txt", "a") as f:
+                    f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n")
                 app = Splash(root)
                 root.mainloop()
             

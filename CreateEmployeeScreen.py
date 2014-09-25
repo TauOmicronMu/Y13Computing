@@ -26,9 +26,15 @@ class CreateEmployeeScreen(Frame):
         self.parent.config(menu=menubar)
 
         fileMenu = Menu(menubar)
+
+        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
         
         fileMenu.add_command(label="Quit", underline=0, command=self.onExit)
 
+        fileMenu.add_separator()
+
+        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        
         fileMenu.add_separator()
 
         menubar.add_cascade(label="File", underline=0, menu=fileMenu)
@@ -67,16 +73,25 @@ class CreateEmployeeScreen(Frame):
             f.write(TimeStamp() + " Loaded Labels \n")
 
         SubmitButton = Button(text=u"Submit")
-        SubmitButton['command'] = lambda: self.Submit()
+        SubmitButton['command'] = lambda: self.SubmitAndCreate()
 
         EmployeeNameHelpButton = Button(text=u"?")
+        EmployeeNameHelpButton['command'] = lambda: self.EmpNameHelp()
+
+        EmployeeDepartmentHelpButton = Button(text=u"?")
+        EmployeeDepartmentHelpButton['command'] = lambda: self.EmpDepartmentHelp()
+
+        EmployeeDOBHelpButton = Button(text=u"?")
+        EmployeeDOBHelpButton['command'] = lambda: self.EmpDOBHelp()
 
         EmployeeGenderHelpButton = Button(text=u"?")
+        EmployeeGenderHelpButton['command'] = lambda: self.EmpGenderHelp()
 
         EmployeeSalaryHelpButton = Button(text=u"?")
+        EmployeeSalaryHelpButton['command'] = lambda: self.EmpSalaryHelp()
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Submit Button \n")
+            f.write(TimeStamp() + " Loaded Buttons \n")
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmployeeNameLabel.grid(row=1, column=1)
@@ -86,10 +101,12 @@ class CreateEmployeeScreen(Frame):
         EmployeeNameEntryTwo.grid(row=2, column=2)
         EmployeeDepartmentLabel.grid(row=3, column=1)
         EmployeeDepartmentEntry.grid(row=3, column=2)
+        EmployeeDepartmentHelpButton.grid(row=3, column=3)
         EmployeeDepartmentLabelTwo.grid(row=4, column=1)
         EmployeeDepartmentEntryTwo.grid(row=4, column=2)
         EmployeeDOBLabel.grid(row=5, column=1)
         EmployeeDOBEntry.grid(row=5, column=2)
+        EmployeeDOBHelpButton.grid(row=5, column=3)
         EmployeeDOBLabelTwo.grid(row=6, column=1)
         EmployeeDOBEntryTwo.grid(row=6, column=2)
         EmployeeGenderLabel.grid(row=7, column=1)
@@ -102,14 +119,94 @@ class CreateEmployeeScreen(Frame):
         EmployeeSalaryHelpButton.grid(row=9, column=3)
         EmployeeSalaryLabelTwo.grid(row=10, column=1)
         EmployeeSalaryEntryTwo.grid(row=10, column=2)
+        SubmitButton.grid(row=11, column=2)
         
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
     
-    def Submit(self):
+    def SubmitAndCreate(self):
 
-        pass
+        if isNone(EmployeeNameEntry.get()) == True or isNone(EmployeeNameEntryTwo.get()) == True:
+            CreatePopup("Please Enter/Confirm the Employee's Name.")
+            return
+        elif EmployeeNameEntry.get() != EmployeeNameEntryTwo.get():
+            CreatePopup("The Employee Names didn't match.")
+            return
+        elif isNone(EmployeeDepartmentEntry.get()) == True or isNone(EmployeeDepartmentEntryTwo.get()) == True:
+            CreatePopup("Please Enter/Confirm the Employee's Department.")
+            return
+        elif EmployeeDepartmentEntry.get() != EmployeeDepartmentEntryTwo.get():
+            CreatePopup("The Employee Departments didn't match.")
+            return
+        elif isNone(EmployeeDOBEntry.get()) or isNone(EmployeeDOBEntryTwo.get()) == True:
+            CreatePopup("Please Enter/Confirm the Employee's DOB")
+            return
+        elif EmployeeDOBEntry.get() != EmployeeDOBEntry.get():
+            CreatePopup("The Employee DOB's didn't match.")
+            return
+        elif isNone(EmployeeGenderEntry.get()) == True or isNone(EmployeeGenderEntryTwo.get()) == True:
+            CreatePopup("Please Enter/Confirm the Employee's Gender.")
+            return
+        elif EmployeeGenderEntry.get() != EmployeeGenderEntryTwo.get():
+            CreatePopup("The Employee Genders didn't match.")
+            return
+        elif isNone(EmployeeSalaryEntry.get()) == True or isNone(EmployeeSalaryEntryTwo.get()) == True:
+            CreatePopup("Please Enter/Confirm the Employee's Salary.")
+            return
+        elif EmployeeSalaryEntry.get() != EmployeeSalaryEntryTwo.get():
+            CreatePopup("The Employee Salaries didn't match.")
+            return
+        CreatePopup("Employee Record would be created at this point")
+        return
+
+    def Help(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Help Selected \n")
+        CreatePopup("Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so.")
+
+    def EmpNameHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " EmpName Help Selected \n")
+        CreatePopup("This is the Employee's Name - Forename & Surname")
+
+    def EmpDepartmentHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " EmpName Help Selected \n")
+        CreatePopup("This is the Employee's current Department")
+
+    def EmpDOBHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " EmpName Help Selected \n")
+        CreatePopup("This is the Employee's Date of Birth")
+
+    def EmpGenderHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " EmpName Help Selected \n")
+        CreatePopup("This is the Employee's Gender (M/F)")
+
+    def EmpSalaryHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " EmpName Help Selected \n")
+        CreatePopup("This is the Employee's Salary per annum (Just a number : i.e. 23000)")
+
+    def onBack(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Back Selected \n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Window Terminated \n")
+        root =Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        app = Splash(root)
+        root.mainloop()
 
     def onExit(self):
 
@@ -120,4 +217,5 @@ class CreateEmployeeScreen(Frame):
             f.write(TimeStamp() + " Window Terminated \n")
             
 from LoginForm import *
+from MainScreen import *
 

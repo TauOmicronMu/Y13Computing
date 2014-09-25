@@ -163,7 +163,7 @@ class RegisterScreen(Frame):
                     CreatePopup("That Employee Login is already in use.") 
                     return
                 elif EmpLoginEntry.get() in RESERVED_NAMES:
-                    CreatePopup("That Employee Login is already in use.") 
+                    CreatePopup("That Employee Login is reserved.") 
                     return
             else:
                 CreatePopup("The Login fields didn't match.")
