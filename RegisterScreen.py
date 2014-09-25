@@ -2,8 +2,10 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 from easygui import *
-from re import *
 from CreatePopup import *
+from BaseModule import *
+
+import re
 
 class RegisterScreen(Frame):
 
@@ -38,6 +40,8 @@ class RegisterScreen(Frame):
 
         self.parent.title(WINDOW_TITLE)
 
+        global EmpLoginEntry
+        global EmpLoginEntryTwo
         global EmpPassEntry
         global EmpPassEntryTwo
         global AdminPassEntry
@@ -153,12 +157,16 @@ class RegisterScreen(Frame):
             f.write(TimeStamp() + " Loaded LoginData.p \n")
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Account Creation initiated \n")
-        if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
-            if EmpLoginEntry.get() in LoginDict:
-                msgbox(msg="That Employee Login is already in use.", title=WINDOW_TITLE, ok_button="OK")   
+        if not isNone(EmpLoginEntry.get()) == True:
+            if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
+                if EmpLoginEntry.get() in LoginDict:
+                    CreatePopup("That Employee Login is already in use.") 
+                    return
+            else:
+                CreatePopup("The Login fields didn't match.")
                 return
         else:
-            msgbox(msg="The Login fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
+            CreatePopup("Please Enter an Employee Login")
             return
         if EmpPassEntry.get() == EmpPassEntryTwo.get():
             if re.search(r'\d', EmpPassEntry.get()):
@@ -177,24 +185,24 @@ class RegisterScreen(Frame):
                                     f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
                                 return
                             else:
-                                msgbox(msg="Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
+                                CreatePopup("Incorrect Admin Password.", title=WINDOW_TITLE, ok_button="OK")
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
                                 return
                         else:
-                            msgbox(msg="Your password must contain at least 8 characters.", title=WINDOW_TITLE, ok_button="OK")
-                            return
+                             CreatePopup("Your password must contain at least 8 characters.")
+                             return
                     else:
-                        msgbox(msg="Your password must contain at least 1 Lowercase letter.", title=WINDOW_TITLE, ok_button="OK")
-                        return
+                         CreatePopup("Your password must contain at least 1 Lowercase letter.")
+                         return
                 else:
-                    msgbox(msg="Your password must contain at least 1 Uppercase letter.", title=WINDOW_TITLE, ok_button="OK")
-                    return
+                     CreatePopup("Your password must contain at least 1 Uppercase letter.")
+                     return
             else:
-                msgbox(msg="Your password must contain at least 1 Digit.", title=WINDOW_TITLE, ok_button="OK")
-                return
+                 CreatePopup("Your password must contain at least 1 Digit.")
+                 return
         else:
-            msgbox(msg="The Password Fields didn't match.", title=WINDOW_TITLE, ok_button="OK")
+            CreatePopup("The Password Fields didn't match.")
             with open("Log.txt", "a") as f:
                 f.write(TimeStamp() + " Account Creation - Password Mismatch. \n")
             return
