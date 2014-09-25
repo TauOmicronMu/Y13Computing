@@ -105,6 +105,9 @@ class CreateEmployeeScreen(Frame):
         EmployeeSalaryHelpButton = Button(text=u"?")
         EmployeeSalaryHelpButton['command'] = lambda: self.EmpSalaryHelp()
 
+        BackButton = Button(text=u"Back")
+        BackButton['command'] = lambda: self.onBack()
+
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Buttons \n")
 
@@ -135,6 +138,7 @@ class CreateEmployeeScreen(Frame):
         EmployeeSalaryLabelTwo.grid(row=10, column=1)
         EmployeeSalaryEntryTwo.grid(row=10, column=2)
         SubmitButton.grid(row=11, column=2)
+        BackButton.grid(row=11, column=3)
         
 
         with open("Log.txt", "a") as f:
