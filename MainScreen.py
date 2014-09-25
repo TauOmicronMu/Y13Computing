@@ -34,7 +34,7 @@ class Splash(Frame):
 
         fileMenu = Menu(menubar)
         
-        fileMenu.add_command(label="Logout", underline=0)
+        fileMenu.add_command(label="Logout", underline=0, command=self.Logout)
         fileMenu.add_command(label="Quit", underline=0, command=self.Quit)
 
         fileMenu.add_separator()
@@ -67,6 +67,23 @@ class Splash(Frame):
         expMenu.add_command(label="Deduct Expenditure")
   
         expMenu.add_separator()
+
+    def Logout(self):
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Logout selected\n")
+        self.parent.destroy()
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Main Window Terminated\n")
+        with open("CurrentEmployee.txt", "w") as f:
+            f.write("")
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " CurrentEmployee.txt wiped\n")
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+        app = LoginScreen(root)
+        root.mainloop()
                 
     def Quit(self):
         
@@ -82,5 +99,6 @@ class Splash(Frame):
             f.write(TimeStamp() + " Login Help Option Pressed\n")
             CreatePopup("This is the main screen. From here, you can perform numerous operations. Use the menu bar to find them.")
 
+from LoginForm import *
 
 
