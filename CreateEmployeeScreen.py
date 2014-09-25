@@ -5,6 +5,7 @@ from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
 
+import pickle
 import re
 
 class CreateEmployeeScreen(Frame):
@@ -42,8 +43,19 @@ class CreateEmployeeScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Menubar Initialised \n")
 
-        AnchorLabel = Label()
+        global EmployeeNameEntry
+        global EmployeeNameEntryTwo
+        global EmployeeDepartmentEntry
+        global EmployeeDepartmentEntryTwo
+        global EmployeeDOBEntry
+        global EmployeeDOBEntryTwo
+        global EmployeeGenderEntry
+        global EmployeeGenderEntryTwo
+        global EmployeeSalaryEntry
+        global EmployeeSalaryEntryTwo
 
+        AnchorLabel = Label()
+       
         EmployeeNameLabel = Label(text=u'Employee Name', anchor=E)
         EmployeeNameEntry = Entry()
         EmployeeNameLabelTwo = Label(text=u'Reenter Name', anchor=E)
@@ -142,11 +154,17 @@ class CreateEmployeeScreen(Frame):
         elif isNone(EmployeeDOBEntry.get()) or isNone(EmployeeDOBEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's DOB")
             return
+        elif not DOBCheck(EmployeeDOBEntry.get()) == True:
+            CreatePopup("Please enter a valid DOB.")
+            return
         elif EmployeeDOBEntry.get() != EmployeeDOBEntry.get():
             CreatePopup("The Employee DOB's didn't match.")
             return
         elif isNone(EmployeeGenderEntry.get()) == True or isNone(EmployeeGenderEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Gender.")
+            return
+        elif not GenderCheck(EmployeeGenderEntry.get()) == True:
+            CreatePopup("Please enter a valid gender.")
             return
         elif EmployeeGenderEntry.get() != EmployeeGenderEntryTwo.get():
             CreatePopup("The Employee Genders didn't match.")
@@ -154,10 +172,16 @@ class CreateEmployeeScreen(Frame):
         elif isNone(EmployeeSalaryEntry.get()) == True or isNone(EmployeeSalaryEntryTwo.get()) == True:
             CreatePopup("Please Enter/Confirm the Employee's Salary.")
             return
+        elif not SalaryCheck(EmployeeSalaryEntry.get()) == True:
+            CreatePopup("Please enter a valid Salary.")
+            return
         elif EmployeeSalaryEntry.get() != EmployeeSalaryEntryTwo.get():
             CreatePopup("The Employee Salaries didn't match.")
             return
-        CreatePopup("Employee Record would be created at this point")
+        CurrentDatabase = pickle.load(open( "EmpDatabase.p", "rb"))
+        CurrentDatabase.update({"Name":EmployeeNameEntry.get(),"Department":EmployeeDepartmentEntry.get(),"DOB":EmployeeDOBEntry.get(),"Gender":EmployeeGenderEntry.get(),"Salary":EmployeeSalaryEntry.get()})
+        pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "wb"))
+        CreatePopup("Employee Record Created.")
         return
 
     def Help(self):

@@ -67,6 +67,8 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
     else:
         LoginData = {}
         pickle.dump( LoginData, open( "LoginData.p", "wb" ) )
+        EmpDatabase = {}
+        pickle.dump( EmpDatabase, open("EmpDatabase.p", "wb") )
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initiating first-time setup\n")
         with open("Log.txt", "a") as f:

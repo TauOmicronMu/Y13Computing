@@ -1,8 +1,10 @@
 #CONSTANTS
 
+VERSION_NUMBER = "1.0.0"
+
 WINDOW_GEOMETRY = "900x600+200+50"
 
-WINDOW_TITLE = "Employee Tracker 1.0.0 (c)"
+WINDOW_TITLE = "Employee Tracker %s (c)" %VERSION_NUMBER
 
 LOG_FILENAME = "Log.txt"
 
