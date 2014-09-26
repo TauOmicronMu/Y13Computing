@@ -41,12 +41,23 @@ class Splash(Frame):
 
         fileMenu.add_command(label="Help", underline=0, command=self.Help)
         
-        empMenu = Menu(menubar)       
+        empMenu = Menu(menubar)
+        empSubMenu = Menu(empMenu)
         
-        empMenu.add_command(label="Create new Employee", command=self.CreateEmployee)
+        empMenu.add_command(label="Create new Employee Record", command=self.CreateEmployee)
         empMenu.add_command(label="Search for an Employee Record", command=self.SearchEmployees)
+        empMenu.add_cascade(label="Amend a Field in a Record", underline=0, menu=empSubMenu)
+        empMenu.add_command(label="Delete an Employee Record")
         
         empMenu.add_separator()
+
+        empSubMenu.add_command(label="Name")
+        empSubMenu.add_command(label="Department")
+        empSubMenu.add_command(label="DOB")
+        empSubMenu.add_command(label="Gender")
+        empSubMenu.add_command(label="Salary")
+
+        empSubMenu.add_separator()
 
         expMenu = Menu(menubar)
 

@@ -217,7 +217,7 @@ class CreateEmployeeScreen(Frame):
         CurrentDatabase.update({"Name":EmployeeNameEntry.get(),"Department":EmployeeDepartmentEntry.get(),"DOB":EmployeeDOBEntry.get(),"Gender":EmployeeGenderEntry.get(),"Salary":EmployeeSalaryEntry.get()})
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Added %s " %CurrentDatabase + " \n")
-        pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "wb"))
+        pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "ab"))
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Saved new Database \n")
         CreatePopup("Employee Record Created.")
