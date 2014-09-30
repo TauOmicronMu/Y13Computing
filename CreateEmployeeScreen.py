@@ -72,7 +72,7 @@ class CreateEmployeeScreen(Frame):
 
         EmployeeDOBLabel = Label(text=u'Employee DOB (DD/MM/YYYY)', anchor=E)
         EmployeeDOBEntry = Entry()
-        EmployeeDOBLabelTwo = Label(text=u'Reenter DOB', anchor=E)
+        EmployeeDOBLabelTwo = Label(text=u'Reenter DOB (DD/MM/YYYY)', anchor=E)
         EmployeeDOBEntryTwo = Entry()
 
         EmployeeGenderLabel = Label(text=u'Employee Gender', anchor=E)
@@ -213,9 +213,9 @@ class CreateEmployeeScreen(Frame):
                 f.write(TimeStamp() + " Create Emp Issue: Salary Mismatch \n")
             return
         CurrentDatabase = pickle.load(open( "EmpDatabase.p", "rb"))
-        EmpCode = {GenerateCode():EmployeeNameEntry.get()}
+        EmpCode = GenerateCode()
         EmpCodes = pickle.load(open( "EmpCodes.p", "rb"))
-        EmpCodes.update(EmpCode)
+        EmpCodes.append(EmpCode)
         pickle.dump(EmpCodes, open("EmpCodes.p", "ab"))
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded EmpDatabase.p \n")

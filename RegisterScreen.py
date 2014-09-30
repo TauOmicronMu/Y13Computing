@@ -45,6 +45,9 @@ class RegisterScreen(Frame):
         global EmpPassEntry
         global EmpPassEntryTwo
         global AdminPassEntry
+        global SecurityDropdown
+        global SecurityAnswerEntry
+        global SecurityVar
 
         AnchorLabel = Label()
 
@@ -61,6 +64,11 @@ class RegisterScreen(Frame):
 
         EmpPassLabelTwo = Label(text=u'Reenter Employee Password', anchor=CENTER)
         EmpPassEntryTwo = Entry(show="*")
+
+        SecurityLabel = Label(text=u"Security Question : ")
+
+        SecurityAnswerLabel = Label(text=u"Security Answer : ")
+        SecurityAnswerEntry = Entry()
         
         AdminUserLabel = Label(text=u'Administrator Username', anchor=CENTER)
         AdminUserEntry = Entry()
@@ -95,6 +103,14 @@ class RegisterScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded 2nd Button \n")
 
+        SecurityVarHelpButton = Button(text=u"?")
+        SecurityVarHelpButton['command'] = lambda: self.displaySecurityHelp()
+
+        SecurityVar = StringVar(self.parent)
+        SecurityVar.set("Mother's Maiden Name")
+
+        SecurityDropdown = OptionMenu(self.parent, SecurityVar, "Mother's Maiden Name", "Memorable Place", "Name of First Pet", "Street you first lived in")
+
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmpLoginLabel.grid(row=2, column=6)
         EmpLoginEntry.grid(row=2, column=7)
@@ -104,12 +120,17 @@ class RegisterScreen(Frame):
         EmpPassEntry.grid(row=4, column=7)
         EmpPassLabelTwo.grid(row=5, column=6)
         EmpPassEntryTwo.grid(row=5, column=7)
-        AdminPassLabel.grid(row=6, column=6)
-        AdminPassEntry.grid(row=6, column=7)
-        EmpLoginHelpButton.grid(row=2, column=8)
-        EmpPassHelpButton.grid(row=4, column=8)
-        RegisterButton.grid(row=9, column=7)
-        BackButton.grid(row=10, column=7)
+        SecurityLabel.grid(row=6, column=6)
+        SecurityDropdown.grid(row=6, column=7)
+        SecurityAnswerLabel.grid(row=7, column=6)
+        SecurityAnswerEntry.grid(row=7, column=7)
+        SecurityVarHelpButton.grid(row=7, column=8)
+        AdminPassLabel.grid(row=8, column=6)
+        AdminPassEntry.grid(row=8, column=7)
+        EmpLoginHelpButton.grid(row=3, column=8)
+        EmpPassHelpButton.grid(row=5, column=8)
+        RegisterButton.grid(row=10, column=7)
+        BackButton.grid(row=11, column=7)
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
@@ -140,8 +161,8 @@ class RegisterScreen(Frame):
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
-            CreatePopup("Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit.")   
-            return
+        CreatePopup("Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit.")   
+        return
 
     def displayEmpLoginHelp(self):
 
@@ -149,6 +170,13 @@ class RegisterScreen(Frame):
             f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
             CreatePopup("This is the Employee's unique login.") 
             return
+
+    def displaySecurityHelp(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + "Security Help Button Pressed\n")
+        CreatePopup("This is used to recover your password.")
+        return
 
     def createAccount(self):
         
@@ -181,7 +209,7 @@ class RegisterScreen(Frame):
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
-                                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get())})
+                                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get()),"Security Question":SecurityVar.get(),"Security Answer":SecurityAnswerEntry.get()})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
                                 CreatePopup("Employee Account Created.")
                                 with open("Log.txt", "a") as f:

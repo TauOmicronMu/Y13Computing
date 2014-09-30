@@ -44,7 +44,7 @@ class LoginScreen(Frame):
         global UsernameEntry
         global PasswordEntry
 
-        ImageLeft = PhotoImage(file="EmpTrackerImageLeft.gif")
+        '''ImageLeft = PhotoImage(file="EmpTrackerImageLeft.gif")
         global LogoLeft
         LogoLeft = Label(self.parent, image=ImageLeft)
         LogoLeft.image = ImageLeft
@@ -58,11 +58,16 @@ class LoginScreen(Frame):
         LogoRight.image = ImageRight
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded EmpTrackerImageRight.gif \n")
+            f.write(TimeStamp() + " Loaded EmpTrackerImageRight.gif \n")'''
 
         AnchorLabel = Label()
+        
+        TitleLabelLeft = Label(text=" Employee \nTracker ", font=("Purisa", 26))
+        TitleLabelRight = Label(text=VERSION_NUMBER + "\n" + "ALPHA", font=("Purisa", 26))
+
         UsernameLabel = Label(text=u'Username',anchor=W)
         UsernameEntry = Entry()
+        
         PasswordLabel = Label(text=u'Password',anchor=W)
         PasswordEntry = Entry(show="*")
 
@@ -84,18 +89,24 @@ class LoginScreen(Frame):
        # HelpButton = Button(text=u"?")
        # HelpButton['command'] = lambda: self.loginHelp()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Register Button \n")
+       # with open("Log.txt", "a") as f:
+       #     f.write(TimeStamp() + " Loaded Help\n")
+
+        ForgottenPassButton = Button(text=u"Forgotten Password")
+        ForgottenPassButton['command'] = lambda: self.ForgottenPass()
         
-        AnchorLabel.grid(pady=35,padx=90,row=0,column=0)
-        LogoLeft.grid(pady=20, padx=0,row=1,column=6)
-        LogoRight.grid(pady=20, padx=0, row=1, column=7)
+        AnchorLabel.grid(pady=35,padx=110,row=0,column=0)
+        #LogoLeft.grid(pady=20, padx=0,row=1,column=6)
+        #LogoRight.grid(pady=20, padx=0, row=1, column=7)
+        TitleLabelLeft.grid(pady=20, row=1, column=6)
+        TitleLabelRight.grid(pady=20, row=1, column=7)
         UsernameLabel.grid(row=2, column=6)
         UsernameEntry.grid(row=2, column=7)
         PasswordLabel.grid(row=3, column=6)
         PasswordEntry.grid(row=3, column=7)
         LoginButton.grid(row=4, column=8)
         RegisterButton.grid(row=6, column=7)
+        ForgottenPassButton.grid(row=7, column=7)
         #HelpButton.grid(row=7, column=9)
 
         with open("Log.txt", "a") as f:
@@ -157,6 +168,9 @@ class LoginScreen(Frame):
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = RegisterScreen(root)
         root.mainloop()
+
+    def ForgottenPass(self):
+        pass
 
 from RegisterScreen import *
 from MainScreen import *
