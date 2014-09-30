@@ -43,16 +43,51 @@ class SearchEmployeeScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Menubar Initialised \n")
 
+        AnchorLabel = Label(padx=130, pady=70)
+
+        BlankLabel = Label(pady=5)
+
+        TitleLabel = Label(text="Search for Employees : ", font=("Purisa", 16))
+
+        SearchTypeLabel = Label(text="Search By: ", anchor=E)
+        
+        ValueLabel = Label(text="Search For: ", anchor=E)
+        ValueEntry = Entry()
+
+        SearchTypeVar = StringVar(self.parent)
+        SearchTypeVar.set("Name")
+
+        SearchTypeDropdown = OptionMenu(self.parent, SearchTypeVar, "Name", "Department", "DOB", "Salary", "Employee Code")
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " SearchTypeDropdown Menu Initialised \n")
+
         BackButton = Button(text=u"Back")
         BackButton['command'] = lambda: self.onBack()
+
+        SearchButton = Button(text=u"Search")
+        SearchButton['command'] = lambda: self.onSearch()
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded Buttons \n")
             
-        BackButton.grid(row=11, column=3)
+        AnchorLabel.grid(row=0, column=0)
+        TitleLabel.grid(row=1, column=2)
+        BlankLabel.grid(row=2, column=2)
+        SearchTypeLabel.grid(row=3, column=1)
+        SearchTypeDropdown.grid(row=3, column=2)
+        ValueLabel.grid(row=4, column=1)
+        ValueEntry.grid(row=4, column=2)
+        SearchButton.grid(row=5, column=2)
+        BackButton.grid(row=5, column=3)
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
+
+    def onSearch(self):
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Search Selected \n")
+        pass
 
     def onBack(self):
 

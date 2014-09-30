@@ -4,6 +4,7 @@ from Tkinter import *
 from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
+from GenerateCode import *
 
 import pickle
 import re
@@ -212,9 +213,13 @@ class CreateEmployeeScreen(Frame):
                 f.write(TimeStamp() + " Create Emp Issue: Salary Mismatch \n")
             return
         CurrentDatabase = pickle.load(open( "EmpDatabase.p", "rb"))
+        EmpCode = {GenerateCode():EmployeeNameEntry.get()}
+        EmpCodes = pickle.load(open( "EmpCodes.p", "rb"))
+        EmpCodes.update(EmpCode)
+        pickle.dump(EmpCodes, open("EmpCodes.p", "ab"))
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Loaded EmpDatabase.p \n")
-        CurrentDatabase.update({"Name":EmployeeNameEntry.get(),"Department":EmployeeDepartmentEntry.get(),"DOB":EmployeeDOBEntry.get(),"Gender":EmployeeGenderEntry.get(),"Salary":EmployeeSalaryEntry.get()})
+        CurrentDatabase.update({"Name":EmployeeNameEntry.get(),"Department":EmployeeDepartmentEntry.get(),"DOB":EmployeeDOBEntry.get(),"Gender":EmployeeGenderEntry.get(),"Salary":EmployeeSalaryEntry.get(),"Code":EmpCode})
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Added %s " %CurrentDatabase + " \n")
         pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "ab"))

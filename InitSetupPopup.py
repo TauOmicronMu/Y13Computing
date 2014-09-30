@@ -14,12 +14,27 @@ class InitSetupPopup(Frame):
             f.write(TimeStamp() + " Instance of InitSetupPopup Class initialised. Self : " + str(self) + " Parent: " + str(parent) + "\n")
 
         self.parent = parent
+        self.parent.protocol("WM_DELETE_WINDOW", self.onExit)
 
         self.initialiseUI()
 
     def initialiseUI(self):
 
         self.parent.title(WINDOW_TITLE)
+
+        menubar = Menu(self.parent)
+        self.parent.config(menu=menubar)
+
+        fileMenu = Menu(menubar)
+
+        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        
+        fileMenu.add_separator()
+
+        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Menubar Initialised \n")
 
         global AdminPassEntry
         global AdminPassEntryTwo
@@ -29,7 +44,7 @@ class InitSetupPopup(Frame):
         AdminPassLabel = Label(text=u'Enter an Administrator Password', anchor=CENTER)
         AdminPassEntry = Entry(show="*")
 
-        AdminPassLabelTwo = Label(text=u'Reenter Password', anchor=CENTER)
+        AdminPassLabelTwo = Label(text=u'Reenter Administrator Password', anchor=CENTER)
         AdminPassEntryTwo = Entry(show="*")
 
         with open("Log.txt", "a") as f:
@@ -82,6 +97,18 @@ class InitSetupPopup(Frame):
             with open("Log.txt", "a") as f:
                 f.write(TimeStamp() + " Admin Pass Creation - Password Mismatch. \n")
             return
+
+    def Help(self):
+        
+        CreatePopup("Please create an Administrator Password. This will be used to perform sensitive operations in the program.")
+
+    def onExit(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Quit Selected \n")
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Popup Created \n")
+        CreatePopup("Please create an Administrator Password.")
             
 from LoginForm import *
 

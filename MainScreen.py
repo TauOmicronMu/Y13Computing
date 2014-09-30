@@ -40,6 +40,8 @@ class Splash(Frame):
         fileMenu.add_separator()
 
         fileMenu.add_command(label="Help", underline=0, command=self.Help)
+
+        fileMenu.add_separator()
         
         empMenu = Menu(menubar)
         empSubMenu = Menu(empMenu)
