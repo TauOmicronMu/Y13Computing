@@ -209,7 +209,7 @@ class RegisterScreen(Frame):
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
-                                LoginDict.update({EmpLoginEntry.get():hash(EmpPassEntry.get()),"Security Question":SecurityVar.get(),"Security Answer":SecurityAnswerEntry.get()})
+                                LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),"Security Question":hash(SecurityVar.get()),"Security Answer":hash(SecurityAnswerEntry.get())})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
                                 CreatePopup("Employee Account Created.")
                                 with open("Log.txt", "a") as f:

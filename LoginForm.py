@@ -136,8 +136,8 @@ class LoginScreen(Frame):
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Attempted Login: Password = " + str(hash(PasswordEntry.get())) + "\n")
         LoginDict = pickle.load(open( "LoginData.p", "rb"))
-        if UsernameEntry.get() in LoginDict:
-            if str(LoginDict[UsernameEntry.get()]) == str(hash(PasswordEntry.get())):
+        if hash(UsernameEntry.get()) in LoginDict:
+            if str(LoginDict[hash(UsernameEntry.get())]) == str(hash(PasswordEntry.get())):
                 with open("Log.txt", "a") as f:
                     f.write(TimeStamp() + " Successful Login. \n")
                 with open("Log.txt", "a") as f:
