@@ -225,8 +225,7 @@ class CreateEmployeeScreen(Frame):
         pickle.dump(CurrentDatabase, open( "EmpDatabase.p", "ab"))
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Saved new Database \n")
-        CreatePopup("Employee Record Created.")
-        return
+        self.onBack()
 
     def Help(self):
 

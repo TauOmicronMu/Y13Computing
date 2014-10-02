@@ -5,6 +5,9 @@
 #=============== Copyright: T.A.Goodman 2014 ================
 #============================================================
 
+import datetime
+
+
 #============================================================
 #====================     Type Checks    ====================
 #============================================================
@@ -34,9 +37,38 @@ def isNone(n): #Checks to see if a given input is nonetype
 #============================================================
 
 def DOBCheck(n):
+    #CurrentDate = str(datetime.date.today.day()) + "/" + str(datetime.date.today.month()) + "/" + str(datetime.date.today.year()
+    MonthsWith30Days = ["09","04","06","11"]
     if isInt(n[0:2]) == True and isInt(n[3:5]) == True and isInt(n[6:]) == True:
         if n[2] == "/" and n[5] == "/":
-            return True
+            #if not(n > CurrentDate):
+            if int(n[3:5]) < 12:
+                if int(n[3:5]) == 02: #If the month is February
+                    if n[6:] % 4 == 0: #If it is a Leap Year
+                        if int(n[0:2]) <= 29: #29 Days in Feb in a Leap Year
+                            return True
+                        else:
+                            return False
+                    else: #If it isn't a Leap Year
+                        if int(n[0:2]) <= 28: #28 Days in Feb in a 'Regular' Year
+                            return True
+                        else:
+                            return False
+                else: #If it isn't February
+                    if n[3:5] in MonthsWith30Days:
+                        if int(n[3:5]) <= 30:
+                            return True
+                        else:
+                            return False
+                    else:
+                        if int(n[3:5]) <= 31:
+                            return True
+                        else:
+                            return False
+            else:
+                return False
+            #else:
+                return False
         else:
             return False
     else:

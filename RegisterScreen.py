@@ -214,7 +214,7 @@ class RegisterScreen(Frame):
                                 CreatePopup("Employee Account Created.")
                                 with open("Log.txt", "a") as f:
                                     f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
-                                return
+                                self.goBack()
                             else:
                                 CreatePopup("Incorrect Admin Password.")
                                 with open("Log.txt", "a") as f:
