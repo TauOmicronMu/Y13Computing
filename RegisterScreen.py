@@ -28,7 +28,11 @@ class RegisterScreen(Frame):
 
         fileMenu = Menu(menubar)
         
-        fileMenu.add_command(label="Quit", underline=0, command=self.onExit)
+        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
+
+        fileMenu.add_separator()
+
+        fileMenu.add_command(label="Help", underline=0, command=self.Help)
 
         fileMenu.add_separator()
 
@@ -134,16 +138,8 @@ class RegisterScreen(Frame):
 
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
-
-    def onExit(self):
-
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Quit Selected \n")
-        self.parent.destroy()
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Window Terminated \n")
     
-    def goBack(self):
+    def onBack(self):
         
         with open("Log.txt", "a") as f:
             f.write(TimeStamp() + " Back Button Pressed\n")
@@ -156,6 +152,12 @@ class RegisterScreen(Frame):
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
+
+    def Help(self):
+
+        with open("Log.txt", "a") as f:
+            f.write(TimeStamp() + " Help Selected\n")
+        CreatePopup("Here you can create your Employee account. You will require the administrator password to do so.")
 
     def displayEmpPassHelp(self):
 
