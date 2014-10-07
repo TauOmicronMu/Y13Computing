@@ -84,7 +84,7 @@ class LoginScreen(Frame):
         #HelpButton.grid(row=7, column=9)
 
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + INITIALISED_UI_TEXT)
+            f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onExit(self):
 

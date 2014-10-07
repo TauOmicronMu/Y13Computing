@@ -11,8 +11,8 @@ class RegisterScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Instance of RegisterScreen Class initialised. Self : " + str(self) + " Parent: " + str(parent) + "\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + REGISTERSCREEN_INSTANCE_CREATED_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -20,26 +20,26 @@ class RegisterScreen(Frame):
 
     def initialiseUI(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialising LoginScreen UI \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INITIALISING_LOGINSCREEN_TEXT)
 
         menubar = Menu(self.parent)
         self.parent.config(menu=menubar)
 
         fileMenu = Menu(menubar)
         
-        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
+        fileMenu.add_command(label=DROPDOWN_BACK_TEXT, underline=0, command=self.onBack)
 
         fileMenu.add_separator()
 
-        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        fileMenu.add_command(label=DROPDOWN_HELP_TEXT, underline=0, command=self.Help)
 
         fileMenu.add_separator()
 
-        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+        menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Menubar Initialised \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
 
         self.parent.title(WINDOW_TITLE)
@@ -51,69 +51,54 @@ class RegisterScreen(Frame):
         global AdminPassEntry
         global SecurityDropdown
         global SecurityAnswerEntry
-        global SecurityVar
 
         AnchorLabel = Label()
-
-        InstructionLabel = Label(text=u'<Insert instructions here>')
         
-        EmpLoginLabel = Label(text=u'Employee Login', anchor=CENTER)
+        EmpLoginLabel = Label(text=EMP_LOGIN_LABEL_TEXT, anchor=CENTER)
         EmpLoginEntry = Entry()
 
-        EmpLoginLabelTwo = Label(text=u'Reenter Employee Login', anchor=CENTER)
+        EmpLoginLabelTwo = Label(text=EMP_LOGIN_LABEL_TWO_TEXT, anchor=CENTER)
         EmpLoginEntryTwo = Entry()
         
-        EmpPassLabel = Label(text=u'Employee Password', anchor=CENTER)
-        EmpPassEntry = Entry(show="*")
+        EmpPassLabel = Label(text=EMP_PASS_LABEL_TEXT, anchor=CENTER)
+        EmpPassEntry = Entry(show=HIDE_CHARACTER)
 
-        EmpPassLabelTwo = Label(text=u'Reenter Employee Password', anchor=CENTER)
-        EmpPassEntryTwo = Entry(show="*")
+        EmpPassLabelTwo = Label(text=EMP_PASS_LABEL_TWO_TEXT, anchor=CENTER)
+        EmpPassEntryTwo = Entry(show=HIDE_CHARACTER)
 
-        SecurityLabel = Label(text=u"Security Question : ")
+        SecurityLabel = Label(text=SECURITY_LABEL_TEXT)
 
-        SecurityAnswerLabel = Label(text=u"Security Answer : ")
+        SecurityAnswerLabel = Label(text=SECURITY_ANSWER_LABEL_TEXT)
         SecurityAnswerEntry = Entry()
         
-        AdminUserLabel = Label(text=u'Administrator Username', anchor=CENTER)
-        AdminUserEntry = Entry()
-        
-        AdminPassLabel = Label(text=u'Administrator Password', anchor=CENTER)
-        AdminPassEntry = Entry(show="*")
+        AdminPassLabel = Label(text=ADMIN_PASS_LABEL_TEXT, anchor=CENTER)
+        AdminPassEntry = Entry(show=HIDE_CHARACTER)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Labels \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
-        RegisterButton = Button(text=u"Create Account")
+        RegisterButton = Button(text=REGISTER_BUTTON_TEXT)
         RegisterButton['command'] = lambda: self.createAccount()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Create Button \n")
-
-        BackButton = Button(text=u"Back")
+        BackButton = Button(text=BACK_BUTTON_TEXT)
         BackButton['command'] = lambda: self.goBack()
-
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Return/Back Button \n")
 
         EmpLoginHelpButton = Button(text=u"?")
         EmpLoginHelpButton['command'] = lambda: self.displayEmpLoginHelp()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded 1st Button \n")
-
         EmpPassHelpButton = Button(text=u"?")
         EmpPassHelpButton['command'] = lambda: self.displayEmpPassHelp()
-
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded 2nd Button \n")
 
         SecurityVarHelpButton = Button(text=u"?")
         SecurityVarHelpButton['command'] = lambda: self.displaySecurityHelp()
 
-        SecurityVar = StringVar(self.parent)
-        SecurityVar.set("Mother's Maiden Name")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
-        SecurityDropdown = OptionMenu(self.parent, SecurityVar, "Mother's Maiden Name", "Memorable Place", "Name of First Pet", "Street you first lived in")
+        SecurityVar = StringVar(self.parent)
+        SecurityVar.set(SECURITY_VAR_MAIDEN_NAME_TEXT)
+
+        SecurityDropdown = OptionMenu(self.parent, SecurityVar, SECURITY_VAR_MAIDEN_NAME_TEXT, SECURITY_VAR_MEMORABLE_TEXT, SECURITY_VAR_FIRST_PET_TEXT, SECURITY_VAR_FIRST_STREET_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmpLoginLabel.grid(row=2, column=6)
@@ -136,56 +121,56 @@ class RegisterScreen(Frame):
         RegisterButton.grid(row=10, column=7)
         BackButton.grid(row=11, column=7)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
     
     def onBack(self):
         
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Back Button Pressed\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + BACK_BUTTON_PRESSED_TEXT)
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Register Window Terminated\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + REGISTER_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
 
     def Help(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Help Selected\n")
-        CreatePopup("Here you can create your Employee account. You will require the administrator password to do so.")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + HELP_SELECTED_TEXT)
+        CreatePopup(REGISTER_SCREEN_HELP_POPUP_TEXT)
 
     def displayEmpPassHelp(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
-        CreatePopup("Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit.")   
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + EMP_PASS_HELP_PRESSED_TEXT)
+        CreatePopup(EMP_PASS_HELP_TEXT)   
         return
 
     def displayEmpLoginHelp(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Emp Pass Help Button Pressed\n")
-            CreatePopup("This is the Employee's unique login.") 
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + EMP_PASS_HELP_PRESSED_TEXT)
+            CreatePopup(EMP_LOGIN_HELP_TEXT) 
             return
 
     def displaySecurityHelp(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + "Security Help Button Pressed\n")
-        CreatePopup("This is used to recover your password.")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + SECURITY_HELP_BUTTON_PRESSED_TEXT)
+        CreatePopup(SECURITY_HELP_TEXT)
         return
 
     def createAccount(self):
         
         LoginDict = pickle.load(open( "LoginData.p", "rb"))
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Loaded LoginData.p \n")
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Account Creation initiated \n")
         if not isNone(EmpLoginEntry.get()) == True:
             if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
@@ -208,18 +193,18 @@ class RegisterScreen(Frame):
                         if len(EmpPassEntry.get()) >= 8:
                             with open("AdminPass.txt", 'r') as f:
                                 AdminPassHash = f.readline()
-                                with open("Log.txt", "a") as f:
+                                with open(LOG_FILENAME, "a") as f:
                                     f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
                                 LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),"Security Question":hash(SecurityVar.get()),"Security Answer":hash(SecurityAnswerEntry.get())})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
                                 CreatePopup("Employee Account Created.")
-                                with open("Log.txt", "a") as f:
+                                with open(LOG_FILENAME, "a") as f:
                                     f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
                                 self.goBack()
                             else:
                                 CreatePopup("Incorrect Admin Password.")
-                                with open("Log.txt", "a") as f:
+                                with open(LOG_FILENAME, "a") as f:
                                     f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
                                 return
                         else:
@@ -236,7 +221,7 @@ class RegisterScreen(Frame):
                  return
         else:
             CreatePopup("The Password Fields didn't match.")
-            with open("Log.txt", "a") as f:
+            with open(LOG_FILENAME, "a") as f:
                 f.write(TimeStamp() + " Account Creation - Password Mismatch. \n")
             return
                 

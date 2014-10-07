@@ -10,6 +10,8 @@ DROPDOWN_QUIT_TEXT = u"Quit"
 ATTEMPTED_LOGIN_USERNAME_TEXT = u" Attempted Login: Username = "
 ATTEMPTED_LOGIN_PASSWORD_TEXT = u" Attempted Login: Password = "
 BACK_SELECTED_TEXT = u" Back Selected \n"
+BACK_BUTTON_PRESSED_TEXT = u" Back Button Pressed\n"
+EMP_PASS_HELP_PRESSED_TEXT = u" Emp Pass Help Button Pressed\n"
 FORGOTTEN_PASS_PRESSED_TEXT = u" Forgotten Password Pressed\n"
 HELP_SELECTED_TEXT = u" Help Selected \n"
 INITIALISED_GRID_UI_TEXT = u" Initialised Grid. UI Initialisation Complete. \n"
@@ -28,9 +30,12 @@ MENUBAR_INITIALISED_TEXT = u" Menubar Initialised \n"
 PARENT_TEXT = u" Parent: "
 QUIT_SELECTED_TEXT = u" Quit Selected \n"
 REGISTER_BUTTON_PRESSED_TEXT = u" Register Button Pressed\n"
+REGISTER_SCREEN_HELP_POPUP_TEXT = u"Here you can create your Employee account. You will require the administrator password to do so."
+REGISTERSCREEN_INSTANCE_CREATED_TEXT = u" Instance of RegisterScreen Class initialised. Self : "
 REGISTER_WINDOW_TERMINATED_TEXT = u" Register Window Terminated\n"
 SEARCHTYPEDROWPDOWN_MENU_INITIALISED_TEXT = u" SearchTypeDropdown Menu Initialised \n"
 SEARCH_SELECTED_TEXT = u" Search Selected \n"
+SECURITY_HELP_BUTTON_PRESSED_TEXT = u" Security Help Button Pressed\n"
 SUCCESSFUL_LOGIN_TEXT = u" Successful Login. \n"
 UPDATED_CURRENT_EMPLOYEE_TEXT = u" Updated Current Employee.txt \n"
 WINDOW_TERMINATED_TEXT = u" Window Terminated \n"
@@ -46,6 +51,24 @@ TITLE_LABEL_LEFT_TEXT = u" Employee \nTracker "
 TITLE_LABEL_RIGHT_TEXT = u"\nALPHA"
 USERNAME_LABEL_TEXT = u"Username"
 
+#RegisterScreen
+
+ADMIN_PASS_LABEL_TEXT = u'Administrator Password'
+EMP_LOGIN_HELP_TEXT = u"This is the Employee's unique login."
+EMP_LOGIN_LABEL_TEXT = u'Employee Login'
+EMP_LOGIN_LABEL_TWO_TEXT = u'Reenter Employee Login'
+EMP_PASS_HELP_TEXT = u"Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit."
+EMP_PASS_LABEL_TEXT = u'Employee Password'
+EMP_PASS_LABEL_TWO_TEXT = u'Reenter Employee Password'
+HELP_OPTION_TEXT = u"Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so."
+SECURITY_LABEL_TEXT = u"Security Question : "
+SECURITY_ANSWER_LABEL_TEXT = u"Security Answer : "
+SECURITY_HELP_TEXT = u"This is used to recover your password."
+SECURITY_VAR_FIRST_PET_TEXT = u"Name of First Pet"
+SECURITY_VAR_FIRST_STREET_TEXT = u"Street you first lived in"
+SECURITY_VAR_MAIDEN_NAME_TEXT = u"Mother's Maiden Name"
+SECURITY_VAR_MEMORABLE_TEXT = u"Memorable Place"
+
 #SearchEmployeeScreen
 
 BACK_BUTTON_TEXT = u"Back"
@@ -54,7 +77,7 @@ DROPDOWN_DOB_TEXT = u"DOB"
 DROPDOWN_EMPCODE_TEXT = u"Employee Code"
 DROPDOWN_NAME_TEXT = u"Name"
 DROPDOWN_SALARY_TEXT = u"Salary"
-HELP_OPTION_TEXT = u"Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so."
+REGISTER_BUTTON_TEXT = u"Create Account"
 SEARCH_BUTTON_TEXT = u"Search"
 SEARCH_BY_TEXT = u"Search By: "
 SEARCH_FOR_TEXT = u"Search For: "
