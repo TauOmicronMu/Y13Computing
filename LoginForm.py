@@ -59,7 +59,7 @@ class LoginScreen(Frame):
         with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
-        LoginButton = Button(text=u'Login')
+        LoginButton = Button(text=LOGIN_BUTTON_TEXT)
         LoginButton['command'] = lambda: self.tryLogin()
 
         RegisterButton = Button(text=REGISTER_BUTTON_TEXT)
@@ -104,55 +104,55 @@ class LoginScreen(Frame):
 
         from TimeStamp import *
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Login Button Pressed\n")
+            f.write(TimeStamp() + LOGIN_BUTTON_PRESSED_TEXT)
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Attempted Login: Username = " + str(UsernameEntry.get()) + "\n")
+            f.write(TimeStamp() + ATTEMPTED_LOGIN_USERNAME_TEXT + str(UsernameEntry.get()) + "\n")
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Attempted Login: Password = " + str(hash(PasswordEntry.get())) + "\n")
+            f.write(TimeStamp() + ATTEMPTED_LOGIN_PASSWORD_TEXT + str(hash(PasswordEntry.get())) + "\n")
         LoginDict = pickle.load(open( "LoginData.p", "rb"))
         if hash(UsernameEntry.get()) in LoginDict:
             if str(LoginDict[hash(UsernameEntry.get())]) == str(hash(PasswordEntry.get())):
                 with open(LOG_FILENAME, "a") as f:
-                    f.write(TimeStamp() + " Successful Login. \n")
+                    f.write(TimeStamp() + SUCCESSFUL_LOGIN_TEXT)
                 with open(LOG_FILENAME, "a") as f:
-                    f.write(TimeStamp() + " Updated Current Employee.txt \n")
+                    f.write(TimeStamp() + UPDATED_CURRENT_EMPLOYEE_TEXT)
                 with open("CurrentEmployee.txt", "w") as f:
                     f.write(UsernameEntry.get())
                 self.parent.destroy()
                 root =Tk()
                 root.geometry(WINDOW_GEOMETRY)
                 with open(LOG_FILENAME, "a") as f:
-                    f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n")
+                    f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n")
                 app = Splash(root)
                 root.mainloop()
             else:
-                CreatePopup("Invalid Username/Password")
+                CreatePopup(INVALID_LOGIN_TEXT)
         else:
-            CreatePopup("Invalid Username/Password")
+            CreatePopup(INVALID_LOGIN_TEXT)
             
     def registerAccount(self):
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Register Button Pressed\n")
+            f.write(TimeStamp() + REGISTER_BUTTON_PRESSED_TEXT)
         self.parent.destroy()
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Login Window Terminated\n")
+            f.write(TimeStamp() + LOGIN_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = RegisterScreen(root)
         root.mainloop()
 
     def ForgottenPass(self):
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Forgotten Password Pressed\n")
+            f.write(TimeStamp() + FORGOTTEN_PASS_PRESSED_TEXT)
         self.parent.destroy()
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Register Window Terminated\n")
+            f.write(TimeStamp() + REGISTER_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = PasswordRecoveryWindow(root)
         root.mainloop()
 

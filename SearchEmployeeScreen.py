@@ -12,8 +12,8 @@ class SearchEmployeeScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Instance of CreateEmployeeScreen Class initialised. Self : " + str(self) + " Parent: " + str(parent) + "\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INSTANCE_OF_CREATELOGINSCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -28,48 +28,48 @@ class SearchEmployeeScreen(Frame):
 
         fileMenu = Menu(menubar)
 
-        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
+        fileMenu.add_command(label=DROPDOWN_BACK_TEXT, underline=0, command=self.onBack)
         
-        fileMenu.add_command(label="Quit", underline=0, command=self.onExit)
+        fileMenu.add_command(label=DROPDOWN_QUIT_TEXT, underline=0, command=self.onExit)
 
         fileMenu.add_separator()
 
-        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        fileMenu.add_command(label=DROPDOWN_HELP_TEXT, underline=0, command=self.Help)
         
         fileMenu.add_separator()
 
-        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+        menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Menubar Initialised \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         AnchorLabel = Label(padx=130, pady=70)
 
         BlankLabel = Label(pady=5)
 
-        TitleLabel = Label(text="Search for Employees : ", font=("Purisa", 16))
+        TitleLabel = Label(text=SEARCH_FOR_EMPLOYEES_TEXT, font=("Purisa", 16))
 
-        SearchTypeLabel = Label(text="Search By: ", anchor=E)
+        SearchTypeLabel = Label(text=SEARCH_BY_TEXT, anchor=E)
         
-        ValueLabel = Label(text="Search For: ", anchor=E)
+        ValueLabel = Label(text=SEARCH_FOR_TEXT, anchor=E)
         ValueEntry = Entry()
 
         SearchTypeVar = StringVar(self.parent)
-        SearchTypeVar.set("Name")
+        SearchTypeVar.set(DROPDOWN_NAME_TEXT)
 
-        SearchTypeDropdown = OptionMenu(self.parent, SearchTypeVar, "Name", "Department", "DOB", "Salary", "Employee Code")
+        SearchTypeDropdown = OptionMenu(self.parent, SearchTypeVar, DROPDOWN_NAME_TEXT, DROPDOWN_DEPARTMENT_TEXT, DROPDOWN_DOB_TEXT, DROPDOWN_SALARY_TEXT, DROPDOWN_EMPCODE_TEXT)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " SearchTypeDropdown Menu Initialised \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + SEARCHTYPEDROWPDOWN_MENU_INITIALISED_TEXT)
 
-        BackButton = Button(text=u"Back")
+        BackButton = Button(text=BACK_BUTTON_TEXT)
         BackButton['command'] = lambda: self.onBack()
 
-        SearchButton = Button(text=u"Search")
+        SearchButton = Button(text=SEARCH_BUTTON_TEXT)
         SearchButton['command'] = lambda: self.onSearch()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Buttons \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
             
         AnchorLabel.grid(row=0, column=0)
         TitleLabel.grid(row=1, column=2)
@@ -81,21 +81,21 @@ class SearchEmployeeScreen(Frame):
         SearchButton.grid(row=5, column=2)
         BackButton.grid(row=5, column=3)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onSearch(self):
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Search Selected \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + SEARCH_SELECTED_TEXT)
         pass
 
     def onBack(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Back Selected \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + BACK_SELECTED_TEXT)
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Window Terminated \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
         root =Tk()
         root.geometry(WINDOW_GEOMETRY)
         app = Splash(root)
@@ -103,17 +103,17 @@ class SearchEmployeeScreen(Frame):
 
     def onExit(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Quit Selected \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + QUIT_SELECTED_TEXT)
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Window Terminated \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
 
     def Help(self):
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Help Selected \n")
-        CreatePopup("Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so.")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + HELP_SELECTED_TEXT)
+        CreatePopup(HELP_OPTION_TEXT)
 
 
             
