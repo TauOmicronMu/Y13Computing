@@ -1,9 +1,9 @@
 from Tkinter import *
-from Constants import *
 from TimeStamp import *
 from easygui import *
 from CreatePopup import *
 from BaseModule import *
+from Constants import *
 
 import re
 
@@ -61,10 +61,10 @@ class RegisterScreen(Frame):
         EmpLoginEntryTwo = Entry()
         
         EmpPassLabel = Label(text=EMP_PASS_LABEL_TEXT, anchor=CENTER)
-        EmpPassEntry = Entry(show=HIDE_CHARACTER)
+        EmpPassEntry = Entry(show="*")
 
         EmpPassLabelTwo = Label(text=EMP_PASS_LABEL_TWO_TEXT, anchor=CENTER)
-        EmpPassEntryTwo = Entry(show=HIDE_CHARACTER)
+        EmpPassEntryTwo = Entry(show="*")
 
         SecurityLabel = Label(text=SECURITY_LABEL_TEXT)
 
@@ -72,7 +72,7 @@ class RegisterScreen(Frame):
         SecurityAnswerEntry = Entry()
         
         AdminPassLabel = Label(text=ADMIN_PASS_LABEL_TEXT, anchor=CENTER)
-        AdminPassEntry = Entry(show=HIDE_CHARACTER)
+        AdminPassEntry = Entry(show="*")
 
         with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
@@ -81,7 +81,7 @@ class RegisterScreen(Frame):
         RegisterButton['command'] = lambda: self.createAccount()
 
         BackButton = Button(text=BACK_BUTTON_TEXT)
-        BackButton['command'] = lambda: self.goBack()
+        BackButton['command'] = lambda: self.onBack()
 
         EmpLoginHelpButton = Button(text=u"?")
         EmpLoginHelpButton['command'] = lambda: self.displayEmpLoginHelp()
@@ -169,22 +169,22 @@ class RegisterScreen(Frame):
         
         LoginDict = pickle.load(open( "LoginData.p", "rb"))
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Loaded LoginData.p \n")
+            f.write(TimeStamp() + LOADED_LOGIN_DICT_TEXT)
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Account Creation initiated \n")
+            f.write(TimeStamp() + ACCOUNT_CREATION_INITIATED_TEXT)
         if not isNone(EmpLoginEntry.get()) == True:
             if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
                 if EmpLoginEntry.get() in LoginDict:
-                    CreatePopup("That Employee Login is already in use.") 
+                    CreatePopup(USERNAME_IN_USE_TEXT) 
                     return
                 elif EmpLoginEntry.get() in RESERVED_NAMES:
-                    CreatePopup("That Employee Login is reserved.") 
+                    CreatePopup(USERNAME_RESERVED_TEXT) 
                     return
             else:
-                CreatePopup("The Login fields didn't match.")
+                CreatePopup(LOGIN_FIELD_MISMATCH_TEXT)
                 return
         else:
-            CreatePopup("Please Enter an Employee Login")
+            CreatePopup(LOGIN_FIELD_MISSING_TEXT)
             return
         if EmpPassEntry.get() == EmpPassEntryTwo.get():
             if re.search(r'\d', EmpPassEntry.get()):
@@ -194,39 +194,39 @@ class RegisterScreen(Frame):
                             with open("AdminPass.txt", 'r') as f:
                                 AdminPassHash = f.readline()
                                 with open(LOG_FILENAME, "a") as f:
-                                    f.write(TimeStamp() + " Admin Pass Hash loaded. \n")
+                                    f.write(TimeStamp() + ADMIN_PASS_HASH_LOADED_TEXT)
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
-                                LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),"Security Question":hash(SecurityVar.get()),"Security Answer":hash(SecurityAnswerEntry.get())})
+                                LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),hash(SECURITY_QUESTION_TEXT):hash(SecurityVar.get()),hash(SECURITY_QUESTION_ANSWER_TEXT):hash(SecurityAnswerEntry.get())})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
-                                CreatePopup("Employee Account Created.")
+                                CreatePopup(EMP_ACCOUNT_CREATED_TEXT)
                                 with open(LOG_FILENAME, "a") as f:
-                                    f.write(TimeStamp() + " New Employee Account : " + str(EmpLoginEntry.get()) + " created. \n")
+                                    f.write(TimeStamp() + NEW_EMPLOYEE_ACCOUNT_TEXT + str(EmpLoginEntry.get()) + CREATED_TEXT)
                                 self.goBack()
                             else:
-                                CreatePopup("Incorrect Admin Password.")
+                                CreatePopup(INCORRECT_ADMIN_PASS_TEXT)
                                 with open(LOG_FILENAME, "a") as f:
-                                    f.write(TimeStamp() + " Account Creation - Incorrect Admin pass. \n")
+                                    f.write(TimeStamp() + INCORRECT_ADMIN_PASS_LOG_TEXT)
                                 return
                         else:
-                             CreatePopup("Your password must contain at least 8 characters.")
+                             CreatePopup(PASS_LENGTH_TEXT)
                              return
                     else:
-                         CreatePopup("Your password must contain at least 1 Lowercase letter.")
+                         CreatePopup(PASS_LOWERCASE_TEXT)
                          return
                 else:
-                     CreatePopup("Your password must contain at least 1 Uppercase letter.")
+                     CreatePopup(PASS_UPPERCASE_TEXT)
                      return
             else:
-                 CreatePopup("Your password must contain at least 1 Digit.")
+                 CreatePopup(PASS_DIGIT_TEXT)
                  return
         else:
-            CreatePopup("The Password Fields didn't match.")
+            CreatePopup(PASS_MISMATCH_TEXT)
             with open(LOG_FILENAME, "a") as f:
-                f.write(TimeStamp() + " Account Creation - Password Mismatch. \n")
+                f.write(TimeStamp() + ACCOUNT_CREATION_PASSWORD_MISMATCH_TEXT)
             return
                 
                 
                   
-
+from Constants import *
 from LoginForm import *
 
