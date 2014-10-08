@@ -1,3 +1,16 @@
+#CreateEmployeeScreen
+
+EMP_DEPARTMENT_LABEL_TEXT = u'Employee Department'
+EMP_DEPARTMENT_LABEL_TWO_TEXT = u'Reenter Department'
+EMP_DOB_LABEL_TEXT = u'Employee DOB (DD/MM/YYYY)'
+EMP_DOB_LABEL_TWO_TEXT = u'Reenter DOB (DD/MM/YYYY)'
+EMP_GENDER_LABEL_TEXT = u'Employee Gender'
+EMP_GENDER_LABEL_TWO_TEXT = u'Reenter Gender'
+EMP_NAME_LABEL_TEXT = u'Employee Name'
+EMP_NAME_LABEL_TWO_TEXT = u'Reenter Name'
+EMP_SALARY_LABEL_TEXT = u'Employee Salary'
+EMP_SALARY_LABEL_TWO_TEXT = u'Reenter Salary'
+
 #Dropdown Menus
 
 DROPDOWN_BACK_TEXT = u"Back"

@@ -58,33 +58,33 @@ class CreateEmployeeScreen(Frame):
 
         AnchorLabel = Label()
        
-        EmployeeNameLabel = Label(text=u'Employee Name', anchor=E)
+        EmployeeNameLabel = Label(text=EMP_NAME_LABEL_TEXT, anchor=E)
         EmployeeNameEntry = Entry()
-        EmployeeNameLabelTwo = Label(text=u'Reenter Name', anchor=E)
+        EmployeeNameLabelTwo = Label(text=EMP_NAME_LABEL_TWO_TEXT, anchor=E)
         EmployeeNameEntryTwo = Entry()
 
-        EmployeeDepartmentLabel = Label(text=u'Employee Department', anchor=E)
+        EmployeeDepartmentLabel = Label(text=EMP_DEPARTMENT_LABEL_TEXT, anchor=E)
         EmployeeDepartmentEntry = Entry()
-        EmployeeDepartmentLabelTwo = Label(text=u'Reenter Department', anchor=E)
+        EmployeeDepartmentLabelTwo = Label(text=EMP_DEPARTMENT_LABEL_TWO_TEXT, anchor=E)
         EmployeeDepartmentEntryTwo = Entry()
 
-        EmployeeDOBLabel = Label(text=u'Employee DOB (DD/MM/YYYY)', anchor=E)
+        EmployeeDOBLabel = Label(text=EMP_DOB_LABEL_TEXT, anchor=E)
         EmployeeDOBEntry = Entry()
-        EmployeeDOBLabelTwo = Label(text=u'Reenter DOB (DD/MM/YYYY)', anchor=E)
+        EmployeeDOBLabelTwo = Label(text=EMP_DOB_LABEL_TWO_TEXT, anchor=E)
         EmployeeDOBEntryTwo = Entry()
 
-        EmployeeGenderLabel = Label(text=u'Employee Gender', anchor=E)
+        EmployeeGenderLabel = Label(text=EMP_GENDER_LABEL_TEXT, anchor=E)
         EmployeeGenderEntry = Entry()
-        EmployeeGenderLabelTwo = Label(text=u'Reenter Gender', anchor=E)
+        EmployeeGenderLabelTwo = Label(text=EMP_GENDER_LABEL_TWO_TEXT, anchor=E)
         EmployeeGenderEntryTwo = Entry()
 
-        EmployeeSalaryLabel = Label(text=u'Employee Salary', anchor=E)
+        EmployeeSalaryLabel = Label(text=EMP_SALARY_LABEL_TEXT, anchor=E)
         EmployeeSalaryEntry = Entry()
-        EmployeeSalaryLabelTwo = Label(text=u'Reenter Salary', anchor=E)
+        EmployeeSalaryLabelTwo = Label(text=EMP_SALARY_LABEL_TWO_TEXT, anchor=E)
         EmployeeSalaryEntryTwo = Entry()
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Labels \n")
+            f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         SubmitButton = Button(text=u"Submit")
         SubmitButton['command'] = lambda: self.SubmitAndCreate()
@@ -108,7 +108,7 @@ class CreateEmployeeScreen(Frame):
         BackButton['command'] = lambda: self.onBack()
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Buttons \n")
+            f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmployeeNameLabel.grid(row=1, column=1)
@@ -141,7 +141,7 @@ class CreateEmployeeScreen(Frame):
         
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
+            f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
     
     def SubmitAndCreate(self):
 
