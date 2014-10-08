@@ -103,19 +103,19 @@ class PasswordRecoveryWindow(Frame):
 
     def Help(self):
         
-        CreatePopup("Here, you can recover your Account password..")
+        CreatePopup(HELP_TEXT)
 
     def onBack(self):
 
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Back Selected \n")
+            f.write(TimeStamp() + BACK_SELECTED_TEXT)
         self.parent.destroy()
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Register Window Terminated\n")
+            f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
         with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
 
