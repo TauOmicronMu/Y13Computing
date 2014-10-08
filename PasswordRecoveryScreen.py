@@ -10,8 +10,8 @@ class PasswordRecoveryWindow(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Instance of InitSetupPopup Class initialised. Self : " + str(self) + " Parent: " + str(parent) + "\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + PASSWORD_RECOVERY_WINDOW_INSTANCE_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -26,18 +26,18 @@ class PasswordRecoveryWindow(Frame):
 
         fileMenu = Menu(menubar)
 
-        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
+        fileMenu.add_command(label=DROPDOWN_BACK_TEXT, underline=0, command=self.onBack)
 
         fileMenu.add_separator()
         
-        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        fileMenu.add_command(label=DROPDOWN_HELP_TEXT, underline=0, command=self.Help)
         
         fileMenu.add_separator()
 
-        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+        menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Menubar Initialised \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         global SecurityQuestionDropdown
         global UsernameEntry
@@ -47,35 +47,35 @@ class PasswordRecoveryWindow(Frame):
 
         AnchorLabel = Label()
         
-        UsernameLabel = Label(text=u'Employee Username', anchor=CENTER)
+        UsernameLabel = Label(text=EMPLOYEE_USERNAME_TEXT, anchor=CENTER)
         UsernameEntry = Entry()
 
-        SecurityQuestionLabel = Label(text=u'Security Question')
+        SecurityQuestionLabel = Label(text=SECURITY_QUESTION_TEXT)
 
-        SecurityQuestionAnswerLabel = Label(text=u"Security Question Answer")
+        SecurityQuestionAnswerLabel = Label(text=SECURITY_ANSWER_TEXT)
         SecurityQuestionAnswerEntry = Entry()
 
-        NewPassLabel = Label(text=u'New Password')
+        NewPassLabel = Label(text=NEW_PASSWORD_TEXT)
         NewPassEntry = Entry()
-        NewPassLabelTwo = Label(text=u'Reenter New Password')
+        NewPassLabelTwo = Label(text=REENTER_PASSWORD_TEXT)
         NewPassEntryTwo = Entry()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Labels \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
-        SubmitButton = Button(text=u"Recover Password")
+        SubmitButton = Button(text=RECOVER_PASSWORD_TEXT)
         SubmitButton['command'] = lambda: self.RecoverPassword()
 
-        BackButton = Button(text=u"Back")
+        BackButton = Button(text=BACK_BUTTON_TEXT)
         BackButton['command'] = lambda: self.onBack()
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Loaded Buttons \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
         SecurityVar = StringVar(self.parent)
-        SecurityVar.set("Mother's Maiden Name")
+        SecurityVar.set(MOTHER_MAIDEN_NAME_TEXT)
 
-        SecurityQuestionDropdown = OptionMenu(self.parent, SecurityVar, "Mother's Maiden Name", "Memorable Place", "Name of First Pet", "Street you first lived in")
+        SecurityQuestionDropdown = OptionMenu(self.parent, SecurityVar, MOTHER_MAIDEN_NAME_TEXT, MEMORABLE_PLACE_TEXT, FIRST_PET_TEXT, FIRST_STREET_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         UsernameLabel.grid(row=1, column=1)
@@ -91,13 +91,13 @@ class PasswordRecoveryWindow(Frame):
         SubmitButton.grid(row=6, column=2)
         BackButton.grid(row=7, column=2)
 
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Initialised Grid. UI Initialisation Complete. \n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
     
     def RecoverPassword(self):
         
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Recover Account Button Pressed\n")
+        with open(LOG_FILENAME, "a") as f:
+            f.write(TimeStamp() + RECOVER_ACCOUNT_BUTTON_PRESSED)
         
         pass
 
@@ -107,14 +107,14 @@ class PasswordRecoveryWindow(Frame):
 
     def onBack(self):
 
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Back Selected \n")
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Register Window Terminated\n")
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()

@@ -35,6 +35,7 @@ LOGIN_WINDOW_TERMINATED_TEXT = u" Login Window Terminated\n"
 MENUBAR_INITIALISED_TEXT = u" Menubar Initialised \n"
 NEW_EMPLOYEE_ACCOUNT_TEXT = u" New Employee Account : "
 PARENT_TEXT = u" Parent: "
+PASSWORD_RECOVERY_WINDOW_INSTANCE_TEXT = u" Instance of PasswordRecoveryWindow Class initialised. Self : "
 QUIT_SELECTED_TEXT = u" Quit Selected \n"
 REGISTER_BUTTON_PRESSED_TEXT = u" Register Button Pressed\n"
 REGISTER_SCREEN_HELP_POPUP_TEXT = u"Here you can create your Employee account. You will require the administrator password to do so."
@@ -46,6 +47,7 @@ SECURITY_HELP_BUTTON_PRESSED_TEXT = u" Security Help Button Pressed\n"
 SUCCESSFUL_LOGIN_TEXT = u" Successful Login. \n"
 UPDATED_CURRENT_EMPLOYEE_TEXT = u" Updated Current Employee.txt \n"
 WINDOW_TERMINATED_TEXT = u" Window Terminated \n"
+]
 
 #LoginForm
 
@@ -57,6 +59,25 @@ REGISTER_BUTTON_TEXT = u"Register New Employee Account"
 TITLE_LABEL_LEFT_TEXT = u" Employee \nTracker "
 TITLE_LABEL_RIGHT_TEXT = u"\nALPHA"
 USERNAME_LABEL_TEXT = u"Username"
+
+#MainScreen
+
+
+
+#PasswordRecoveryScreen
+
+BACK_BUTTON_TEXT = u"Back"
+EMPLOYEE_USERNAME_TEXT = u'Employee Username'
+FIRST_PET_TEXT u"Name of First Pet"
+FIRST_STREET_TEXT = u"Street you first lived in"
+MEMORABLE_PLACE_TEXT = u"Memorable Place"
+MOTHER_MAIDEN_NAME_TEXT = u"Mother's Maiden Name"
+NEW_PASSWORD_TEXT = u'New Password'
+PARENT_TEXT = u" Parent: "
+RECOVER_PASSWORD_TEXT = u"Recover Password"
+REENTER_PASSWORD_TEXT = u'Reenter New Password'
+SECURITY_ANSWER_TEXT = u"Security Question Answer"
+SECURITY_QUESTION_TEXT = u'Security Question'
 
 #RegisterScreen
 
@@ -70,6 +91,8 @@ EMP_PASS_LABEL_TEXT = u'Employee Password'
 EMP_PASS_LABEL_TWO_TEXT = u'Reenter Employee Password'
 HELP_OPTION_TEXT = u"Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so."
 INCORRECT_ADMIN_PASS_TEXT = u"Incorrect Admin Password."
+LOGIN_FIELD_MISMATCH_TEXT = u"The Login fields didn't match."
+LOGIN_FIELD_MISSING_TEXT = u"Please Enter an Employee Login"
 PASS_DIGIT_TEXT = u"Your password must contain at least 1 Digit."
 PASS_LENGTH_TEXT = u"Your password must contain at least 8 characters."
 PASS_LOWERCASE_TEXT = u"Your password must contain at least 1 Lowercase letter."
@@ -78,30 +101,29 @@ PASS_UPPERCASE_TEXT = u"Your password must contain at least 1 Uppercase letter."
 SECURITY_LABEL_TEXT = u"Security Question : "
 SECURITY_ANSWER_LABEL_TEXT = u"Security Answer : "
 SECURITY_HELP_TEXT = u"This is used to recover your password."
+SECURITY_QUESTION_TEXT = u"Security Question"
+SECURITY_QUESTION_ANSWER_TEXT = u"Security Answer"
 SECURITY_VAR_FIRST_PET_TEXT = u"Name of First Pet"
 SECURITY_VAR_FIRST_STREET_TEXT = u"Street you first lived in"
 SECURITY_VAR_MAIDEN_NAME_TEXT = u"Mother's Maiden Name"
 SECURITY_VAR_MEMORABLE_TEXT = u"Memorable Place"
+USERNAME_IN_USE_TEXT = u"That Employee Login is already in use."
+USERNAME_RESERVED_TEXT = u"That Employee Login is reserved."
 
 #SearchEmployeeScreen
-
+ 
 BACK_BUTTON_TEXT = u"Back"
 DROPDOWN_DEPARTMENT_TEXT = u"Department"
 DROPDOWN_DOB_TEXT = u"DOB"
 DROPDOWN_EMPCODE_TEXT = u"Employee Code"
 DROPDOWN_NAME_TEXT = u"Name"
 DROPDOWN_SALARY_TEXT = u"Salary"
-LOGIN_FIELD_MISMATCH_TEXT = u"The Login fields didn't match."
-LOGIN_FIELD_MISSING_TEXT = u"Please Enter an Employee Login"
 REGISTER_BUTTON_TEXT = u"Create Account"
 SEARCH_BUTTON_TEXT = u"Search"
 SEARCH_BY_TEXT = u"Search By: "
 SEARCH_FOR_TEXT = u"Search For: "
 SEARCH_FOR_EMPLOYEES_TEXT = u"Search for Employees : "
-SECURITY_QUESTION_ANSWER_TEXT = u"Security Answer"
-SECURITY_QUESTION_TEXT = u"Security Question"
-USERNAME_IN_USE_TEXT = u"That Employee Login is already in use."
-USERNAME_RESERVED_TEXT = u"That Employee Login is reserved."
+
 
 
 

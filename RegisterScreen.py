@@ -4,6 +4,7 @@ from easygui import *
 from CreatePopup import *
 from BaseModule import *
 from Constants import *
+from Strings import *
 
 import re
 
@@ -51,6 +52,7 @@ class RegisterScreen(Frame):
         global AdminPassEntry
         global SecurityDropdown
         global SecurityAnswerEntry
+        global SecurityVar
 
         AnchorLabel = Label()
         
