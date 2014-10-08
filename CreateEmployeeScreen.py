@@ -5,6 +5,7 @@ from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
 from GenerateCode import *
+from Strings import *
 
 import pickle
 import re
@@ -14,7 +15,7 @@ class CreateEmployeeScreen(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Instance of CreateEmployeeScreen Class initialised. Self : " + str(self) + " Parent: " + str(parent) + "\n")
+            f.write(TimeStamp() + INSTANCE_OF_CREATEEMPSCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -29,20 +30,20 @@ class CreateEmployeeScreen(Frame):
 
         fileMenu = Menu(menubar)
 
-        fileMenu.add_command(label="Back", underline=0, command=self.onBack)
+        fileMenu.add_command(label=DROPDOWN_BACK_TEXT, underline=0, command=self.onBack)
         
-        fileMenu.add_command(label="Quit", underline=0, command=self.onExit)
+        fileMenu.add_command(label=DROPDOWN_QUIT_TEXT, underline=0, command=self.onExit)
 
         fileMenu.add_separator()
 
-        fileMenu.add_command(label="Help", underline=0, command=self.Help)
+        fileMenu.add_command(label=DROPDOWN_HELP_TEXT, underline=0, command=self.Help)
         
         fileMenu.add_separator()
 
-        menubar.add_cascade(label="File", underline=0, menu=fileMenu)
+        menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
         with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Menubar Initialised \n")
+            f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         global EmployeeNameEntry
         global EmployeeNameEntryTwo
@@ -54,9 +55,6 @@ class CreateEmployeeScreen(Frame):
         global EmployeeGenderEntryTwo
         global EmployeeSalaryEntry
         global EmployeeSalaryEntryTwo
-
-        with open("Log.txt", "a") as f:
-            f.write(TimeStamp() + " Globalised Entry buttons \n")
 
         AnchorLabel = Label()
        

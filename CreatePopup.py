@@ -1,5 +1,6 @@
 from Tkinter import *
 from Constants import *
+from Strings import *
 
 def CreatePopup(message):
 
@@ -9,5 +10,5 @@ def CreatePopup(message):
     msg = Message(Popup, text=message, width=350, justify=CENTER, padx=10, pady=10)
     msg.pack()
 
-    button = Button(Popup, text="Dismiss", command=Popup.destroy)
+    button = Button(Popup, text=POPUP_DISMISS_TEXT, command=Popup.destroy)
     button.pack()
