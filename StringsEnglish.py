@@ -73,6 +73,7 @@ BACK_SELECTED_TEXT = u" Back Selected \n"
 BACK_BUTTON_PRESSED_TEXT = u" Back Button Pressed\n"
 CREATE_EMPLOYEE_SELECTED_TEXT = u" Create Employee Selected"
 CREATED_EMPCOUNT_TEXT = u" Created EmpCount.txt\n"
+CREATED_LANGUAGE_FILE_TEXT = u" Created Language.txt\n"
 CREATED_INITIALSETUP_TEXT = u" Created InitialSetup.txt\n"
 CREATED_LOGINNAMES_TEXT = u" Created LoginNames.txt \n"
 CREATED_OR_WIPED_CURRENT_EMP_TEXT = u"Created/Wiped CurrentEmployee.txt\n"
@@ -88,6 +89,7 @@ EMP_PASS_HELP_PRESSED_TEXT = u" Emp Pass Help Button Pressed\n"
 EMP_SALARY_HELP_SELECTED_TEXT = u" EmpSalary Help Selected \n"
 FIRST_TIME_ADMIN_PASS_SETUP_TEXT = u" First time Admin password Setup\n"
 FORGOTTEN_PASS_PRESSED_TEXT = u" Forgotten Password Pressed\n"
+GOT_MAIN_EXCEPTION = u" Got exception on main handler \n"
 HELP_SELECTED_TEXT = u" Help Selected \n"
 INCORRECT_ADMIN_PASS_LOG_TEXT = u" Account Creation - Incorrect Admin pass. \n"
 INITIALISED_GRID_UI_TEXT = u" Initialised Grid. UI Initialisation Complete. \n"
@@ -148,6 +150,7 @@ SUBMIT_BUTTON_PRESSED_TEXT = u" Submit button pressed \n"
 SUCCESSFUL_LOGIN_TEXT = u" Successful Login. \n"
 UPDATED_CURRENT_EMPLOYEE_TEXT = u" Updated Current Employee.txt \n"
 WINDOW_TERMINATED_TEXT = u" Window Terminated \n"
+
 
 #LoginForm
 

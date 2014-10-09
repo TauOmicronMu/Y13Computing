@@ -28,6 +28,7 @@ EMPCODE_FILENAME = "EmpCodes.p"
 EMP_COUNT_FILENAME = 'EmpCount.txt'
 EMP_DATABASE_FILENAME = "EmpDatabase.p"
 INITIAL_SETUP_FILENAME = "InitialSetup.txt"
+LANGUAGE_FILENAME = "Language.txt"
 LOG_FILENAME = "Log.txt"
 LOGIN_DATA_FILENAME = "LoginData.p"
 LOGO_GIF_FILENAME = "EmpTrackerImage.gif"

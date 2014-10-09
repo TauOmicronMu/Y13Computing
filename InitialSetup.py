@@ -90,6 +90,11 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             f.write(TimeStamp() + INITIATING_FIRST_TIME_SETUP_TEXT)
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_LOGINNAMES_TEXT)
+
+        with open(LANGUAGE_FILENAME, WRITE_MODE) as f:
+            f.write("ENGLISH")
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + CREATED_LANGUAGE_FILE_TEXT)
             
         totalSalary = 0
         empCount = 0
