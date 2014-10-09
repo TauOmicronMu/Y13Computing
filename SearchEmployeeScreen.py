@@ -5,6 +5,11 @@ from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
 
+from SearchEmployeeScreenStringsEnglish import *
+from LoggingStringsEnglish import *
+from PopupsStringsEnglish import *
+from DropdownMenuStringsEnglish import *
+
 import pickle
 import re
 
@@ -12,7 +17,7 @@ class SearchEmployeeScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INSTANCE_OF_CREATELOGINSCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
@@ -40,7 +45,7 @@ class SearchEmployeeScreen(Frame):
 
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         AnchorLabel = Label(padx=130, pady=70)
@@ -64,7 +69,7 @@ class SearchEmployeeScreen(Frame):
                                         DROPDOWN_SALARY_TEXT,
                                         DROPDOWN_EMPCODE_TEXT)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SEARCHTYPEDROWPDOWN_MENU_INITIALISED_TEXT)
 
         BackButton = Button(text=BACK_BUTTON_TEXT)
@@ -73,7 +78,7 @@ class SearchEmployeeScreen(Frame):
         SearchButton = Button(text=SEARCH_BUTTON_TEXT)
         SearchButton['command'] = lambda: self.onSearch()
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
             
         AnchorLabel.grid(row=0, column=0)
@@ -86,20 +91,20 @@ class SearchEmployeeScreen(Frame):
         SearchButton.grid(row=5, column=2)
         BackButton.grid(row=5, column=3)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onSearch(self):
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SEARCH_SELECTED_TEXT)
         pass
 
     def onBack(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + BACK_SELECTED_TEXT)
         self.parent.destroy()
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
         root =Tk()
         root.geometry(WINDOW_GEOMETRY)
@@ -108,15 +113,15 @@ class SearchEmployeeScreen(Frame):
 
     def onExit(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + QUIT_SELECTED_TEXT)
         self.parent.destroy()
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
 
     def Help(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + HELP_SELECTED_TEXT)
         CreatePopup(HELP_OPTION_TEXT)
 

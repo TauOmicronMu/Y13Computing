@@ -4,13 +4,18 @@ from TimeStamp import *
 from easygui import *
 from CreatePopup import *
 
+from InitSetupPopupStringsEnglish import *
+from LoggingStringsEnglish import *
+from PopupsStringsEnglish import *
+from DropdownMenuStringsEnglish import *
+
 import re
 
 class InitSetupPopup(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INSTANCE_OF_INITSETUPPOPUP_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
@@ -33,7 +38,7 @@ class InitSetupPopup(Frame):
 
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         global AdminPassEntry
@@ -47,13 +52,13 @@ class InitSetupPopup(Frame):
         AdminPassLabelTwo = Label(text=REENTER_ADMIN_PASS_TEXT, anchor=CENTER)
         AdminPassEntryTwo = Entry(show="*")
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         SubmitButton = Button(text=SUBMIT_BUTTON_TEXT)
         SubmitButton['command'] = lambda: self.PasswordSubmit()
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
@@ -63,21 +68,21 @@ class InitSetupPopup(Frame):
         AdminPassEntryTwo.grid(row=2, column=2)
         SubmitButton.grid(row=2, column=3)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
     
     def PasswordSubmit(self):
         
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SUBMIT_BUTTON_PRESSED_TEXT)
         if AdminPassEntry.get() == AdminPassEntryTwo.get():
             if re.search(r'\d', AdminPassEntry.get()):
                 if re.search(r'[A-Z]', AdminPassEntry.get()):
                     if re.search(r'[a-z]', AdminPassEntry.get()):
                         if len(AdminPassEntry.get()) >= 8:
-                            with open("AdminPass.txt" ,'w') as f:
+                            with open(ADMIN_PASS_FILENAME , WRITE_MODE) as f:
                                 f.write("%s" %hash(AdminPassEntry.get()))
-                            with open(LOG_FILENAME, "a") as f:
+                            with open(LOG_FILENAME, APPEND_MODE) as f:
                                 f.write(TimeStamp() + ADMIN_PASS_CREATED_TEXT)
                                 self.parent.destroy()
                         else:
@@ -94,7 +99,7 @@ class InitSetupPopup(Frame):
                 return
         else:
             CreatePopup(PASS_MISMATCH_TEXT)
-            with open(LOG_FILENAME, "a") as f:
+            with open(LOG_FILENAME, APPEND_MODE) as f:
                 f.write(TimeStamp() + ADMIN_PASS_CREATION_MISMATCH)
             return
 
@@ -104,7 +109,7 @@ class InitSetupPopup(Frame):
 
     def onExit(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + QUIT_SELECTED_TEXT)
         CreatePopup(CREATE_ADMIN_PASS_TEXT)
             

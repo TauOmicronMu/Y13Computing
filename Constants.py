@@ -1,6 +1,6 @@
 #CONSTANTS
 
-VERSION_NUMBER = "1.1.5"
+VERSION_NUMBER = "1.2.0"
 
 WINDOW_GEOMETRY = "900x600+200+50"
 
@@ -21,6 +21,7 @@ WRITE_BINARY_MODE = "wb"
 
 #File Names
 
+ADMIN_PASS_FILENAME = "AdminPass.txt"
 COPYRIGHT_IMAGE_FILENAME = "CopyrightNotice.gif"
 CURRENT_EMP_FILENAME = "CurrentEmployee.txt"
 EMPCODE_FILENAME = "EmpCodes.p"

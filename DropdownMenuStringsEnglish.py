@@ -1,0 +1,7 @@
+#Dropdown Menus
+
+DROPDOWN_BACK_TEXT = u"Back"
+DROPDOWN_FILE_TEXT = u"File"
+DROPDOWN_HELP_TEXT = u"Help"
+DROPDOWN_LOGOUT_TEXT = u"Logout"
+DROPDOWN_QUIT_TEXT = u"Quit"

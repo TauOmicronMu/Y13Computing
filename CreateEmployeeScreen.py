@@ -5,7 +5,11 @@ from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
 from GenerateCode import *
-from Strings import *
+
+from CreateEmployeeScreenStringsEnglish import *
+from LoggingStringsEnglish import *
+from PopupsStringsEnglish import *
+from DropdownMenuStringsEnglish import *
 
 import pickle
 import re

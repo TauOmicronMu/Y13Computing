@@ -4,7 +4,11 @@ from easygui import *
 from CreatePopup import *
 from BaseModule import *
 from Constants import *
-from Strings import *
+
+from RegisterScreenStringsEnglish import *
+from LoggingStringsEnglish import *
+from PopupsStringsEnglish import *
+from DropdownMenuStringsEnglish import *
 
 import re
 
@@ -12,7 +16,7 @@ class RegisterScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + REGISTERSCREEN_INSTANCE_CREATED_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
@@ -21,7 +25,7 @@ class RegisterScreen(Frame):
 
     def initialiseUI(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISING_LOGINSCREEN_TEXT)
 
         menubar = Menu(self.parent)
@@ -39,7 +43,7 @@ class RegisterScreen(Frame):
 
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
 
@@ -76,7 +80,7 @@ class RegisterScreen(Frame):
         AdminPassLabel = Label(text=ADMIN_PASS_LABEL_TEXT, anchor=CENTER)
         AdminPassEntry = Entry(show="*")
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         RegisterButton = Button(text=REGISTER_BUTTON_TEXT)
@@ -85,16 +89,16 @@ class RegisterScreen(Frame):
         BackButton = Button(text=BACK_BUTTON_TEXT)
         BackButton['command'] = lambda: self.onBack()
 
-        EmpLoginHelpButton = Button(text=u"?")
+        EmpLoginHelpButton = Button(text=HELP_SYMBOL)
         EmpLoginHelpButton['command'] = lambda: self.displayEmpLoginHelp()
 
-        EmpPassHelpButton = Button(text=u"?")
+        EmpPassHelpButton = Button(text=HELP_SYMBOL)
         EmpPassHelpButton['command'] = lambda: self.displayEmpPassHelp()
 
-        SecurityVarHelpButton = Button(text=u"?")
+        SecurityVarHelpButton = Button(text=HELP_SYMBOL)
         SecurityVarHelpButton['command'] = lambda: self.displaySecurityHelp()
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
         SecurityVar = StringVar(self.parent)
@@ -127,56 +131,56 @@ class RegisterScreen(Frame):
         RegisterButton.grid(row=10, column=7)
         BackButton.grid(row=11, column=7)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
     
     def onBack(self):
         
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + BACK_BUTTON_PRESSED_TEXT)
         self.parent.destroy()
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + REGISTER_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
 
     def Help(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + HELP_SELECTED_TEXT)
         CreatePopup(REGISTER_SCREEN_HELP_POPUP_TEXT)
 
     def displayEmpPassHelp(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + EMP_PASS_HELP_PRESSED_TEXT)
         CreatePopup(EMP_PASS_HELP_TEXT)   
         return
 
     def displayEmpLoginHelp(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + EMP_PASS_HELP_PRESSED_TEXT)
             CreatePopup(EMP_LOGIN_HELP_TEXT) 
             return
 
     def displaySecurityHelp(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SECURITY_HELP_BUTTON_PRESSED_TEXT)
         CreatePopup(SECURITY_HELP_TEXT)
         return
 
     def createAccount(self):
         
-        LoginDict = pickle.load(open( "LoginData.p", "rb"))
-        with open(LOG_FILENAME, "a") as f:
+        LoginDict = pickle.load(open( LOGIN_DATA_FILENAME, READ_BINARY_MODE))
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_LOGIN_DICT_TEXT)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ACCOUNT_CREATION_INITIATED_TEXT)
         if not isNone(EmpLoginEntry.get()) == True:
             if EmpLoginEntry.get() == EmpLoginEntryTwo.get():
@@ -197,22 +201,22 @@ class RegisterScreen(Frame):
                 if re.search(r'[A-Z]', EmpPassEntry.get()):
                     if re.search(r'[a-z]', EmpPassEntry.get()):
                         if len(EmpPassEntry.get()) >= 8:
-                            with open("AdminPass.txt", 'r') as f:
+                            with open(ADMIN_PASS_FILENAME, READ_MODE) as f:
                                 AdminPassHash = f.readline()
-                                with open(LOG_FILENAME, "a") as f:
+                                with open(LOG_FILENAME, APPEND_MODE) as f:
                                     f.write(TimeStamp() + ADMIN_PASS_HASH_LOADED_TEXT)
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
                                 LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),
                                                   hash(SECURITY_QUESTION_TEXT):hash(SecurityVar.get()),
                                                   hash(SECURITY_QUESTION_ANSWER_TEXT):hash(SecurityAnswerEntry.get())})
-                                pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
+                                pickle.dump( LoginDict, open(LOGIN_DATA_FILENAME, WRITE_BINARY_MODE) )
                                 CreatePopup(EMP_ACCOUNT_CREATED_TEXT)
-                                with open(LOG_FILENAME, "a") as f:
+                                with open(LOG_FILENAME, APPEND_MODE) as f:
                                     f.write(TimeStamp() + NEW_EMPLOYEE_ACCOUNT_TEXT + str(EmpLoginEntry.get()) + CREATED_TEXT)
                                 self.onBack()
                             else:
                                 CreatePopup(INCORRECT_ADMIN_PASS_TEXT)
-                                with open(LOG_FILENAME, "a") as f:
+                                with open(LOG_FILENAME, APPEND_MODE) as f:
                                     f.write(TimeStamp() + INCORRECT_ADMIN_PASS_LOG_TEXT)
                                 return
                         else:
@@ -229,7 +233,7 @@ class RegisterScreen(Frame):
                  return
         else:
             CreatePopup(PASS_MISMATCH_TEXT)
-            with open(LOG_FILENAME, "a") as f:
+            with open(LOG_FILENAME, APPEND_MODE) as f:
                 f.write(TimeStamp() + ACCOUNT_CREATION_PASSWORD_MISMATCH_TEXT)
             return
                 

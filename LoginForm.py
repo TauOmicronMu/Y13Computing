@@ -2,7 +2,11 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 from CreatePopup import *
-from Strings import *
+
+from LoginFormStringsEnglish import *
+from LoggingStringsEnglish import *
+from PopupsStringsEnglish import *
+from DropdownMenuStringsEnglish import *
 
 import pickle
 
@@ -10,7 +14,7 @@ class LoginScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGINSCREEN_INITIALISED_TEXT_ONE + str(self) + LOGINSCREEN_INITIALISED_TEXT_TWO + str(parent) + "\n")
 
         self.parent = parent
@@ -19,7 +23,7 @@ class LoginScreen(Frame):
 
     def initialiseUI(self):
         
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISING_LOGINSCREEN_TEXT)
 
         menubar = Menu(self.parent)
@@ -37,7 +41,7 @@ class LoginScreen(Frame):
 
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
         self.parent.title(WINDOW_TITLE)
@@ -56,7 +60,7 @@ class LoginScreen(Frame):
         PasswordLabel = Label(text=PASSWORD_LABEL_TEXT)
         PasswordEntry = Entry(show="*")
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         LoginButton = Button(text=LOGIN_BUTTON_TEXT)
@@ -68,7 +72,7 @@ class LoginScreen(Frame):
         ForgottenPassButton = Button(text=FORGOTTEN_PASS_BUTTON_TEXT)
         ForgottenPassButton['command'] = lambda: self.ForgottenPass()
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
         
         AnchorLabel.grid(pady=35,padx=110,row=0,column=0)
@@ -83,19 +87,19 @@ class LoginScreen(Frame):
         ForgottenPassButton.grid(row=7, column=7)
         #HelpButton.grid(row=7, column=9)
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onExit(self):
 
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + QUIT_SELECTED_TEXT)
         self.parent.destroy()
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
 
     def loginHelp(self):
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGIN_HELP_PRESSED_TEXT)
             CreatePopup(LOGIN_HELP_TEXT)   
         
@@ -103,25 +107,25 @@ class LoginScreen(Frame):
     def tryLogin(self):
 
         from TimeStamp import *
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGIN_BUTTON_PRESSED_TEXT)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ATTEMPTED_LOGIN_USERNAME_TEXT + str(UsernameEntry.get()) + "\n")
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ATTEMPTED_LOGIN_PASSWORD_TEXT + str(hash(PasswordEntry.get())) + "\n")
-        LoginDict = pickle.load(open( "LoginData.p", "rb"))
+        LoginDict = pickle.load(open( LOGIN_DATA_FILENAME, READ_BINARY_MODE))
         if hash(UsernameEntry.get()) in LoginDict:
             if str(LoginDict[hash(UsernameEntry.get())]) == str(hash(PasswordEntry.get())):
-                with open(LOG_FILENAME, "a") as f:
+                with open(LOG_FILENAME, APPEND_MODE) as f:
                     f.write(TimeStamp() + SUCCESSFUL_LOGIN_TEXT)
-                with open(LOG_FILENAME, "a") as f:
+                with open(LOG_FILENAME, APPEND_MODE) as f:
                     f.write(TimeStamp() + UPDATED_CURRENT_EMPLOYEE_TEXT)
-                with open("CurrentEmployee.txt", "w") as f:
+                with open(CURRENT_EMP_FILENAME, WRITE_MODE) as f:
                     f.write(UsernameEntry.get())
                 self.parent.destroy()
                 root =Tk()
                 root.geometry(WINDOW_GEOMETRY)
-                with open(LOG_FILENAME, "a") as f:
+                with open(LOG_FILENAME, APPEND_MODE) as f:
                     f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n")
                 app = Splash(root)
                 root.mainloop()
@@ -131,27 +135,27 @@ class LoginScreen(Frame):
             CreatePopup(INVALID_LOGIN_TEXT)
             
     def registerAccount(self):
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + REGISTER_BUTTON_PRESSED_TEXT)
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGIN_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = RegisterScreen(root)
         root.mainloop()
 
     def ForgottenPass(self):
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + FORGOTTEN_PASS_PRESSED_TEXT)
         self.parent.destroy()
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + REGISTER_WINDOW_TERMINATED_TEXT)
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = PasswordRecoveryWindow(root)
         root.mainloop()

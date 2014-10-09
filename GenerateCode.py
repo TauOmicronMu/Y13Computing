@@ -10,9 +10,12 @@ import pickle
 
 def GenerateCode():
     CodeCreated = False
-    EmpDatabase = pickle.load(open("EmpDatabase.p", "rb") )
+    EmpDatabase = pickle.load(open(EMP_DATABASE_FILENAME, READ_BINARY_MODE) )
     while not CodeCreated:
-        EmpCode = "EMP" + str(random.randint(1,9)) + str(random.randint(1,9)) + str(random.randint(1,9)) + str(random.randint(1,9)) + str(random.randint(1,9)) + str(random.randint(1,9)) + str(random.randint(1,9)) + "E"
+        EmpCode = "EMP" + str(random.randint(1,9)) + \
+                  str(random.randint(1,9)) + str(random.randint(1,9)) + \
+                  str(random.randint(1,9)) + str(random.randint(1,9)) + \
+                  str(random.randint(1,9)) + str(random.randint(1,9)) + "E"
         if EmpCode in EmpDatabase:
             pass
         else:
