@@ -57,7 +57,12 @@ class SearchEmployeeScreen(Frame):
         SearchTypeVar = StringVar(self.parent)
         SearchTypeVar.set(DROPDOWN_NAME_TEXT)
 
-        SearchTypeDropdown = OptionMenu(self.parent, SearchTypeVar, DROPDOWN_NAME_TEXT, DROPDOWN_DEPARTMENT_TEXT, DROPDOWN_DOB_TEXT, DROPDOWN_SALARY_TEXT, DROPDOWN_EMPCODE_TEXT)
+        SearchTypeDropdown = OptionMenu(self.parent, SearchTypeVar,
+                                        DROPDOWN_NAME_TEXT,
+                                        DROPDOWN_DEPARTMENT_TEXT,
+                                        DROPDOWN_DOB_TEXT,
+                                        DROPDOWN_SALARY_TEXT,
+                                        DROPDOWN_EMPCODE_TEXT)
 
         with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + SEARCHTYPEDROWPDOWN_MENU_INITIALISED_TEXT)

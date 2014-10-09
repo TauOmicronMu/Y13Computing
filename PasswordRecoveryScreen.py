@@ -75,7 +75,11 @@ class PasswordRecoveryWindow(Frame):
         SecurityVar = StringVar(self.parent)
         SecurityVar.set(MOTHER_MAIDEN_NAME_TEXT)
 
-        SecurityQuestionDropdown = OptionMenu(self.parent, SecurityVar, MOTHER_MAIDEN_NAME_TEXT, MEMORABLE_PLACE_TEXT, FIRST_PET_TEXT, FIRST_STREET_TEXT)
+        SecurityQuestionDropdown = OptionMenu(self.parent, SecurityVar,
+                                              MOTHER_MAIDEN_NAME_TEXT,
+                                              MEMORABLE_PLACE_TEXT,
+                                              FIRST_PET_TEXT,
+                                              FIRST_STREET_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         UsernameLabel.grid(row=1, column=1)

@@ -217,7 +217,12 @@ class CreateEmployeeScreen(Frame):
         pickle.dump(EmpCodes, open(EMPCODE_FILENAME, APPEND_BINARY_MODE))
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_EMP_DATABASE_TEXT)
-        CurrentDatabase.update({CES_NAME_TEXT:EmployeeNameEntry.get(),CES_DEPARTMENT_TEXT:EmployeeDepartmentEntry.get(),CES_DOB_TEXT:EmployeeDOBEntry.get(),CES_GENDER_TEXT:EmployeeGenderEntry.get(),CES_SALARY_TEXT:EmployeeSalaryEntry.get(),CES_CODE_TEXT:EmpCode})
+        CurrentDatabase.update({CES_NAME_TEXT:EmployeeNameEntry.get(),
+                                CES_DEPARTMENT_TEXT:EmployeeDepartmentEntry.get(),
+                                CES_DOB_TEXT:EmployeeDOBEntry.get(),
+                                CES_GENDER_TEXT:EmployeeGenderEntry.get(),
+                                CES_SALARY_TEXT:EmployeeSalaryEntry.get(),
+                                CES_CODE_TEXT:EmpCode})
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ADDED_TEXT %CurrentDatabase + " \n")
         pickle.dump(CurrentDatabase, open(EMP_DATABASE_FILENAME, APPEND_BINARY_MODE))

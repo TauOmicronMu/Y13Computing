@@ -100,7 +100,11 @@ class RegisterScreen(Frame):
         SecurityVar = StringVar(self.parent)
         SecurityVar.set(SECURITY_VAR_MAIDEN_NAME_TEXT)
 
-        SecurityDropdown = OptionMenu(self.parent, SecurityVar, SECURITY_VAR_MAIDEN_NAME_TEXT, SECURITY_VAR_MEMORABLE_TEXT, SECURITY_VAR_FIRST_PET_TEXT, SECURITY_VAR_FIRST_STREET_TEXT)
+        SecurityDropdown = OptionMenu(self.parent, SecurityVar,
+                                      SECURITY_VAR_MAIDEN_NAME_TEXT,
+                                      SECURITY_VAR_MEMORABLE_TEXT,
+                                      SECURITY_VAR_FIRST_PET_TEXT,
+                                      SECURITY_VAR_FIRST_STREET_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
         EmpLoginLabel.grid(row=2, column=6)
@@ -198,7 +202,9 @@ class RegisterScreen(Frame):
                                 with open(LOG_FILENAME, "a") as f:
                                     f.write(TimeStamp() + ADMIN_PASS_HASH_LOADED_TEXT)
                             if str(hash(AdminPassEntry.get())) == str(AdminPassHash):
-                                LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),hash(SECURITY_QUESTION_TEXT):hash(SecurityVar.get()),hash(SECURITY_QUESTION_ANSWER_TEXT):hash(SecurityAnswerEntry.get())})
+                                LoginDict.update({hash(EmpLoginEntry.get()):hash(EmpPassEntry.get()),
+                                                  hash(SECURITY_QUESTION_TEXT):hash(SecurityVar.get()),
+                                                  hash(SECURITY_QUESTION_ANSWER_TEXT):hash(SecurityAnswerEntry.get())})
                                 pickle.dump( LoginDict, open( "LoginData.p", "wb" ) )
                                 CreatePopup(EMP_ACCOUNT_CREATED_TEXT)
                                 with open(LOG_FILENAME, "a") as f:
