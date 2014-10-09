@@ -84,78 +84,78 @@ EMP_SUBMENU_SALARY_TEXT = u"Gehalt"
 EXP_MENU_ADD_EXP_TEXT = u"Ausgaben hinzufügen"
 EXP_MENU_DEDUCT_EXP_TEXT = u"Ausgaben abziehen"
 EXP_MENU_TOTAL_TEXT = u"Gesamt"
-EXP_SUBMENU_DAILY_TEXT = u"Daily"
-EXP_SUBMENU_MONTHLY_TEXT = u"Monthly"
-EXP_SUBMENU_WEEKLY_TEXT = u"Weekly"
-EXP_SUBMENU_YEARLY_TEXT = u"Yearly"
-MAIN_SCREEN_HELP_TEXT = u"This is the main screen. From here, you can perform numerous operations. Use the menu bar to find them."
-MENUBAR_EMPLOYEES_TEXT = u"Employes"
-MENUBAR_EXPENDITURE_TEXT = u"Expenditure"
-MENUBAR_FILE_TEXT = u"File"
+EXP_SUBMENU_DAILY_TEXT = u"Täglich"
+EXP_SUBMENU_MONTHLY_TEXT = u"Monatlich"
+EXP_SUBMENU_WEEKLY_TEXT = u"Wöchentlich"
+EXP_SUBMENU_YEARLY_TEXT = u"Jährlich"
+MAIN_SCREEN_HELP_TEXT = u"Dies ist der Hauptbildschirm . Von hier aus können zahlreiche Operationen durchführen können. Verwenden Sie die Menüleiste, um sie zu finden."
+MENUBAR_EMPLOYEES_TEXT = u"Mitarbeiter"
+MENUBAR_EXPENDITURE_TEXT = u"Ausgaben"
+MENUBAR_FILE_TEXT = u"Datei"
 
 #PasswordRecoveryScreen
 
-BACK_BUTTON_TEXT = u"Back"
-EMPLOYEE_USERNAME_TEXT = u"Employee Username"
-FIRST_PET_TEXT = u"Name of First Pet"
-FIRST_STREET_TEXT = u"Street you first lived in"
-HELP_TEXT = u"Here, you can recover your Account password."
-MEMORABLE_PLACE_TEXT = u"Memorable Place"
-MOTHER_MAIDEN_NAME_TEXT = u"Mother's Maiden Name"
-NEW_PASSWORD_TEXT = u'New Password'
-RECOVER_PASSWORD_TEXT = u"Recover Password"
-REENTER_PASSWORD_TEXT = u'Reenter New Password'
-SECURITY_ANSWER_TEXT = u"Security Question Answer"
-SECURITY_QUESTION_TEXT = u'Security Question'
+BACK_BUTTON_TEXT = u"Zurück"
+EMPLOYEE_USERNAME_TEXT = u"Benutzername Mitarbeiter"
+FIRST_PET_TEXT = u"Name des ersten Haustieres"
+FIRST_STREET_TEXT = u"Straße zunächst in gelebt"
+HELP_TEXT = u"Hier können Sie Ihr Konto-Passwort wiederherzustellen."
+MEMORABLE_PLACE_TEXT = u"Denkwürdige Platz"
+MOTHER_MAIDEN_NAME_TEXT = u"Mädchenname der Mutter"
+NEW_PASSWORD_TEXT = u'Neues Passwort'
+RECOVER_PASSWORD_TEXT = u"Passwort wiederherstellen"
+REENTER_PASSWORD_TEXT = u'Neues Passwort erneut'
+SECURITY_ANSWER_TEXT = u"Sicherheitsfrage beantworten"
+SECURITY_QUESTION_TEXT = u'Sicherheitsfrage'
 
 #Popups
 
-POPUP_DISMISS_TEXT = u"Dismiss"
+POPUP_DISMISS_TEXT = u"Entlassen"
 
 #RegisterScreen
 
-ADMIN_PASS_LABEL_TEXT = u'Administrator Password'
-EMP_ACCOUNT_CREATED_TEXT = u"Employee Account Created."
-EMP_LOGIN_HELP_TEXT = u"This is the Employee's unique login."
-EMP_LOGIN_LABEL_TEXT = u'Employee Login'
-EMP_LOGIN_LABEL_TWO_TEXT = u'Reenter Employee Login'
-EMP_PASS_HELP_TEXT = u"Employee Passwords must be 8 Characters Long, and contain at least 1 uppercase character, 1 lowercase character and 1 digit."
-EMP_PASS_LABEL_TEXT = u'Employee Password'
-EMP_PASS_LABEL_TWO_TEXT = u'Reenter Employee Password'
-HELP_OPTION_TEXT = u"Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so."
-INCORRECT_ADMIN_PASS_TEXT = u"Incorrect Admin Password."
-LOGIN_FIELD_MISMATCH_TEXT = u"The Login fields didn't match."
-LOGIN_FIELD_MISSING_TEXT = u"Please Enter an Employee Login"
-PASS_DIGIT_TEXT = u"Your password must contain at least 1 Digit."
-PASS_LENGTH_TEXT = u"Your password must contain at least 8 characters."
-PASS_LOWERCASE_TEXT = u"Your password must contain at least 1 Lowercase letter."
-PASS_MISMATCH_TEXT = u"The Password Fields didn't match."
-PASS_UPPERCASE_TEXT = u"Your password must contain at least 1 Uppercase letter."
-SECURITY_LABEL_TEXT = u"Security Question : "
-SECURITY_ANSWER_LABEL_TEXT = u"Security Answer : "
-SECURITY_HELP_TEXT = u"This is used to recover your password."
-SECURITY_QUESTION_TEXT = u"Security Question"
-SECURITY_QUESTION_ANSWER_TEXT = u"Security Answer"
-SECURITY_VAR_FIRST_PET_TEXT = u"Name of First Pet"
-SECURITY_VAR_FIRST_STREET_TEXT = u"Street you first lived in"
-SECURITY_VAR_MAIDEN_NAME_TEXT = u"Mother's Maiden Name"
-SECURITY_VAR_MEMORABLE_TEXT = u"Memorable Place"
-USERNAME_IN_USE_TEXT = u"That Employee Login is already in use."
-USERNAME_RESERVED_TEXT = u"That Employee Login is reserved."
+ADMIN_PASS_LABEL_TEXT = u'Administrator-Passwort'
+EMP_ACCOUNT_CREATED_TEXT = u"Mitarbeiter Konto erstellt."
+EMP_LOGIN_HELP_TEXT = u"Dies ist die Mitarbeiter-Login einmalig."
+EMP_LOGIN_LABEL_TEXT = u'Mitarbeiter-Login'
+EMP_LOGIN_LABEL_TWO_TEXT = u'Erneute Mitarbeiter Login'
+EMP_PASS_HELP_TEXT = u"Mitarbeiter Passwörter müssen 8 Zeichen lang sein und mindestens 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Digit."
+EMP_PASS_LABEL_TEXT = u'Mitarbeiter Passwort'
+EMP_PASS_LABEL_TWO_TEXT = u'Erneute Mitarbeiter-Passwort'
+HELP_OPTION_TEXT = u"Hier können Sie ein neues Mitarbeiterkonto erstellen. Füllen Sie die Felder aus und klicken Sie auf 'Einreichen', um dies zu tun."
+INCORRECT_ADMIN_PASS_TEXT = u"Falsche Admin-Kennwort"
+LOGIN_FIELD_MISMATCH_TEXT = u"Die Login-Felder stimmen nicht überein."
+LOGIN_FIELD_MISSING_TEXT = u"Bitte geben Sie eine Mitarbeiter Login"
+PASS_DIGIT_TEXT = u"Ihr Passwort muss mindestens 1 Ziffer enthalten."
+PASS_LENGTH_TEXT = u"Ihr Passwort muss mindestens 8 Zeichen enthalten."
+PASS_LOWERCASE_TEXT = u"Ihr Passwort muss mindestens 1 Kleinbuchstaben enthalten."
+PASS_MISMATCH_TEXT = u"Die Felder Passwort stimmen nicht überein."
+PASS_UPPERCASE_TEXT = u"Ihr Passwort muss mindestens 1 Großbuchstaben enthalten."
+SECURITY_LABEL_TEXT = u"Sicherheitsfrage : "
+SECURITY_ANSWER_LABEL_TEXT = u"Sicherheits Antwort : "
+SECURITY_HELP_TEXT = u"Diese wird verwendet, um Ihr Passwort wiederherzustellen."
+SECURITY_QUESTION_TEXT = u"Sicherheitsfrage"
+SECURITY_QUESTION_ANSWER_TEXT = u"Sicherheits Antwort"
+SECURITY_VAR_FIRST_PET_TEXT = u"Name des ersten Haustieres"
+SECURITY_VAR_FIRST_STREET_TEXT = u"Straße zunächst in gelebt"
+SECURITY_VAR_MAIDEN_NAME_TEXT = u"Mädchenname der Mutter"
+SECURITY_VAR_MEMORABLE_TEXT = u"Denkwürdige Platz"
+USERNAME_IN_USE_TEXT = u"Dass Mitarbeiter Login ist bereits im Einsatz."
+USERNAME_RESERVED_TEXT = u"Dass Mitarbeiter Login ist reserviert."
 
 #SearchEmployeeScreen
  
-BACK_BUTTON_TEXT = u"Back"
-DROPDOWN_DEPARTMENT_TEXT = u"Department"
+BACK_BUTTON_TEXT = u"Zurück"
+DROPDOWN_DEPARTMENT_TEXT = u"Abteilung"
 DROPDOWN_DOB_TEXT = u"DOB"
-DROPDOWN_EMPCODE_TEXT = u"Employee Code"
+DROPDOWN_EMPCODE_TEXT = u"Mitarbeiter-Code"
 DROPDOWN_NAME_TEXT = u"Name"
-DROPDOWN_SALARY_TEXT = u"Salary"
-REGISTER_BUTTON_TEXT = u"Create Account"
-SEARCH_BUTTON_TEXT = u"Search"
-SEARCH_BY_TEXT = u"Search By: "
-SEARCH_FOR_TEXT = u"Search For: "
-SEARCH_FOR_EMPLOYEES_TEXT = u"Search for Employees : "
+DROPDOWN_SALARY_TEXT = u"Gehalt"
+REGISTER_BUTTON_TEXT = u"Benutzerkonto erstellen"
+SEARCH_BUTTON_TEXT = u"Suche"
+SEARCH_BY_TEXT = u"Suchen nach:"
+SEARCH_FOR_TEXT = u"Suche Für: "
+SEARCH_FOR_EMPLOYEES_TEXT = u"Suche nach Mitarbeitern: "
 
 
 
