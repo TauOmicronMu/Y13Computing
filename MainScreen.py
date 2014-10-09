@@ -4,10 +4,18 @@ from logging import *
 from Constants import *
 from CreatePopup import *
 
-from MainScreenStringsEnglish import *
 from LoggingStringsEnglish import *
-from PopupsStringsEnglish import *
-from DropdownMenuStringsEnglish import *
+
+with open(LANGUAGE_FILENAME, READ_MODE) as f:
+    Language = f.readline()
+    if Language == "GERMAN":
+        from MainScreenStringsGerman import *
+        from PopupsStringsGerman import *
+        from DropdownMenuStringsGerman import *
+    else:
+        from MainScreenStringsEnglish import *
+        from PopupsStringsEnglish import *
+        from DropdownMenuStringsEnglish import *
 
 class Splash(Frame):
   

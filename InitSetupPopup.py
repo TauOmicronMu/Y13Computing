@@ -4,10 +4,18 @@ from TimeStamp import *
 from easygui import *
 from CreatePopup import *
 
-from InitSetupPopupStringsEnglish import *
 from LoggingStringsEnglish import *
-from PopupsStringsEnglish import *
-from DropdownMenuStringsEnglish import *
+
+with open(LANGUAGE_FILENAME, READ_MODE) as f:
+    Language = f.readline()
+    if Language == "GERMAN":
+        from InitSetupPopupStringsGerman import *
+        from PopupsStringsGerman import *
+        from DropdownMenuStringsGerman import *
+    else:
+        from InitSetupPopupStringsEnglish import *
+        from PopupsStringsEnglish import *
+        from DropdownMenuStringsEnglish import *
 
 import re
 

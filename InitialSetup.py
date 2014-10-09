@@ -9,7 +9,6 @@ from Constants import *
 from TimeStamp import *
 from Tkinter import *
 from InitSetupPopup import *
-from Strings import *
 
 import pickle
 

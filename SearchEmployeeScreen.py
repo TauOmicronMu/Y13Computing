@@ -5,10 +5,18 @@ from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
 
-from SearchEmployeeScreenStringsEnglish import *
 from LoggingStringsEnglish import *
-from PopupsStringsEnglish import *
-from DropdownMenuStringsEnglish import *
+
+with open(LANGUAGE_FILENAME, READ_MODE) as f:
+    Language = f.readlines()
+    if Language == "GERMAN":
+        from SearchEmployeeScreenStringsGerman import *
+        from PopupsStringsGerman import *
+        from DropdownMenuStringsGerman import *
+    else:
+        from SearchEmployeeScreenStringsEnglish import *
+        from PopupsStringsEnglish import *
+        from DropdownMenuStringsEnglish import *
 
 import pickle
 import re

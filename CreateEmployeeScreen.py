@@ -6,10 +6,18 @@ from TimeStamp import *
 from BaseModule import *
 from GenerateCode import *
 
-from CreateEmployeeScreenStringsEnglish import *
 from LoggingStringsEnglish import *
-from PopupsStringsEnglish import *
-from DropdownMenuStringsEnglish import *
+
+with open(LANGUAGE_FILENAME, READ_MODE) as f:
+    Language = f.readline()
+    if Language == "GERMAN":
+        from CreateEmployeeScreenStringsGerman import *
+        from PopupsStringsGerman import *
+        from DropdownMenuStringsGerman import *
+    else:
+        from CreateEmployeeScreenStringsEnglish import *
+        from PopupsStringsEnglish import *
+        from DropdownMenuStringsEnglish import *
 
 import pickle
 import re

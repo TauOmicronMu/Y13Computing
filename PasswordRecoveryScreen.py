@@ -3,10 +3,18 @@ from Constants import *
 from TimeStamp import *
 from CreatePopup import *
 
-from PasswordRecoveryScreenStringsEnglish import *
 from LoggingStringsEnglish import *
-from PopupsStringsEnglish import *
-from DropdownMenuStringsEnglish import *
+
+with open(LANGUAGE_FILENAME, READ_MODE) as f:
+    Language = f.readline()
+    if Language == "GERMAN":
+        from PasswordRecoveryScreenStringsGerman import *
+        from PopupsStringsGerman import *
+        from DropdownMenuStringsGerman import *
+    else:
+        from PasswordRecoveryScreenStringsEnglish import *
+        from PopupsStringsEnglish import *
+        from DropdownMenuStringsEnglish import *
 
 import pickle
 import re
