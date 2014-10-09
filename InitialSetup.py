@@ -25,93 +25,118 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
     Setup = False
     array = [] #Creates a blank array, which is used to store employee's data-dictionaries.
 
-    with open("CurrentEmployee.txt", "w") as f:
+    with open(CURRENT_EMP_FILENAME, WRITE_MODE) as f:
         f.write("")
-    with open(LOG_FILENAME, "a") as f:
+        
+    with open(LOG_FILENAME, APPEND_MODE) as f:
         f.write(TimeStamp() + RESTART_TEXT)
-    with open(LOG_FILENAME, "a") as f:
+        
+    with open(LOG_FILENAME, APPEND_MODE) as f:
         f.write(TimeStamp() + CREATED_OR_WIPED_CURRENT_EMP_TEXT)
-    f = open('EmpCodeList.txt','w')
-    with open('EmpCodeList.txt','w') as f:
-        f.close()
-    f = open('InitialSetup.txt','a') #Ensures that the file "InitialSetup.txt" exists.
-    f = open('InitialSetup.txt','r')
+        
+    f = open(INITIAL_SETUP_FILENAME, APPEND_MODE) #Ensures that the file "InitialSetup.txt" exists.
+
+    f = open(INITIAL_SETUP_FILENAME, READ_MODE)
+    
     searchlines = f.readlines() #Creates a second definition of the function f.readlines()
     for i, line in enumerate(searchlines): #Searches the file
        if "True" in line:
            Setup = True
+           
     if Setup == True:
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADING_VARIABLES_TEXT)
-        f = open('EmpCount.txt','r')
-        with open('EmpCount.txt','r') as f:
+            
+        f = open(EMP_COUNT_FILENAME, READ_MODE)
+        with open(EMP_COUNT_FILENAME, READ_MODE) as f:
             empCountList = f.readlines()
             empCount = int(empCountList[0])
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_EMP_COUNT_TEXT)
-        f = open('TotalSalary.txt','r')
-        with open('TotalSalary.txt','r'):
+            
+        f = open(TOTAL_SALARY_FILENAME, READ_MODE)
+        with open(TOTAL_SALARY_FILENAME, READ_MODE):
             totalSalaryList = f.readlines()
             totalSalary = int(totalSalaryList[0])
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_TOTAL_SALARY_TEXT)
-            f = open('TotalExpenditure.txt','r')
-        with open('TotalExpenditure.txt','r') as f:
+            
+        f = open(TOTAL_EXPENDITURE_FILENAME, READ_MODE)
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
             totalExpenditureList = f.readlines()
             totalExpenditure = int(totalExpenditureList[0])
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_TOTAL_EXPENDITURE_TEXT)
-        with open('CurrentEmployee.txt','w') as f:
+            
+        with open(CURRENT_EMP_FILENAME, WRITE_MODE) as f:
             f.write("")
-        with open(v, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_OR_WIPED_CURRENT_EMP_TEXT)
     else:
         LoginData = {}
-        pickle.dump( LoginData, open( "LoginData.p", "wb" ) )
+        pickle.dump( LoginData, open(LOGIN_DATA_FILENAME, WRITE_BINARY_MODE ) )
+
         EmpDatabase = {}
-        pickle.dump( EmpDatabase, open("EmpDatabase.p", "wb") )
+        pickle.dump( EmpDatabase, open(EMP_DATABASE_FILENAME, WRITE_BINARY_MODE) )
+
         EmpCodes = []
-        pickle.dump( EmpCodes, open("EmpCodes.p", "wb") )
-        with open(LOG_FILENAME, "a") as f:
+        pickle.dump( EmpCodes, open(EMPCODE_FILENAME, WRITE_BINARY_MODE) )
+
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIATING_FIRST_TIME_SETUP_TEXT)
-        with open(LOG_FILENAME, "a") as f:
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_LOGINNAMES_TEXT)
-        f = open('EmpDatabase.txt','a') #Ensures that the file "EmpDatabase.txt" exists.
-        with open('EmpDatabase.txt','a'):
-            f.close()
+            
         totalSalary = 0
         empCount = 0
         totalExpenditure = 0
-        f = open('EmpCount.txt','w')
-        with open('EmpCount.txt','w') as f:
+        
+        f = open(EMP_COUNT_FILENAME, WRITE_MODE)
+        with open(EMP_COUNT_FILENAME, WRITE_MODE) as f:
             f.write("%s\n" %empCount)
             f.close()
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_EMPCOUNT_TEXT)
-        f = open('TotalSalary.txt','w')
-        with open('TotalSalary.txt','w') as f:
+        f = open(TOTAL_SALARY_FILENAME, WRITE_MODE)
+        
+        with open(TOTAL_SALARY_FILENAME, WRITE_MODE) as f:
              f.write("%s\n" %totalSalary)
              f.close()
-        with open(LOG_FILENAME, "a") as f:
+             
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_TOTALSALARY_TEXT)
-        f = open('TotalExpenditure.txt','w')
-        with open('TotalExpenditure.txt','w') as f:
+            
+        f = open(TOTAL_EXPENDITURE_FILENAME, WRITE_MODE)
+        with open(TOTAL_EXPENDITURE_FILENAME, WRITE_MODE) as f:
             f.write("%s\n" %totalExpenditure)
             f.close()
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_TOTALEXPENDITURE_TEXT)
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + FIRST_TIME_ADMIN_PASS_SETUP_TEXT)
+            
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open(LOG_FILENAME, "a") as f:
-            f.write(TimeStamp() + INITIALISING_INITSETUPPOPUP_TEXT) 
+        
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + INITIALISING_INITSETUPPOPUP_TEXT)
+            
         app = InitSetupPopup(root)
         root.mainloop()
-        f = open('InitialSetup.txt','w') #Creates the file "InitialSetup.txt"
-        with open('InitialSetup.txt','w') as f:
+        
+        f = open(INITIAL_SETUP_FILENAME, WRITE_MODE) #Creates the file "InitialSetup.txt"
+
+        with open(INITIAL_SETUP_FILENAME, WRITE_MODE) as f:
             f.write("True") #Writes "True" to the file "InitialSetup.txt", which will be used to check whether setup is complete.
             f.close()
-        with open(LOG_FILENAME, "a") as f:
+            
+        with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_INITIALSETUP_TEXT)
         

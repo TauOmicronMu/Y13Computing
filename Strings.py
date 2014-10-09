@@ -1,15 +1,42 @@
 #CreateEmployeeScreen
 
+CES_BACK_BUTTON_TEXT = u"Back"
+CES_CODE_TEXT = u"Code"
+CES_DEPARTMENT_TEXT = u"Department"
+CES_DEPARTMENT_HELP_TEXT =u"This is the Employee's current Department"
+CES_DOB_TEXT = u"DOB"
+CES_DOB_HELP_TEXT = u"This is the Employee's Date of Birth"
+CES_GENDER_TEXT = u"Gender"
+CES_GENDER_HELP_TEXT = u"This is the Employee's Gender (M/F)"
+CES_HELP_TEXT = u"Here you can create a new Employee Record. Fill in the fields, and click 'Submit' to do so."
+CES_NAME_TEXT = u"Name"
+CES_NAME_HELP_TEXT = u"This is the Employee's Name - Forename & Surname"
+CES_SALARY_TEXT = u"Salary"
+CES_SALARY_HELP_TEXT = u"This is the Employee's Salary per annum (Just a number : i.e. 23000)"
+CES_SUBMIT_BUTTON_TEXT = u"Submit"
 EMP_DEPARTMENT_LABEL_TEXT = u'Employee Department'
 EMP_DEPARTMENT_LABEL_TWO_TEXT = u'Reenter Department'
+EMP_DEPARTMENT_MISMATCH_TEXT = u"The Employee Departments didn't match."
+EMP_DOB_INVALID_TEXT = u"Please enter a valid DOB."
 EMP_DOB_LABEL_TEXT = u'Employee DOB (DD/MM/YYYY)'
 EMP_DOB_LABEL_TWO_TEXT = u'Reenter DOB (DD/MM/YYYY)'
+EMP_DOB_MISMATCH_TEXT = u"The Employee DOB's didn't match."
+EMP_GENDER_INVALID_TEXT = u"Please enter a valid gender."
 EMP_GENDER_LABEL_TEXT = u'Employee Gender'
 EMP_GENDER_LABEL_TWO_TEXT = u'Reenter Gender'
+EMP_GENDER_MISMATCH_TEXT = u"The Employee Genders didn't match."
 EMP_NAME_LABEL_TEXT = u'Employee Name'
 EMP_NAME_LABEL_TWO_TEXT = u'Reenter Name'
+EMP_NAME_MISMATCH_TEXT = u"The Employee Names didn't match."
+EMP_SALARY_INVALID_TEXT = u"Please enter a valid Salary."
 EMP_SALARY_LABEL_TEXT = u'Employee Salary'
 EMP_SALARY_LABEL_TWO_TEXT = u'Reenter Salary'
+EMP_SALARY_MISMATCH_TEXT = u"The Employee Salaries didn't match."
+NO_EMP_DEPARTMENT_TEXT = u"Please Enter/Confirm the Employee's Department."
+NO_EMP_DOB_TEXT = u"Please Enter/Confirm the Employee's DOB"
+NO_EMP_GENDER_TEXT = u"Please Enter/Confirm the Employee's Gender."
+NO_EMP_NAME_TEXT = u"Please Enter/Confirm the Employee's Name."
+NO_EMP_SALARY_TEXT = u"Please Enter/Confirm the Employee's Salary."
 
 #Dropdown Menus
 
@@ -35,6 +62,7 @@ SUBMIT_BUTTON_TEXT = u"Submit"
 
 ACCOUNT_CREATION_INITIATED_TEXT = u" Account Creation initiated \n"
 ACCOUNT_CREATION_PASSWORD_MISMATCH_TEXT = u" Account Creation - Password Mismatch. \n"
+ADDED_TEXT = u" Added %s "
 ADMIN_PASS_CREATED_TEXT = u" Admin Password created. \n"
 ADMIN_PASS_HASH_LOADED_TEXT = u" Admin Pass Hash loaded. \n"
 ADMIN_PASS_CREATION_MISMATCH = u" Admin Pass Creation - Password Mismatch. \n"
@@ -49,7 +77,12 @@ CREATED_OR_WIPED_CURRENT_EMP_TEXT = u"Created/Wiped CurrentEmployee.txt\n"
 CREATED_TEXT = u" created. \n"
 CREATED_TOTALSALARY_TEXT = u" Created TotalSalary.txt\n"
 CREATED_TOTALEXPENDITURE_TEXT = u" Created TotalExpenditure.txt\n"
+EMP_DEPARTMENT_HELP_SELECTED_TEXT = u" EmpDepartment Help Selected \n"
+EMP_DOB_HELP_SELECTED_TEXT = u" EmpDOB Help Selected \n"
+EMP_GENDER_HELP_SELECTED_TEXT = u" EmpGender Help Selected \n"
+EMP_NAME_HELP_SELECTED_TEXT = u" EmpName Help Selected \n"
 EMP_PASS_HELP_PRESSED_TEXT = u" Emp Pass Help Button Pressed\n"
+EMP_SALARY_HELP_SELECTED_TEXT = u" EmpSalary Help Selected \n"
 FIRST_TIME_ADMIN_PASS_SETUP_TEXT = u" First time Admin password Setup\n"
 FORGOTTEN_PASS_PRESSED_TEXT = u" Forgotten Password Pressed\n"
 HELP_SELECTED_TEXT = u" Help Selected \n"
@@ -64,6 +97,7 @@ INSTANCE_OF_CREATEEMPSCREEN_TEXT = u" Instance of CreateEmployeeScreen Class ini
 INSTANCE_OF_INITSETUPPOPUP_TEXT = u" Instance of InitSetupPopup Class initialised. Self : "
 LOADED_BUTTONS_TEXT = u" Loaded Buttons \n"
 LOADED_EMP_COUNT_TEXT = u" Loaded Employee Count\n"
+LOADED_EMP_DATABASE_TEXT = u" Loaded EmpDatabase.p \n"
 LOADED_LABELS_TEXT = u" Loaded Labels \n"
 LOADED_LOGIN_DICT_TEXT = u" Loaded LoginData.p \n"
 LOADED_TOTAL_EXPENDITURE_TEXT = u" Loaded Total Expenditure\n"
@@ -75,6 +109,19 @@ LOGIN_HELP_TEXT = u"From here, you can log into your employee account. Both user
 LOGINSCREEN_INITIALISED_TEXT_ONE = u" Instance of LoginScreen Class initialised. Self : "
 LOGINSCREEN_INITIALISED_TEXT_TWO = u" Parent: "
 LOGIN_WINDOW_TERMINATED_TEXT = u" Login Window Terminated\n"
+LOG_EMP_DEPARTMENT_MISMATCH_TEXT = u" Create Emp Issue: Department Mismatch \n"
+LOG_EMP_DOB_MISMATCH_TEXT = u" Create Emp Issue: DOB Mismatch \n"
+LOG_EMP_GENDER_MISMATCH_TEXT = u" Create Emp Issue: Gender Mismatch \n"
+LOG_EMP_NAME_MISMATCH_TEXT = u" Create Emp Issue: Name Mismatch \n"
+LOG_EMP_SALARY_MISMATCH_TEXT = u" Create Emp Issue: Salary Mismatch \n"
+LOG_INVALID_DOB_TEXT = u" Create Emp Issue: Invalid DOB \n"
+LOG_INVALID_GENDER_TEXT = u" Create Emp Issue: Invalid Gender \n"
+LOG_INVALID_SALARY_TEXT = u" Create Emp Issue: Invalid Salary \n"
+LOG_NO_EMP_DEPARTMENT_TEXT = u" Create Emp Issue: No Department \n"
+LOG_NO_DOB_TEXT = u" Create Emp Issue: No DOB \n"
+LOG_NO_EMP_GENDER_TEXT = u" Create Emp Issue: No Gender \n"
+LOG_NO_EMP_NAME_TEXT = u" Create Employee Issue: No Name \n"
+LOG_NO_EMP_SALARY_TEXT = u" Create Emp Issue: No Salary \n"
 MENUBAR_INITIALISED_TEXT = u" Menubar Initialised \n"
 NEW_EMPLOYEE_ACCOUNT_TEXT = u" New Employee Account : "
 PARENT_TEXT = u" Parent: "
@@ -86,6 +133,7 @@ REGISTER_SCREEN_HELP_POPUP_TEXT = u"Here you can create your Employee account. Y
 REGISTERSCREEN_INSTANCE_CREATED_TEXT = u" Instance of RegisterScreen Class initialised. Self : "
 REGISTER_WINDOW_TERMINATED_TEXT = u" Register Window Terminated\n"
 RESTART_TEXT = u" =====RESTART=====\n"
+SAVED_NEW_DATABASE_TEXT = u" Saved new Database \n"
 SEARCHTYPEDROWPDOWN_MENU_INITIALISED_TEXT = u" SearchTypeDropdown Menu Initialised \n"
 SEARCH_SELECTED_TEXT = u" Search Selected \n"
 SECURITY_HELP_BUTTON_PRESSED_TEXT = u" Security Help Button Pressed\n"
@@ -112,8 +160,8 @@ USERNAME_LABEL_TEXT = u"Username"
 #PasswordRecoveryScreen
 
 BACK_BUTTON_TEXT = u"Back"
-EMPLOYEE_USERNAME_TEXT = u'Employee Username'
-FIRST_PET_TEXT u"Name of First Pet"
+EMPLOYEE_USERNAME_TEXT = u"Employee Username"
+FIRST_PET_TEXT = u"Name of First Pet"
 FIRST_STREET_TEXT = u"Street you first lived in"
 HELP_TEXT = u"Here, you can recover your Account password."
 MEMORABLE_PLACE_TEXT = u"Memorable Place"

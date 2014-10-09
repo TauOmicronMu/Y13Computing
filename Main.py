@@ -22,12 +22,12 @@ def main():
         Setup()
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp() + " Initialising window of with geometry: " + WINDOW_GEOMETRY + "\n") 
         app = LoginScreen(root)
         root.mainloop()
     except:
-        with open("Log.txt", "a") as f:
+        with open(LOG_FILENAME, "a") as f:
             f.write(TimeStamp(),)
         exception('Got exception on main handler')
         raise

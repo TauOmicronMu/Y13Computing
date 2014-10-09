@@ -15,13 +15,13 @@ class Splash(Frame):
         
     def initialiseUI(self):
 
-        Image = PhotoImage(file="EmpTrackerImage.gif")
+        Image = PhotoImage(file=LOGO_GIF_FILENAME)
         global label
         label = Label(self.parent, image=Image, relief=RAISED)
         label.image = Image
         label.pack()
 
-        Image2 = PhotoImage(file="CopyrightNotice.gif")
+        Image2 = PhotoImage(file=COPYRIGHT_IMAGE_FILENAME)
         global label2
         label2 = Label(self.parent, image=Image2)
         label2.image = Image2
