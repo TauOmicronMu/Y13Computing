@@ -209,7 +209,7 @@ class RegisterScreen(Frame):
                                 CreatePopup(EMP_ACCOUNT_CREATED_TEXT)
                                 with open(LOG_FILENAME, "a") as f:
                                     f.write(TimeStamp() + NEW_EMPLOYEE_ACCOUNT_TEXT + str(EmpLoginEntry.get()) + CREATED_TEXT)
-                                self.goBack()
+                                self.onBack()
                             else:
                                 CreatePopup(INCORRECT_ADMIN_PASS_TEXT)
                                 with open(LOG_FILENAME, "a") as f:
