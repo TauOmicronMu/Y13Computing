@@ -2,7 +2,7 @@ from Tkinter import *
 from Constants import *
 
 with open(LANGUAGE_FILENAME, READ_MODE) as f:
-    Language = f.readlines()
+    Language = f.readline()
     if Language == "GERMAN":
         from PopupsStringsGerman import *
         from DropdownMenuStringsGerman import *

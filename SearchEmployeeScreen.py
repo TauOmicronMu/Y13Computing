@@ -8,7 +8,7 @@ from BaseModule import *
 from LoggingStringsEnglish import *
 
 with open(LANGUAGE_FILENAME, READ_MODE) as f:
-    Language = f.readlines()
+    Language = f.readline()
     if Language == "GERMAN":
         from SearchEmployeeScreenStringsGerman import *
         from PopupsStringsGerman import *
@@ -132,8 +132,7 @@ class SearchEmployeeScreen(Frame):
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + HELP_SELECTED_TEXT)
         CreatePopup(HELP_OPTION_TEXT)
-
-
+    
             
 from LoginForm import *
 from MainScreen import *
