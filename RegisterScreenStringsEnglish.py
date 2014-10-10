@@ -1,6 +1,7 @@
 #RegisterScreen
 
-ADMIN_PASS_LABEL_TEXT = u'Administrator Password'
+DMIN_PASS_LABEL_TEXT = u'Administrator Password'
+BACK_BUTTON_TEXT = u"Back"
 EMP_ACCOUNT_CREATED_TEXT = u"Employee Account Created."
 EMP_LOGIN_HELP_TEXT = u"This is the Employee's unique login."
 EMP_LOGIN_LABEL_TEXT = u'Employee Login'
