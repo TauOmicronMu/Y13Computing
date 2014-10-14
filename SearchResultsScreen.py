@@ -148,39 +148,32 @@ class SearchResultsScreen(Frame):
 
         listboxSix.insert(END, "------------------------")
 
-        listboxOne.bind("<MouseWheel>", self.OnMouseWheel)
-        listboxTwo.bind("<MouseWheel>", self.OnMouseWheel)
-        listboxThree.bind("<MouseWheel>", self.OnMouseWheel)
-        listboxFour.bind("<MouseWheel>", self.OnMouseWheel)
-        listboxFive.bind("<MouseWheel>", self.OnMouseWheel)
-        listboxSix.bind("<MouseWheel>", self.OnMouseWheel)
-
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
-        scrollbar.config(command= self.onScroll)
+        scrollbar.config(command= self.yview)
 
-    def onScroll(self):
-        listboxOne.yview()
-        listboxTwo.yview()
-        listboxThree.yview()
-        listboxFour.yview()
-        listboxFive.yview()
-        listboxSix.yview()
-
-    def OnMouseWheel(self, event):
-        listboxOne.yview("scroll", event.delta,"units")
-        listboxTwo.yview("scroll",event.delta,"units")
-        listboxThree.yview("scroll", event.delta,"units")
-        listboxFour.yview("scroll",event.delta,"units")
-        listboxFive.yview("scroll", event.delta,"units")
-        listboxSix.yview("scroll",event.delta,"units")
+    def yview(self, *args):
+        apply(listboxOne.yview, args)
+        apply(listboxTwo.yview, args)
+        apply(listboxThree.yview, args)
+        apply(listboxFour.yview, args)
+        apply(listboxFive.yview, args)
+        apply(listboxSix.yview, args)
 
     def onBack(self):
         pass
 
     def Help(self):
         pass
+
+'''
+This section is used for testing the GUI.
+It passes generic results in to ensure
+that everything is formated as it should
+be.
+=========================================
+'''
 
 alphabet = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 names = []
