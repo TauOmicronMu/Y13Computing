@@ -222,7 +222,8 @@ class CreateEmployeeScreen(Frame):
             with open(LOG_FILENAME, APPEND_MODE) as f:
                 f.write(TimeStamp() + LOG_EMP_SALARY_MISMATCH_TEXT)
             return
-        CurrentDatabase = pickle.load(open(EMP_DATABASE_FILENAME, READ_BINARY_MODE))
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            CurrentDatabase = eval(f.readline())
         EmpCode = GenerateCode()
         EmpCodes = pickle.load(open( EMPCODE_FILENAME, READ_BINARY_MODE))
         EmpCodes.append(EmpCode)
@@ -237,7 +238,8 @@ class CreateEmployeeScreen(Frame):
                                 CES_CODE_TEXT:EmpCode})
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ADDED_TEXT %CurrentDatabase + " \n")
-        pickle.dump(CurrentDatabase, open(EMP_DATABASE_FILENAME, APPEND_BINARY_MODE))
+        with open(EMP_DATABASE_FILENAME, WRITE_MODE) as f:
+            f.write("%s" %CurrentDatabase)
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SAVED_NEW_DATABASE_TEXT)
         self.onBack()

@@ -11,7 +11,8 @@ import pickle
 
 def GenerateCode():
     CodeCreated = False
-    EmpDatabase = pickle.load(open(EMP_DATABASE_FILENAME, READ_BINARY_MODE) )
+    with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+        EmpDatabase = eval(f.readline())
     while not CodeCreated:
         EmpCode = "EMP" + str(random.randint(1,9)) + \
                   str(random.randint(1,9)) + str(random.randint(1,9)) + \

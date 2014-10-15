@@ -118,15 +118,16 @@ class SearchEmployeeScreen(Frame):
         searchFor = ValueEntry.get()
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SEARCH_SELECTED_TEXT)
-        EmpDatabase = pickle.load(open(EMP_DATABASE_FILENAME, READ_MODE))
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            EmpDatabase = eval(f.readline())
         for i in EmpDatabase:
-            if EmpDatabase[str(searchIn)] == str(searchFor):
-                names.append(i["Name"])
-                departments.append(i["Department"])
-                DOBs.append(i["DOB"])
-                genders.append(i["Gender"])
-                salaries.append(i["Salary"])
-                codes.append(i["Code"])
+            if i[searchIn] == searchFor:
+                names.append(i[NAME_TEXT])
+                departments.append(i[DEPARTMENT_TEXT])
+                DOBs.append(i[DOB_TEXT])
+                genders.append(i[GENDER_TEXT])
+                salaries.append(i[SALARY_TEXT])
+                codes.append(i[CODE_TEXT])
         self.parent.destroy()
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)

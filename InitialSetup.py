@@ -78,7 +78,8 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
         pickle.dump( LoginData, open(LOGIN_DATA_FILENAME, WRITE_BINARY_MODE ) )
 
         EmpDatabase = []
-        pickle.dump( EmpDatabase, open(EMP_DATABASE_FILENAME, WRITE_BINARY_MODE) )
+        with open(EMP_DATABASE_FILENAME, WRITE_MODE) as f:
+            f.write("%s" %EmpDatabase)
 
         EmpCodes = []
         pickle.dump( EmpCodes, open(EMPCODE_FILENAME, WRITE_BINARY_MODE) )

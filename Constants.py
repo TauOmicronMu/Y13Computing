@@ -1,6 +1,6 @@
 #CONSTANTS
 
-VERSION_NUMBER = "1.3.1"
+VERSION_NUMBER = "1.4.0"
 
 WINDOW_GEOMETRY = "900x600+200+50"
 
@@ -26,7 +26,7 @@ COPYRIGHT_IMAGE_FILENAME = "CopyrightNotice.gif"
 CURRENT_EMP_FILENAME = "CurrentEmployee.txt"
 EMPCODE_FILENAME = "EmpCodes.p"
 EMP_COUNT_FILENAME = 'EmpCount.txt'
-EMP_DATABASE_FILENAME = "EmpDatabase.p"
+EMP_DATABASE_FILENAME = "EmpDatabase.txt"
 INITIAL_SETUP_FILENAME = "InitialSetup.txt"
 LANGUAGE_FILENAME = "Language.txt"
 LOG_FILENAME = "Log.txt"
