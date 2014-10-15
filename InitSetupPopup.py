@@ -1,7 +1,6 @@
 from Tkinter import *
 from Constants import *
 from TimeStamp import *
-from easygui import *
 from CreatePopup import *
 
 from LoggingStringsEnglish import *

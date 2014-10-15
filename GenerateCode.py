@@ -4,6 +4,7 @@
 #================= Author: T.A.Goodman 2014 =================
 #=============== Copyright: T.A.Goodman 2014 ================
 #============================================================
+from Constants import *
 
 import random
 import pickle

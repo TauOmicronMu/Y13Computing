@@ -14,8 +14,6 @@ import pickle
 
 def Setup(): #Procedure defining the Initial Setup for EmpTracker.
 
-    from easygui import *
-
     global empCount
     global totalSalary
     global totalExpenditure
@@ -79,7 +77,7 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
         LoginData = {}
         pickle.dump( LoginData, open(LOGIN_DATA_FILENAME, WRITE_BINARY_MODE ) )
 
-        EmpDatabase = {}
+        EmpDatabase = []
         pickle.dump( EmpDatabase, open(EMP_DATABASE_FILENAME, WRITE_BINARY_MODE) )
 
         EmpCodes = []

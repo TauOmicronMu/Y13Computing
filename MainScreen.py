@@ -154,5 +154,6 @@ class Splash(Frame):
 from LoginForm import *
 from CreateEmployeeScreen import *
 from SearchEmployeeScreen import *
+from Constants import *
 
 

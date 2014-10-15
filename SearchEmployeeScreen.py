@@ -4,6 +4,7 @@ from Tkinter import *
 from MainScreen import *
 from TimeStamp import *
 from BaseModule import *
+from SearchResultsScreen import *
 
 from LoggingStringsEnglish import *
 
@@ -33,6 +34,9 @@ class SearchEmployeeScreen(Frame):
         self.initialiseUI()
 
     def initialiseUI(self):
+
+        global SearchTypeVar
+        global ValueEntry
 
         self.parent.title(WINDOW_TITLE)
 
@@ -103,9 +107,32 @@ class SearchEmployeeScreen(Frame):
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onSearch(self):
+        
+        names = []
+        departments = []
+        DOBs = []
+        genders = []
+        salaries = []
+        codes = []
+        searchIn = SearchTypeVar.get()
+        searchFor = ValueEntry.get()
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SEARCH_SELECTED_TEXT)
-        pass
+        EmpDatabase = pickle.load(open(EMP_DATABASE_FILENAME, READ_MODE))
+        for i in EmpDatabase:
+            if EmpDatabase[str(searchIn)] == str(searchFor):
+                names.append(i["Name"])
+                departments.append(i["Department"])
+                DOBs.append(i["DOB"])
+                genders.append(i["Gender"])
+                salaries.append(i["Salary"])
+                codes.append(i["Code"])
+        self.parent.destroy()
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        app = SearchResultsScreen(root, names, departments, DOBs,
+                                  genders, salaries, codes, searchIn, searchFor)
+        root.mainloop()
 
     def onBack(self):
 

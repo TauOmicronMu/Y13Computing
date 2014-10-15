@@ -4,6 +4,7 @@ from Tkinter import *
 from Constants import *
 from TimeStamp import *
 from CreatePopup import *
+from MainScreen import *
 
 from LoggingStringsEnglish import *
 
@@ -24,7 +25,8 @@ import re
 
 class SearchResultsScreen(Frame):
 
-    def __init__(self, parent, names, departments, DOBs, genders, salaries, codes):
+    def __init__(self, parent, names, departments, DOBs, genders,
+                 salaries, codes, searchIn, searchFor):
         Frame.__init__(self, parent)
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INSTANCE_OF_SEARCHRESULTSSCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
@@ -36,6 +38,8 @@ class SearchResultsScreen(Frame):
         self.genders = genders
         self.salaries = salaries
         self.codes = codes
+        self.searchIn = searchIn
+        self.searchFor = searchFor
 
         self.initialiseUI()
 
@@ -68,7 +72,8 @@ class SearchResultsScreen(Frame):
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
-        TitleLabel = Label(text="Search Results", font=("Purisa", 16))
+        TitleLabel = Label(text="Search for : '" + str(self.searchFor)
+                           + "' in '" + str(self.searchIn) + "'", font=("Purisa", 16))
 
         TitleLabel.pack()
 
@@ -162,7 +167,15 @@ class SearchResultsScreen(Frame):
         apply(listboxSix.yview, args)
 
     def onBack(self):
-        pass
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + BACK_SELECTED_TEXT)
+        self.parent.destroy()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
+        root =Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        app = Splash(root)
+        root.mainloop()
 
     def Help(self):
         pass
@@ -173,7 +186,6 @@ It passes generic results in to ensure
 that everything is formated as it should
 be.
 =========================================
-'''
 
 alphabet = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 names = []
@@ -197,3 +209,4 @@ root.geometry(WINDOW_GEOMETRY)
 app = SearchResultsScreen(root, names, departments, DOBs, genders, salaries, codes)
                     
 root.mainloop()
+'''

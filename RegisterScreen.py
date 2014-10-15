@@ -1,6 +1,5 @@
 from Tkinter import *
 from TimeStamp import *
-from easygui import *
 from CreatePopup import *
 from BaseModule import *
 from Constants import *
