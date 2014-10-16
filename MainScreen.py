@@ -82,10 +82,19 @@ class Splash(Frame):
         expSubMenu.add_command(label=EXP_SUBMENU_MONTHLY_TEXT)
         expSubMenu.add_command(label=EXP_SUBMENU_WEEKLY_TEXT)
         expSubMenu.add_command(label=EXP_SUBMENU_DAILY_TEXT)
+
+        totalsMenu = Menu(menubar)
+
+        totalsMenu.add_command(label=EMP_COUNT_TEXT,command=self.EmpCount)
+        totalsMenu.add_command(label=TOTAL_SALARY_TEXT,command=self.TotalSalary)
+        totalsMenu.add_command(label=TOTAL_EXP_TEXT,command=self.TotalExpenditure)
+
+        totalsMenu.add_separator()
         
         menubar.add_cascade(label=MENUBAR_FILE_TEXT, underline=0, menu=fileMenu)
         menubar.add_cascade(label=MENUBAR_EMPLOYEES_TEXT, underline=0, menu=empMenu)
         menubar.add_cascade(label=MENUBAR_EXPENDITURE_TEXT, underline=0, menu=expMenu)
+        menubar.add_cascade(label=TOTALS_MENU_TEXT, underline=0, menu=totalsMenu)
         expMenu.add_cascade(label=EXP_MENU_TOTAL_TEXT, underline=0, menu=expSubMenu)
 
         expMenu.add_command(label=EXP_MENU_ADD_EXP_TEXT)
@@ -150,6 +159,17 @@ class Splash(Frame):
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n")
         app = SearchEmployeeScreen(root)
         root.mainloop()
+
+    def EmpCount(self):
+        with open(EMP_COUNT_FILENAME, READ_MODE) as f:
+            EmpCount = f.readline()
+        CreatePopup(EMP_COUNT_POPUP_TEXT %EmpCount)
+
+    def TotalSalary(self):
+        pass
+
+    def TotalExpenditure(self):
+        pass
         
 from LoginForm import *
 from CreateEmployeeScreen import *

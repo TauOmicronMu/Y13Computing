@@ -1,5 +1,7 @@
 #MainScreen
 
+EMP_COUNT_POPUP_TEXT = u"Employee Count : %s"
+EMP_COUNT_TEXT = u"Display Total Employee Count"
 EMP_MENU_AMEND_TEXT = u"Amend a Field in a Record"
 EMP_MENU_CREATE_TEXT = u"Create new Employee Record"
 EMP_MENU_DELETE_TEXT = u"Delete an Employee Record"
@@ -20,3 +22,6 @@ MAIN_SCREEN_HELP_TEXT = u"This is the main screen. From here, you can perform nu
 MENUBAR_EMPLOYEES_TEXT = u"Employees"
 MENUBAR_EXPENDITURE_TEXT = u"Expenditure"
 MENUBAR_FILE_TEXT = u"File"
+TOTAL_EXP_TEXT = u"Display Total Expenditure"
+TOTAL_SALARY_TEXT = u"Display Total Salary"
+TOTALS_MENU_TEXT = u"Totals"

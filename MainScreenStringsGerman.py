@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 #MainScreen
 
+EMP_COUNT_POPUP_TEXT = u"Employee Count : %s"
+EMP_COUNT_TEXT = u"Display Total Employee Count"
 EMP_MENU_AMEND_TEXT = u"Änderung eines Feld in einem Datensatz"
 EMP_MENU_CREATE_TEXT = u"Neue Mitarbeiterdatensatz"
 EMP_MENU_DELETE_TEXT = u"Löschen eines Mitarbeiterdatensatz"
@@ -21,3 +23,6 @@ MAIN_SCREEN_HELP_TEXT = u"Dies ist der Hauptbildschirm . Von hier aus können za
 MENUBAR_EMPLOYEES_TEXT = u"Mitarbeiter"
 MENUBAR_EXPENDITURE_TEXT = u"Ausgaben"
 MENUBAR_FILE_TEXT = u"Datei"
+TOTAL_EXP_TEXT = u"Display Total Expenditure"
+TOTAL_SALARY_TEXT = u"Display Total Salary"
+TOTALS_MENU_TEXT = u"Totals"
