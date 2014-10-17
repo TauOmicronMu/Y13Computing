@@ -6,6 +6,8 @@ from CreatePopup import *
 
 from LoggingStringsEnglish import *
 
+import os
+
 with open(LANGUAGE_FILENAME, READ_MODE) as f:
     Language = f.readline()
     if Language == "GERMAN":
@@ -27,6 +29,9 @@ class Splash(Frame):
         self.initialiseUI()
         
     def initialiseUI(self):
+
+        global pressedAlready
+        pressedAlready = False
 
         Image = PhotoImage(file=LOGO_GIF_FILENAME)
         global label
@@ -53,7 +58,7 @@ class Splash(Frame):
         fileMenu.add_separator()
 
         fileMenu.add_command(label=DROPDOWN_HELP_TEXT, underline=0, command=self.Help)
-
+    
         fileMenu.add_separator()
         
         empMenu = Menu(menubar)
@@ -85,6 +90,8 @@ class Splash(Frame):
         expSubMenu.add_command(label=EXP_SUBMENU_WEEKLY_TEXT, command=self.WeeklyExpenditure)
         expSubMenu.add_command(label=EXP_SUBMENU_DAILY_TEXT, command=self.DailyExpenditure)
 
+        expSubMenu.add_separator()
+
         totalsMenu = Menu(menubar)
 
         totalsMenu.add_command(label=EMP_COUNT_TEXT,command=self.EmpCount)
@@ -97,6 +104,7 @@ class Splash(Frame):
         menubar.add_cascade(label=MENUBAR_EMPLOYEES_TEXT, underline=0, menu=empMenu)
         menubar.add_cascade(label=MENUBAR_EXPENDITURE_TEXT, underline=0, menu=expMenu)
         menubar.add_cascade(label=TOTALS_MENU_TEXT, underline=0, menu=totalsMenu)
+        menubar.add_cascade(label=" ", command=self.ChocolateyEgg)
         expMenu.add_cascade(label=EXP_MENU_TOTAL_TEXT, underline=0, menu=expSubMenu)
 
         expMenu.add_command(label=EXP_MENU_ADD_EXP_TEXT)
@@ -186,7 +194,7 @@ class Splash(Frame):
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
             YearlyExpenditure = int(f.readline())
             BiannualExpenditure = YearlyExpenditure/BIANNUAL_MONTHS
-        CreatePopup(BIANNUAL_EXPENDITURE_POPUP_TEXT %BiannnualExpenditure)
+        CreatePopup(BIANNUAL_EXPENDITURE_POPUP_TEXT %BiannualExpenditure)
 
     def QuarterlyExpenditure(self):
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
@@ -209,7 +217,16 @@ class Splash(Frame):
     def DailyExpenditure(self):
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
             YearlyExpenditure = int(f.readline())
-            DailyExpenditure = YearlyExpenditure/DAYS_IN_A_YEAR
+            DailyExpenditure = int(round(YearlyExpenditure/DAYS_IN_A_YEAR,-1))
+        CreatePopup(DAILY_EXPENDITURE_POPUP_TEXT %DailyExpenditure)
+
+    def ChocolateyEgg(self):
+        global pressedAlready
+        import PortalDAGger
+        if pressedAlready != True:
+            pressedAlready = True
+        else:
+            reload(PortalDAGger)
         
 from LoginForm import *
 from CreateEmployeeScreen import *
