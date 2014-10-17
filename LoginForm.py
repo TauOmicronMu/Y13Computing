@@ -74,7 +74,7 @@ class LoginScreen(Frame):
         LoginButton = Button(text=LOGIN_BUTTON_TEXT)
         LoginButton['command'] = lambda: self.tryLogin()
 
-        RegisterButton = Button(text=REGISTER_BUTTON_TEXT)
+        RegisterButton = Button(text=LF_REGISTER_BUTTON_TEXT)
         RegisterButton['command'] = lambda: self.registerAccount()
 
         ForgottenPassButton = Button(text=FORGOTTEN_PASS_BUTTON_TEXT)

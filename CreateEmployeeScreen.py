@@ -242,6 +242,21 @@ class CreateEmployeeScreen(Frame):
             f.write("%s" %CurrentDatabase)
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SAVED_NEW_DATABASE_TEXT)
+        with open(EMP_COUNT_FILENAME, READ_MODE) as f:
+            EmpCount = int(f.readline())
+        EmpCount += 1
+        with open(EMP_COUNT_FILENAME, WRITE_MODE) as f:
+            f.write("%s" % EmpCount)
+        with open(TOTAL_SALARY_FILENAME, READ_MODE) as f:
+            TotalSalary = int(f.readline())
+        TotalSalary += int(EmployeeSalaryEntry.get())
+        with open(TOTAL_SALARY_FILENAME, WRITE_MODE) as f:
+            f.write("%s" %TotalSalary)
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            TotalExpenditure = int(f.readline())
+        TotalExpenditure += int(EmployeeSalaryEntry.get())
+        with open(TOTAL_EXPENDITURE_FILENAME, WRITE_MODE) as f:
+            f.write("%s" %TotalExpenditure)
         self.onBack()
 
     def Help(self):

@@ -166,10 +166,14 @@ class Splash(Frame):
         CreatePopup(EMP_COUNT_POPUP_TEXT %EmpCount)
 
     def TotalSalary(self):
-        pass
+        with open(TOTAL_SALARY_FILENAME, READ_MODE) as f:
+            TotalSalary = f.readline()
+        CreatePopup(TOTAL_SALARY_POPUP_TEXT %TotalSalary)
 
     def TotalExpenditure(self):
-        pass
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            TotalExpenditure = f.readline()
+        CreatePopup(TOTAL_EXPENDITURE_POPUP_TEXT %TotalExpenditure)
         
 from LoginForm import *
 from CreateEmployeeScreen import *
