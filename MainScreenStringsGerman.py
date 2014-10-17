@@ -28,3 +28,11 @@ TOTAL_EXPENDITURE_POPUP_TEXT = u"Total Expenditure : %s"
 TOTAL_SALARY_TEXT = u"Display Total Salary"
 TOTAL_SALARY_POPUP_TEXT = u"Total Salary : %s"
 TOTALS_MENU_TEXT = u"Totals"
+
+#Expenditure Functions
+BIANNUAL_EXPENDITURE_POPUP_TEXT = u"Biannual Expenditure : %s"
+DAILY_EXPENDITURE_POPUP_TEXT = u"Daily Expenditure : %s"
+MONTHLY_EXPENDITURE_POPUP_TEXT = u"Monthly Expenditure : %s"
+QUARTERLY_EXPENDITURE_POPUP_TEXT = u"Quarterly Expenditure : %s"
+WEEKLY_EXPENDITURE_POPUP_TEXT = u"Weekly Expenditure : %s"
+YEARLY_EXPENDITURE_POPUP_TEXT = u"Yearly Expenditure : %s"

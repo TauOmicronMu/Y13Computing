@@ -78,10 +78,12 @@ class Splash(Frame):
 
         expSubMenu = Menu(expMenu)
 
-        expSubMenu.add_command(label=EXP_SUBMENU_YEARLY_TEXT)
-        expSubMenu.add_command(label=EXP_SUBMENU_MONTHLY_TEXT)
-        expSubMenu.add_command(label=EXP_SUBMENU_WEEKLY_TEXT)
-        expSubMenu.add_command(label=EXP_SUBMENU_DAILY_TEXT)
+        expSubMenu.add_command(label=EXP_SUBMENU_YEARLY_TEXT, command=self.YearlyExpenditure)
+        expSubMenu.add_command(label=EXP_SUBMENU_BIANNUAL_TEXT, command=self.BiannualExpenditure)
+        expSubMenu.add_command(label=EXP_SUBMENU_QUARTERLY_TEXT, command=self.QuarterlyExpenditure)
+        expSubMenu.add_command(label=EXP_SUBMENU_MONTHLY_TEXT, command=self.MonthlyExpenditure)
+        expSubMenu.add_command(label=EXP_SUBMENU_WEEKLY_TEXT, command=self.WeeklyExpenditure)
+        expSubMenu.add_command(label=EXP_SUBMENU_DAILY_TEXT, command=self.DailyExpenditure)
 
         totalsMenu = Menu(menubar)
 
@@ -174,6 +176,40 @@ class Splash(Frame):
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
             TotalExpenditure = f.readline()
         CreatePopup(TOTAL_EXPENDITURE_POPUP_TEXT %TotalExpenditure)
+
+    def YearlyExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = f.readline()
+        CreatePopup(YEARLY_EXPENDITURE_POPUP_TEXT %YearlyExpenditure)
+
+    def BiannualExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = int(f.readline())
+            BiannualExpenditure = YearlyExpenditure/BIANNUAL_MONTHS
+        CreatePopup(BIANNUAL_EXPENDITURE_POPUP_TEXT %BiannnualExpenditure)
+
+    def QuarterlyExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = int(f.readline())
+            QuarterlyExpenditure = YearlyExpenditure/QUARTERLY_MONTHS
+        CreatePopup(QUARTERLY_EXPENDITURE_POPUP_TEXT %QuarterlyExpenditure)
+
+    def MonthlyExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = int(f.readline())
+            MonthlyExpenditure = YearlyExpenditure/MONTHS_IN_A_YEAR
+        CreatePopup(MONTHLY_EXPENDITURE_POPUP_TEXT %MonthlyExpenditure)
+
+    def WeeklyExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = int(f.readline())
+            WeeklyExpenditure = YearlyExpenditure/WEEKS_IN_A_YEAR
+        CreatePopup(WEEKLY_EXPENDITURE_POPUP_TEXT %WeeklyExpenditure)
+
+    def DailyExpenditure(self):
+        with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+            YearlyExpenditure = int(f.readline())
+            DailyExpenditure = YearlyExpenditure/DAYS_IN_A_YEAR
         
 from LoginForm import *
 from CreateEmployeeScreen import *
