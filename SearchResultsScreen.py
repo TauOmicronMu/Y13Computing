@@ -194,8 +194,13 @@ DOBs = []
 genders = []
 salaries = []
 codes = []
+SearchFor = "Meow"
+SearchIn = "Cake"
 for i in range(50):
-    names.append(alphabet[random.randint(0,25)]*random.randint(0,5))
+    name = ""
+    for i in range(random.randint(5,17)):
+        name += alphabet[random.randint(0,25)]
+    names.append(name)
     departments.append(random.randint(0,100000))
     DOBs.append(str(random.randint(1,31)) + "/" + str(random.randint(1,12)) + "/" + str(random.randint(1900,2014)))
     if random.randint(0,1) == 0:
@@ -206,7 +211,7 @@ for i in range(50):
     codes.append("EMP" + str(random.randint(1000000,9999999)) + "E")
 root = Tk()
 root.geometry(WINDOW_GEOMETRY)
-app = SearchResultsScreen(root, names, departments, DOBs, genders, salaries, codes)
+app = SearchResultsScreen(root, names, departments, DOBs, genders, salaries, codes, SearchIn, SearchFor)
                     
 root.mainloop()
 '''
