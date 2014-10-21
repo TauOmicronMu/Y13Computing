@@ -114,11 +114,22 @@ class LoginScreen(Frame):
         
     def tryLogin(self):
 
-        from TimeStamp import *
-        LoginAttempts = pickle.load( open(LOGIN_SECURITY_FILENAME, READ_BINARY_MODE))
-        #Todo: Finish this! ^
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGIN_BUTTON_PRESSED_TEXT)
+        LoginAttempts = pickle.load( open(LOGIN_SECURITY_FILENAME, READ_BINARY_MODE))
+        if UsernameEntry.get() in RESERVED_NAMES:
+            with open(ADMIN_PASS_FILENAME, READ_MODE) as f:
+                AdminPass = f.readline()
+            if hash(PasswordEntry.get()) == int(AdminPass):
+                LoginAttempts = 0
+                pickle.dump(LoginAttempts, open(LOGIN_SECURITY_FILENAME, WRITE_BINARY_MODE))
+                CreatePopup(LOGIN_ATTEMPTS_RESET_TEXT)
+                UsernameEntry.delete(0, END)
+                PasswordEntry.delete(0, END)
+                return
+        if LoginAttempts >= 10:
+            CreatePopup(SYSTEM_LOCKED_TEXT)
+            return
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + ATTEMPTED_LOGIN_USERNAME_TEXT + str(UsernameEntry.get()) + "\n")
         with open(LOG_FILENAME, APPEND_MODE) as f:
@@ -133,7 +144,7 @@ class LoginScreen(Frame):
                 with open(CURRENT_EMP_FILENAME, WRITE_MODE) as f:
                     f.write(UsernameEntry.get())
                 self.parent.destroy()
-                root =Tk()
+                root = Tk()
                 root.geometry(WINDOW_GEOMETRY)
                 with open(LOG_FILENAME, APPEND_MODE) as f:
                     f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n")
@@ -141,8 +152,12 @@ class LoginScreen(Frame):
                 root.mainloop()
             else:
                 CreatePopup(INVALID_LOGIN_TEXT)
+                LoginAttempts += 1
+                pickle.dump(LoginAttempts, open(LOGIN_SECURITY_FILENAME, WRITE_BINARY_MODE))
         else:
             CreatePopup(INVALID_LOGIN_TEXT)
+            LoginAttempts += 1
+            pickle.dump(LoginAttempts, open(LOGIN_SECURITY_FILENAME, WRITE_BINARY_MODE))
             
     def registerAccount(self):
         with open(LOG_FILENAME, APPEND_MODE) as f:

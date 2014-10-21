@@ -72,8 +72,8 @@ class SearchResultsScreen(Frame):
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
-        TitleLabel = Label(text="Search for : '" + str(self.searchFor)
-                           + "' in '" + str(self.searchIn) + "'", font=("Purisa", 16))
+        TitleLabel = Label(text=SEARCH_FOR_TEXT + str(self.searchFor)
+                           + SEARCH_FOR_IN_TEXT + str(self.searchIn) + SEARCH_FOR_END_TEXT, font=("Purisa", 16))
 
         TitleLabel.pack()
 
@@ -86,72 +86,72 @@ class SearchResultsScreen(Frame):
 
         listboxOne = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxOne.insert(END, "Name: ")
-        listboxOne.insert(END, "------------------------")
+        listboxOne.insert(END, NAME_TEXT)
+        listboxOne.insert(END, SPACE_TEXT)
      
         for i in range(len(self.names)):
             listboxOne.insert(END, self.names[i])
             listboxOne.pack(side=LEFT, fill=BOTH)
 
-        listboxOne.insert(END, "------------------------")
+        listboxOne.insert(END, SPACE_TEXT)
 
         listboxTwo = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxTwo.insert(END, "Department: ")
-        listboxTwo.insert(END, "------------------------")
+        listboxTwo.insert(END, DEPARTMENT_TEXT)
+        listboxTwo.insert(END, SPACE_TEXT)
 
         for i in range(len(self.departments)):
             listboxTwo.insert(END, self.departments[i])
             listboxTwo.pack(side=LEFT, fill=BOTH)
 
-        listboxTwo.insert(END, "------------------------")
+        listboxTwo.insert(END, SPACE_TEXT)
 
         listboxThree = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxThree.insert(END, "DOB: ")
-        listboxThree.insert(END, "------------------------")
+        listboxThree.insert(END, DOB_TEXT)
+        listboxThree.insert(END, SPACE_TEXT)
 
         for i in range(len(self.DOBs)):
             listboxThree.insert(END, self.DOBs[i])
             listboxThree.pack(side=LEFT, fill=BOTH)
             
-        listboxThree.insert(END, "------------------------")
+        listboxThree.insert(END, SPACE_TEXT)
 
         listboxFour = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxFour.insert(END, "Gender: ")
-        listboxFour.insert(END, "------------------------")
+        listboxFour.insert(END, GENDER_TEXT)
+        listboxFour.insert(END, SPACE_TEXT)
 
         for i in range(len(self.genders)):
-            if self.genders[i] == "M":
-                listboxFour.insert(END, "Male")
+            if self.genders[i] == MALE_SINGLE_TEXT:
+                listboxFour.insert(END, MALE_TEXT)
             else:
-                listboxFour.insert(END, "Female")
+                listboxFour.insert(END, FEMALE_TEXT)
             listboxFour.pack(side=LEFT, fill=BOTH)
             
-        listboxFour.insert(END, "------------------------")
+        listboxFour.insert(END, SPACE_TEXT)
 
         listboxFive = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxFive.insert(END, "Salary: ")
-        listboxFive.insert(END, "------------------------")
+        listboxFive.insert(END, SALARY_TEXT)
+        listboxFive.insert(END, SPACE_TEXT)
 
         for i in range(len(self.salaries)):
             listboxFive.insert(END, self.salaries[i])
             listboxFive.pack(side=LEFT, fill=BOTH)
 
-        listboxFive.insert(END, "------------------------")
+        listboxFive.insert(END, SPACE_TEXT)
 
         listboxSix = Listbox(self.parent, yscrollcommand=scrollbar.set)
 
-        listboxSix.insert(END, "Employee Code: ")
-        listboxSix.insert(END, "------------------------")
+        listboxSix.insert(END, EMP_CODE_TEXT)
+        listboxSix.insert(END, SPACE_TEXT)
 
         for i in range(len(self.codes)):
             listboxSix.insert(END, self.codes[i])
             listboxSix.pack(side=LEFT, fill=BOTH)
 
-        listboxSix.insert(END, "------------------------")
+        listboxSix.insert(END, SPACE_TEXT)
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
