@@ -44,7 +44,7 @@ def DOBCheck(n):
             #if not(n > CurrentDate):
             if int(n[3:5]) <= 12:
                 if int(n[3:5]) == 02: #If the month is February
-                    if n[6:] % 4 == 0: #If it is a Leap Year
+                    if int(n[6:]) % 4 == 0: #If it is a Leap Year
                         if int(n[0:2]) <= 29: #29 Days in Feb in a Leap Year
                             return True
                         else:
