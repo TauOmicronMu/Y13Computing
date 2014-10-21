@@ -66,18 +66,10 @@ class Splash(Frame):
         
         empMenu.add_command(label=EMP_MENU_CREATE_TEXT, command=self.CreateEmployee)
         empMenu.add_command(label=EMP_MENU_SEARCH_TEXT, command=self.SearchEmployees)
-        empMenu.add_cascade(label=EMP_MENU_AMEND_TEXT, underline=0, menu=empSubMenu)
+        empMenu.add_command(label=EMP_MENU_AMEND_TEXT, underline=0)
         empMenu.add_command(label=EMP_MENU_DELETE_TEXT)
         
         empMenu.add_separator()
-
-        empSubMenu.add_command(label=EMP_SUBMENU_NAME_TEXT)
-        empSubMenu.add_command(label=EMP_SUBMENU_DEPARTMENT_TEXT)
-        empSubMenu.add_command(label=EMP_SUBMENU_DOB_TEXT)
-        empSubMenu.add_command(label=EMP_SUBMENU_GENDER_TEXT)
-        empSubMenu.add_command(label=EMP_SUBMENU_SALARY_TEXT)
-
-        empSubMenu.add_separator()
 
         expMenu = Menu(menubar)
 

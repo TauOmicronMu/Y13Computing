@@ -107,7 +107,10 @@ class SearchEmployeeScreen(Frame):
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onSearch(self):
-        
+
+        if isNone(ValueEntry.get()) == True:
+            CreatePopup(SEARCH_EMP_SCREEN_NONETYPE_ERROR_TEXT)
+            return
         names = []
         departments = []
         DOBs = []
@@ -115,19 +118,34 @@ class SearchEmployeeScreen(Frame):
         salaries = []
         codes = []
         searchIn = SearchTypeVar.get()
+        if searchIn == "Employee Code":
+            searchIn = CODE_TEXT
         searchFor = ValueEntry.get()
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + SEARCH_SELECTED_TEXT)
         with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
             EmpDatabase = eval(f.readline())
-        for i in EmpDatabase:
-            if i[searchIn] == searchFor:
-                names.append(i[NAME_TEXT])
-                departments.append(i[DEPARTMENT_TEXT])
-                DOBs.append(i[DOB_TEXT])
-                genders.append(i[GENDER_TEXT])
-                salaries.append(i[SALARY_TEXT])
-                codes.append(i[CODE_TEXT])
+        #If you are searching for a name, and the search criteria
+        #is one character in length 
+        if searchIn == NAME_TEXT and len(searchFor) == 1:
+            for i in EmpDatabase:
+                if i[searchIn][0] == searchFor:
+                    names.append(i[NAME_TEXT])
+                    departments.append(i[DEPARTMENT_TEXT])
+                    DOBs.append(i[DOB_TEXT])
+                    genders.append(i[GENDER_TEXT])
+                    salaries.append(i[SALARY_TEXT])
+                    codes.append(i[CODE_TEXT])
+        #All other search cases
+        else:
+            for i in EmpDatabase:
+                if searchFor in i[searchIn]:
+                    names.append(i[NAME_TEXT])
+                    departments.append(i[DEPARTMENT_TEXT])
+                    DOBs.append(i[DOB_TEXT])
+                    genders.append(i[GENDER_TEXT])
+                    salaries.append(i[SALARY_TEXT])
+                    codes.append(i[CODE_TEXT])
         self.parent.destroy()
         root = Tk()
         root.geometry(WINDOW_GEOMETRY)
