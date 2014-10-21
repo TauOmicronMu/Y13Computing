@@ -66,7 +66,7 @@ class Splash(Frame):
         
         empMenu.add_command(label=EMP_MENU_CREATE_TEXT, command=self.CreateEmployee)
         empMenu.add_command(label=EMP_MENU_SEARCH_TEXT, command=self.SearchEmployees)
-        empMenu.add_command(label=EMP_MENU_AMEND_TEXT, underline=0)
+        empMenu.add_command(label=EMP_MENU_AMEND_TEXT, underline=0, command = self.AmendRecord)
         empMenu.add_command(label=EMP_MENU_DELETE_TEXT)
         
         empMenu.add_separator()
@@ -219,10 +219,25 @@ class Splash(Frame):
             pressedAlready = True
         else:
             reload(PortalDAGger)
+
+    def AmendRecord(self):
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + AMEND_EMPLOYEE_SELECTED_TEXT)
+        self.parent.destroy()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + MAIN_WINDOW_TERMINATED_TEXT)
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
+        app = AmendEmployeeScreen(root)
+        root.mainloop()
+
         
 from LoginForm import *
 from CreateEmployeeScreen import *
 from SearchEmployeeScreen import *
+from AmendEmployeeScreen import *
 from Constants import *
 
 

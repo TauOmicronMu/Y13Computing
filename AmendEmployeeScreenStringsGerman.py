@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+#AmendEmployeeScreen
+
+AMEND_BUTTON_TEXT = u"Amend"
+AMEND_BY_TEXT = u"Amend Field : "
+AMEND_EMP_SCREEN_NONETYPE_ERROR_TEXT = u"Please enter Amendment Criteria."
+AMEND_FOR_TEXT = u"Amend to : "
+AMEND_EMPLOYEES_TEXT = u"Amend a Record : "
+BACK_BUTTON_TEXT = u"Zurück"
+CODE_TEXT = u"Code"
+DEPARTMENT_TEXT = u"Department"
+DOB_TEXT = u"DOB"
+DROPDOWN_DEPARTMENT_TEXT = u"Abteilung"
+DROPDOWN_DOB_TEXT = u"DOB"
+DROPDOWN_EMPCODE_TEXT = u"Mitarbeiter-Code"
+DROPDOWN_NAME_TEXT = u"Name"
+DROPDOWN_SALARY_TEXT = u"Gehalt"
+EMP_CODE_TEXT = u"Employee Code"
+GENDER_TEXT = u"Gender"
+HELP_OPTION_TEXT = u"Here you can amend employee records by field."
+NAME_TEXT = u"Name"
+REGISTER_BUTTON_TEXT = u"Benutzerkonto erstellen"
+SALARY_TEXT = u"Salary"
