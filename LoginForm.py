@@ -115,6 +115,8 @@ class LoginScreen(Frame):
     def tryLogin(self):
 
         from TimeStamp import *
+        LoginAttempts = pickle.load( open(LOGIN_SECURITY_FILENAME, READ_BINARY_MODE))
+        #Todo: Finish this! ^
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOGIN_BUTTON_PRESSED_TEXT)
         with open(LOG_FILENAME, APPEND_MODE) as f:
