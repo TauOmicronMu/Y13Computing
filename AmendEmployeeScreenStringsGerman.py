@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #AmendEmployeeScreen
 
+ADMIN_PASS_INCORRECT = u"The Administrator password was incorrect."
 AMEND_BUTTON_TEXT = u"Amend"
 AMEND_BY_TEXT = u"Amend Field : "
 AMEND_EMP_SCREEN_NONETYPE_ERROR_TEXT = u"Please enter Amendment Criteria."

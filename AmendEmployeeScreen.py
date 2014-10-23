@@ -82,8 +82,7 @@ class AmendEmployeeScreen(Frame):
                                         DROPDOWN_NAME_TEXT,
                                         DROPDOWN_DEPARTMENT_TEXT,
                                         DROPDOWN_DOB_TEXT,
-                                        DROPDOWN_SALARY_TEXT,
-                                        DROPDOWN_EMPCODE_TEXT)
+                                        DROPDOWN_SALARY_TEXT)
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + AMENDTYPEDROWPDOWN_MENU_INITIALISED_TEXT)
@@ -117,13 +116,13 @@ class AmendEmployeeScreen(Frame):
         try:
             with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
                 Employees = eval(f.readline())
-            for Employee in Employees:
-                if Employee["Code"] == EmployeeCodeEntry.get():
-                    if AmendTypeVar.get() == "DOB":
-                        if DOBCheck(ValueEntry.get()) == True:
-                            Employee[AmendTypeVar.get()] = ValueEntry.get()
-                        else:
-                            CreatePopup(INVALID_DOB_TEXT)
+                for Employee in Employees:
+                    if Employee["Code"] == EmployeeCodeEntry.get():
+                        if AmendTypeVar.get() == "DOB":
+                            if DOBCheck(ValueEntry.get()) == True:
+                                Employee[AmendTypeVar.get()] = ValueEntry.get()
+                            else:
+                                CreatePopup(INVALID_DOB_TEXT)
             with open(EMP_DATABASE_FILENAME, WRITE_MODE) as f:
                 f.write("%s" %Employees)
         except:

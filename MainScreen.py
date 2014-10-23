@@ -66,8 +66,8 @@ class Splash(Frame):
         
         empMenu.add_command(label=EMP_MENU_CREATE_TEXT, command=self.CreateEmployee)
         empMenu.add_command(label=EMP_MENU_SEARCH_TEXT, command=self.SearchEmployees)
-        empMenu.add_command(label=EMP_MENU_AMEND_TEXT, underline=0, command = self.AmendRecord)
-        empMenu.add_command(label=EMP_MENU_DELETE_TEXT)
+        empMenu.add_command(label=EMP_MENU_AMEND_TEXT, underline=0, command=self.AmendRecord)
+        empMenu.add_command(label=EMP_MENU_DELETE_TEXT, underline=0, command=self.DeleteRecord)
         
         empMenu.add_separator()
 
@@ -258,6 +258,19 @@ class Splash(Frame):
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = DeductExpenditureScreen(root)
         root.mainloop()
+
+    def DeleteRecord(self):
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + DELETE_RECORD_SELECTED_TEXT)
+        self.parent.destroy()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + MAIN_WINDOW_TERMINATED_TEXT)
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
+        app = DeleteEmployeeScreen(root)
+        root.mainloop()
         
 
         
@@ -268,5 +281,6 @@ from AmendEmployeeScreen import *
 from Constants import *
 from AddExpenditureScreen import *
 from DeductExpenditureScreen import *
+from DeleteEmployeeScreen import *
 
 

@@ -1,4 +1,4 @@
-#DeductExpenditureScreen
+#DeleteEmployeeScreen
 
 from Tkinter import *
 from Constants import *
@@ -10,11 +10,11 @@ from LoggingStringsEnglish import *
 with open(LANGUAGE_FILENAME, READ_MODE) as f:
     Language = f.readline()
     if Language == "GERMAN":
-        from AddExpenditureScreenStringsGerman import *
+        from DeductExpenditureScreenStringsGerman import *
         from PopupsStringsGerman import *
         from DropdownMenuStringsGerman import *
     else:
-        from AddExpenditureScreenStringsEnglish import *
+        from DeductExpenditureScreenStringsEnglish import *
         from PopupsStringsEnglish import *
         from DropdownMenuStringsEnglish import *
 
@@ -54,15 +54,20 @@ class DeductExpenditureScreen(Frame):
         global ExpenditureEntry
         global ExpenditureEntryTwo
         global AdminPassEntry
+        global ReasonEntry
 
         AnchorLabel = Label()
 
-        ExpenditureLabel = Label(text=EXPENDITURE_ONE_TEXT, anchor=CENTER)
+        ExpenditureLabel = Label(text=DEDUCT_EXPENDITURE_ONE_TEXT, anchor=CENTER)
         ExpenditureEntry = Entry()
 
-        ExpenditureLabelTwo = Label(text=EXPENDITURE_TWO_TEXT, anchor=CENTER)
+        ExpenditureLabelTwo = Label(text=DEDUCT_EXPENDITURE_TWO_TEXT, anchor=CENTER)
+        print DEDUCT_EXPENDITURE_TWO_TEXT
         ExpenditureEntryTwo = Entry()
-        
+
+        ReasonLabel = Label(text="Reason for Expenditure: ")
+        ReasonEntry = Entry()
+
         AdminPassLabel = Label(text=ENTER_ADMIN_PASS_TEXT, anchor=CENTER)
         AdminPassEntry = Entry(show="*")
 
@@ -70,7 +75,7 @@ class DeductExpenditureScreen(Frame):
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         SubmitButton = Button(text=SUBMIT_BUTTON_TEXT)
-        SubmitButton['command'] = lambda: self.PasswordSubmit()
+        SubmitButton['command'] = lambda: self.Submit()
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
@@ -80,12 +85,42 @@ class DeductExpenditureScreen(Frame):
         ExpenditureEntry.grid(row=1, column=2)
         ExpenditureLabelTwo.grid(row=2, column=1)
         ExpenditureEntryTwo.grid(row=2, column=2)
-        AdminPassLabel.grid(row=3, column=1)
-        AdminPassEntry.grid(row=3, column=2)
-        SubmitButton.grid(row=4, column=3)
+        ReasonLabel.grid(row=3, column=1)
+        ReasonEntry.grid(row=3, column=2)
+        AdminPassLabel.grid(row=4, column=1)
+        AdminPassEntry.grid(row=4, column=2)
+        SubmitButton.grid(row=5, column=3)
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
+
+    def Submit(self):
+
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + "Deduct Expenditure Button Pressed. \n")
+        with open(ADMIN_PASS_FILENAME, READ_MODE) as f:
+            AdminPass = f.readline()
+        if str(AdminPass) == str(hash(AdminPassEntry.get())):
+            if ExpenditureEntry.get() == ExpenditureEntryTwo.get():
+                with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
+                    TotalExpenditure = int(f.readline())
+                    TotalExpenditure -= int(ExpenditureEntry.get())
+                with open(TOTAL_EXPENDITURE_FILENAME, WRITE_MODE) as f:
+                    f.write("%s" %TotalExpenditure)
+                    with open(LOG_FILENAME, APPEND_MODE) as f:
+                        f.write(TimeStamp() + " Expenditure of %s deducted" %TotalExpenditure + " Reason: %s\n" %ReasonEntry.get())
+                    self.parent.destroy()
+                    with open(LOG_FILENAME, APPEND_MODE) as f:
+                        f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
+                    root =Tk()
+                    root.geometry(WINDOW_GEOMETRY)
+                    app = Splash(root)
+                    root.mainloop()
+            else:
+                CreatePopup("The Expenditures didn't match.")
+        else:
+            CreatePopup("The Administrator password was incorrect.")
+            return
 
     def Help(self):
         
@@ -104,4 +139,3 @@ class DeductExpenditureScreen(Frame):
         root.mainloop()
             
 from MainScreen import *
-

@@ -1,4 +1,4 @@
-#AddExpenditureScreen
+#DeleteEmployeeScreen
 
 from Tkinter import *
 from Constants import *
@@ -10,22 +10,22 @@ from LoggingStringsEnglish import *
 with open(LANGUAGE_FILENAME, READ_MODE) as f:
     Language = f.readline()
     if Language == "GERMAN":
-        from AddExpenditureScreenStringsGerman import *
+        from DeleteEmployeeScreenStringsGerman import *
         from PopupsStringsGerman import *
         from DropdownMenuStringsGerman import *
     else:
-        from AddExpenditureScreenStringsEnglish import *
+        from DeleteEmployeeScreenStringsEnglish import *
         from PopupsStringsEnglish import *
         from DropdownMenuStringsEnglish import *
 
 import re
 
-class AddExpenditureScreen(Frame):
+class DeleteEmployeeScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
         with open(LOG_FILENAME, APPEND_MODE) as f:
-            f.write(TimeStamp() + INSTANCE_OF_ADDEXPENDITURESCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
+            f.write(TimeStamp() + INSTANCE_OF_DELETEEMPLOYEESCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -51,21 +51,17 @@ class AddExpenditureScreen(Frame):
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
        
-        global ExpenditureEntry
-        global ExpenditureEntryTwo
+        global EmployeeCodeEntry
+        global EmployeeCodeEntryTwo
         global AdminPassEntry
-        global ReasonEntry
 
         AnchorLabel = Label()
 
-        ExpenditureLabel = Label(text=EXPENDITURE_ONE_TEXT, anchor=CENTER)
-        ExpenditureEntry = Entry()
+        EmployeeCodeLabel = Label(text=CODE_ONE_TEXT, anchor=CENTER)
+        EmployeeCodeEntry = Entry()
 
-        ExpenditureLabelTwo = Label(text=EXPENDITURE_TWO_TEXT, anchor=CENTER)
-        ExpenditureEntryTwo = Entry()
-
-        ReasonLabel = Label(text="Reason for Expenditure: ")
-        ReasonEntry = Entry()
+        EmployeeCodeLabelTwo = Label(text=CODE_TWO_TEXT, anchor=CENTER)
+        EmployeeCodeEntryTwo = Entry()
         
         AdminPassLabel = Label(text=ENTER_ADMIN_PASS_TEXT, anchor=CENTER)
         AdminPassEntry = Entry(show="*")
@@ -74,49 +70,43 @@ class AddExpenditureScreen(Frame):
             f.write(TimeStamp() + LOADED_LABELS_TEXT)
 
         SubmitButton = Button(text=SUBMIT_BUTTON_TEXT)
-        SubmitButton['command'] = lambda: self.AddExpenditure()
+        SubmitButton['command'] = lambda: self.Submit()
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_BUTTONS_TEXT)
 
         AnchorLabel.grid(pady=35,padx=130,row=0,column=0)
-        ExpenditureLabel.grid(row=1, column=1)
-        ExpenditureEntry.grid(row=1, column=2)
-        ExpenditureLabelTwo.grid(row=2, column=1)
-        ExpenditureEntryTwo.grid(row=2, column=2)
-        ReasonLabel.grid(row=3, column=1)
-        ReasonEntry.grid(row=3, column=2)
-        AdminPassLabel.grid(row=4, column=1)
-        AdminPassEntry.grid(row=4, column=2)
-        SubmitButton.grid(row=5, column=3)
+        EmployeeCodeLabel.grid(row=1, column=1)
+        EmployeeCodeEntry.grid(row=1, column=2)
+        EmployeeCodeLabelTwo.grid(row=2, column=1)
+        EmployeeCodeEntryTwo.grid(row=2, column=2)
+        AdminPassLabel.grid(row=3, column=1)
+        AdminPassEntry.grid(row=3, column=2)
+        SubmitButton.grid(row=4, column=3)
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
-    def AddExpenditure(self):
-        
-        with open(LOG_FILENAME, APPEND_MODE) as f:
-            f.write(TimeStamp() + "Add Expenditure Button Pressed. \n")
+    def Submit(self):
+
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            Employees = eval(f.readline())
+            AmendedEmployees = []
         with open(ADMIN_PASS_FILENAME, READ_MODE) as f:
-            AdminPass = f.readline()
+            AdminPass = eval(f.readline())
         if str(AdminPass) == str(hash(AdminPassEntry.get())):
-            with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-                TotalExpenditure = int(f.readline())
-                TotalExpenditure += int(ExpenditureEntryTwo.get())
-            with open(TOTAL_EXPENDITURE_FILENAME, WRITE_MODE) as f:
-                f.write("%s" %TotalExpenditure)
-                with open(LOG_FILENAME, APPEND_MODE) as f:
-                    f.write(TimeStamp() + " Expenditure of %s added" %TotalExpenditure + " Reason: %s\n" %ReasonEntry.get())
-                self.parent.destroy()
-                with open(LOG_FILENAME, APPEND_MODE) as f:
-                    f.write(TimeStamp() + WINDOW_TERMINATED_TEXT)
-                root =Tk()
-                root.geometry(WINDOW_GEOMETRY)
-                app = Splash(root)
-                root.mainloop()
+            if EmployeeCodeEntry.get() == EmployeeCodeEntryTwo.get():
+                for Employee in Employees:
+                    if Employee["Code"] == EmployeeCodeEntry.get():
+                        pass
+                    else:
+                        AmendedEmployees.append(Employee)
+            else:
+                CreatePopup(EMP_CODE_MISMATCH_TEXT)
         else:
-            CreatePopup("The Administrator password was incorrect.")
-            return
+            CreatePopup(ADMIN_PASS_INCORRECT)
+        with open(EMP_DATABASE_FILENAME, WRITE_MODE) as f:
+            f.write("%s" %AmendedEmployees)
 
     def Help(self):
         
@@ -135,4 +125,3 @@ class AddExpenditureScreen(Frame):
         root.mainloop()
             
 from MainScreen import *
-

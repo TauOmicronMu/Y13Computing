@@ -1,4 +1,4 @@
-#!/usr/bin/env python2 --
+ #!/usr/bin/env python2 --
 import math, os, random, time
 
 import pygame
