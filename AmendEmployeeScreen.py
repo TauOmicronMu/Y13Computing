@@ -37,6 +37,7 @@ class AmendEmployeeScreen(Frame):
 
         global AmendTypeVar
         global ValueEntry
+        global EmployeeCodeEntry
 
         self.parent.title(WINDOW_TITLE)
 
@@ -112,10 +113,22 @@ class AmendEmployeeScreen(Frame):
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onAmend(self):
-
-        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
-            Employees = f.readline()
-
+        
+        try:
+            with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+                Employees = eval(f.readline())
+            for Employee in Employees:
+                if Employee["Code"] == EmployeeCodeEntry.get():
+                    if AmendTypeVar.get() == "DOB":
+                        if DOBCheck(ValueEntry.get()) == True:
+                            Employee[AmendTypeVar.get()] = ValueEntry.get()
+                        else:
+                            CreatePopup(INVALID_DOB_TEXT)
+            with open(EMP_DATABASE_FILENAME, WRITE_MODE) as f:
+                f.write("%s" %Employees)
+        except:
+            CreatePopup(NO_EMP_RECORDS_TEXT)
+            
     def onBack(self):
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
