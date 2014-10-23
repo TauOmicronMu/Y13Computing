@@ -1,4 +1,4 @@
-#AddExpenditureScreen
+#DeductExpenditureScreen
 
 from Tkinter import *
 from Constants import *
@@ -20,12 +20,12 @@ with open(LANGUAGE_FILENAME, READ_MODE) as f:
 
 import re
 
-class AddExpenditureScreen(Frame):
+class DeductExpenditureScreen(Frame):
 
     def __init__(self, parent):
         Frame.__init__(self, parent)
         with open(LOG_FILENAME, APPEND_MODE) as f:
-            f.write(TimeStamp() + INSTANCE_OF_ADDEXPENDITURESCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
+            f.write(TimeStamp() + INSTANCE_OF_DEDUCTEXPENDITURESCREEN_TEXT + str(self) + PARENT_TEXT + str(parent) + "\n")
 
         self.parent = parent
 
@@ -89,7 +89,7 @@ class AddExpenditureScreen(Frame):
 
     def Help(self):
         
-        CreatePopup(ADD_EXPENDITURE_HELP_TEXT)
+        CreatePopup(DEDUCT_EXPENDITURE_HELP_TEXT)
 
     def onBack(self):
         

@@ -100,7 +100,7 @@ class Splash(Frame):
         expMenu.add_cascade(label=EXP_MENU_TOTAL_TEXT, underline=0, menu=expSubMenu)
 
         expMenu.add_command(label=EXP_MENU_ADD_EXP_TEXT, command=self.addExpenditure)
-        expMenu.add_command(label=EXP_MENU_DEDUCT_EXP_TEXT)
+        expMenu.add_command(label=EXP_MENU_DEDUCT_EXP_TEXT, command=self.deductExpenditure)
   
         expMenu.add_separator()
 
@@ -245,6 +245,19 @@ class Splash(Frame):
             f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
         app = AddExpenditureScreen(root)
         root.mainloop()
+
+    def deductExpenditure(self):
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + DEDUCT_EXPENDITURE_SELECTED_TEXT)
+        self.parent.destroy()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + MAIN_WINDOW_TERMINATED_TEXT)
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
+        app = DeductExpenditureScreen(root)
+        root.mainloop()
         
 
         
@@ -254,5 +267,6 @@ from SearchEmployeeScreen import *
 from AmendEmployeeScreen import *
 from Constants import *
 from AddExpenditureScreen import *
+from DeductExpenditureScreen import *
 
 

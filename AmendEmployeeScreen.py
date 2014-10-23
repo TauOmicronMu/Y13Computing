@@ -112,7 +112,9 @@ class AmendEmployeeScreen(Frame):
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
     def onAmend(self):
-        pass
+
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            Employees = f.readline()
 
     def onBack(self):
 
