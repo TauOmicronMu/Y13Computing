@@ -99,7 +99,7 @@ class Splash(Frame):
         menubar.add_cascade(label=" ", command=self.ChocolateyEgg)
         expMenu.add_cascade(label=EXP_MENU_TOTAL_TEXT, underline=0, menu=expSubMenu)
 
-        expMenu.add_command(label=EXP_MENU_ADD_EXP_TEXT)
+        expMenu.add_command(label=EXP_MENU_ADD_EXP_TEXT, command=self.addExpenditure)
         expMenu.add_command(label=EXP_MENU_DEDUCT_EXP_TEXT)
   
         expMenu.add_separator()
@@ -233,11 +233,26 @@ class Splash(Frame):
         app = AmendEmployeeScreen(root)
         root.mainloop()
 
+    def addExpenditure(self):
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + ADD_EXPENDITURE_SELECTED_TEXT)
+        self.parent.destroy()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + MAIN_WINDOW_TERMINATED_TEXT)
+        root = Tk()
+        root.geometry(WINDOW_GEOMETRY)
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + INITIALISING_WINDOW_TEXT + WINDOW_GEOMETRY + "\n") 
+        app = AddExpenditureScreen(root)
+        root.mainloop()
+        
+
         
 from LoginForm import *
 from CreateEmployeeScreen import *
 from SearchEmployeeScreen import *
 from AmendEmployeeScreen import *
 from Constants import *
+from AddExpenditureScreen import *
 
 

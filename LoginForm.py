@@ -95,6 +95,8 @@ class LoginScreen(Frame):
         ForgottenPassButton.grid(row=7, column=7)
         #HelpButton.grid(row=7, column=9)
 
+        self.bind('<Return>', self.tryLogin)
+
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 

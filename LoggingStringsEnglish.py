@@ -2,6 +2,7 @@
 
 ACCOUNT_CREATION_INITIATED_TEXT = u" Account Creation initiated \n"
 ACCOUNT_CREATION_PASSWORD_MISMATCH_TEXT = u" Account Creation - Password Mismatch. \n"
+ADD_EXPENDITURE_SELECTED_TEXT = u"Add expenditure selected. \n"
 ADDED_TEXT = u" Added %s "
 ADMIN_PASS_CREATED_TEXT = u" Admin Password created. \n"
 ADMIN_PASS_HASH_LOADED_TEXT = u" Admin Pass Hash loaded. \n"
