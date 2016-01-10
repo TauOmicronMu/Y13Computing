@@ -56,7 +56,7 @@ class SearchEmployeeScreen(Frame):
         fileMenu.add_separator()
 
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
-
+    
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
 
@@ -137,6 +137,17 @@ class SearchEmployeeScreen(Frame):
                         genders.append(i[GENDER_TEXT])
                         salaries.append(i[SALARY_TEXT])
                         codes.append(i[CODE_TEXT])
+            #If you are searching for a Salary, display salaries with a
+            #value greater than or equal to the search criteria.
+            elif searchIn == SALARY_TEXT:
+                for i in EmpDatabase:
+                    if i[searchIn] >= searchFor:
+                        names.append(i[NAME_TEXT])
+                        departments.append(i[DEPARTMENT_TEXT])
+                        DOBs.append(i[DOB_TEXT])
+                        genders.append(i[GENDER_TEXT])
+                        salaries.append(i[SALARY_TEXT])
+                        codes.append(i[CODE_TEXT])
             #All other search cases
             else:
                 for i in EmpDatabase:
@@ -155,7 +166,7 @@ class SearchEmployeeScreen(Frame):
             root.mainloop()
         except:
             CreatePopup(NO_EMP_RECORDS_TEXT)
-
+    
     def onBack(self):
 
         with open(LOG_FILENAME, APPEND_MODE) as f:

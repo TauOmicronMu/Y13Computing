@@ -56,12 +56,12 @@ def DOBCheck(n):
                             return False
                 else: #If it isn't February
                     if n[3:5] in MonthsWith30Days:
-                        if int(n[3:5]) <= 30:
+                        if int(n[0:2]) <= 30:
                             return True
                         else:
                             return False
                     else:
-                        if int(n[3:5]) <= 31:
+                        if int(n[0:2]) <= 31:
                             return True
                         else:
                             return False

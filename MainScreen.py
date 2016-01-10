@@ -103,6 +103,11 @@ class Splash(Frame):
         expMenu.add_command(label=EXP_MENU_DEDUCT_EXP_TEXT, command=self.deductExpenditure)
   
         expMenu.add_separator()
+        
+        global TotalSalary
+        self.LoadSalary()
+        with open(LOG_FILENAME, APPEND_MODE) as f:
+            f.write(TimeStamp() + TOTAL_SALARY_LOADED_TEXT)
 
     def Logout(self):
         with open(LOG_FILENAME, APPEND_MODE) as f:
@@ -135,6 +140,14 @@ class Splash(Frame):
             f.write(TimeStamp() + MAIN_SCREEN_HELP_SELECTED_TEXT)
             CreatePopup(MAIN_SCREEN_HELP_TEXT)
 
+    def LoadSalary(self):
+        global TotalSalary
+        TotalSalary = 0
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            Employees = eval(f.readline())
+        for Employee in Employees:
+            TotalSalary += int(Employee["Salary"])
+
     def CreateEmployee(self):
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
@@ -163,52 +176,59 @@ class Splash(Frame):
         root.mainloop()
 
     def EmpCount(self):
-        with open(EMP_COUNT_FILENAME, READ_MODE) as f:
-            EmpCount = f.readline()
+        with open(EMP_DATABASE_FILENAME, READ_MODE) as f:
+            Employees = eval(f.readline())
+            EmpCount = len(Employees)
         CreatePopup(EMP_COUNT_POPUP_TEXT %EmpCount)
 
     def TotalSalary(self):
-        with open(TOTAL_SALARY_FILENAME, READ_MODE) as f:
-            TotalSalary = f.readline()
+        global TotalSalary
         CreatePopup(TOTAL_SALARY_POPUP_TEXT %TotalSalary)
 
     def TotalExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            TotalExpenditure = f.readline()
+            TotalExpenditure = int(f.readline()) + TotalSalary
         CreatePopup(TOTAL_EXPENDITURE_POPUP_TEXT %TotalExpenditure)
 
     def YearlyExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = f.readline()
+            YearlyExpenditure = int(f.readline()) + TotalSalary
         CreatePopup(YEARLY_EXPENDITURE_POPUP_TEXT %YearlyExpenditure)
 
     def BiannualExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = int(f.readline())
+            YearlyExpenditure = int(f.readline()) + TotalSalary
             BiannualExpenditure = YearlyExpenditure/BIANNUAL_MONTHS
         CreatePopup(BIANNUAL_EXPENDITURE_POPUP_TEXT %BiannualExpenditure)
 
     def QuarterlyExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = int(f.readline())
+            YearlyExpenditure = int(f.readline()) + TotalSalary
             QuarterlyExpenditure = YearlyExpenditure/QUARTERLY_MONTHS
         CreatePopup(QUARTERLY_EXPENDITURE_POPUP_TEXT %QuarterlyExpenditure)
 
     def MonthlyExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = int(f.readline())
+            YearlyExpenditure = int(f.readline()) + TotalSalary
             MonthlyExpenditure = YearlyExpenditure/MONTHS_IN_A_YEAR
         CreatePopup(MONTHLY_EXPENDITURE_POPUP_TEXT %MonthlyExpenditure)
 
     def WeeklyExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = int(f.readline())
+            YearlyExpenditure = int(f.readline()) + TotalSalary
             WeeklyExpenditure = YearlyExpenditure/WEEKS_IN_A_YEAR
         CreatePopup(WEEKLY_EXPENDITURE_POPUP_TEXT %WeeklyExpenditure)
 
     def DailyExpenditure(self):
+        global TotalSalary
         with open(TOTAL_EXPENDITURE_FILENAME, READ_MODE) as f:
-            YearlyExpenditure = int(f.readline())
+            YearlyExpenditure = int(f.readline()) + TotalSalary
             DailyExpenditure = int(round(YearlyExpenditure/DAYS_IN_A_YEAR,-1))
         CreatePopup(DAILY_EXPENDITURE_POPUP_TEXT %DailyExpenditure)
 

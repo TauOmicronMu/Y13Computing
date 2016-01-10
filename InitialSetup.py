@@ -15,7 +15,6 @@ import pickle
 def Setup(): #Procedure defining the Initial Setup for EmpTracker.
 
     global empCount
-    global totalSalary
     global totalExpenditure
     global array
 
@@ -51,11 +50,6 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_EMP_COUNT_TEXT)
-            
-        f = open(TOTAL_SALARY_FILENAME, READ_MODE)
-        with open(TOTAL_SALARY_FILENAME, READ_MODE):
-            totalSalaryList = f.readlines()
-            totalSalary = int(totalSalaryList[0])
             
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + LOADED_TOTAL_SALARY_TEXT)
@@ -95,8 +89,7 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
             f.write("ENGLISH")
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_LANGUAGE_FILE_TEXT)
-            
-        totalSalary = 0
+                    
         empCount = 0
         totalExpenditure = 0
         
@@ -108,10 +101,6 @@ def Setup(): #Procedure defining the Initial Setup for EmpTracker.
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_EMPCOUNT_TEXT)
         f = open(TOTAL_SALARY_FILENAME, WRITE_MODE)
-        
-        with open(TOTAL_SALARY_FILENAME, WRITE_MODE) as f:
-             f.write("%s\n" %totalSalary)
-             f.close()
              
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + CREATED_TOTALSALARY_TEXT)

@@ -5,6 +5,7 @@ from Constants import *
 from TimeStamp import *
 from CreatePopup import *
 from MainScreen import *
+from CalculateTax import *
 
 from LoggingStringsEnglish import *
 
@@ -24,7 +25,6 @@ with open(LANGUAGE_FILENAME, READ_MODE) as f:
 import re
 
 class SearchResultsScreen(Frame):
-
     def __init__(self, parent, names, departments, DOBs, genders,
                  salaries, codes, searchIn, searchFor):
         Frame.__init__(self, parent)
@@ -67,7 +67,20 @@ class SearchResultsScreen(Frame):
         
         fileMenu.add_separator()
 
+        statsMenu = Menu(menubar)
+
+        statsMenu.add_command(label=STATS_TOTAL_EMP_TEXT, underline=0, command=self.TotalEmployees)
+        statsMenu.add_command(label=STATS_TOTAL_MALE_TEXT, underline=0, command=self.TotalMale)
+        statsMenu.add_command(label=STATS_TOTAL_FEMALE_TEXT, underline=0, command=self.TotalFemale)
+        statsMenu.add_command(label=STATS_TOTAL_SALARY_TEXT, underline=0, command=self.TotalSalary)
+        statsMenu.add_command(label=STATS_TOTAL_TAX_TEXT, underline=0, command=self.TotalTax)
+        statsMenu.add_command(label=STATS_AVERAGE_SALARY_TEXT, underline=0, command=self.AverageSalary)
+        statsMenu.add_command(label=STATS_AVERAGE_TAX_TEXT, underline=0, command=self.AverageTax)
+
+        statsMenu.add_separator()
+        
         menubar.add_cascade(label=DROPDOWN_FILE_TEXT, underline=0, menu=fileMenu)
+        menubar.add_cascade(label=DROPDOWN_STATS_TEXT, underline=0, menu=statsMenu)
 
         with open(LOG_FILENAME, APPEND_MODE) as f:
             f.write(TimeStamp() + MENUBAR_INITIALISED_TEXT)
@@ -137,7 +150,10 @@ class SearchResultsScreen(Frame):
         listboxFive.insert(END, SPACE_TEXT)
 
         for i in range(len(self.salaries)):
-            listboxFive.insert(END, self.salaries[i])
+            Salary = str(self.salaries[i])
+            Tax = str(CalculateTax(Salary))
+            SalaryAndTax = Salary + " [" + Tax + "]"
+            listboxFive.insert(END, SalaryAndTax )
             listboxFive.pack(side=LEFT, fill=BOTH)
 
         listboxFive.insert(END, SPACE_TEXT)
@@ -157,6 +173,49 @@ class SearchResultsScreen(Frame):
             f.write(TimeStamp() + INITIALISED_GRID_UI_TEXT)
 
         scrollbar.config(command= self.yview)
+
+    def TotalEmployees(self):
+        CreatePopup(STAT_TOTAL_EMP_TEXT + str(len(self.codes)))
+
+    def TotalFemale(self):
+        TotalFemales = 0
+        for i in range(len(self.genders)):
+            if self.genders[i] == FEMALE_SINGLE_TEXT:
+                TotalFemales += 1
+        CreatePopup(STAT_TOTAL_FEMALE_TEXT + str(TotalFemales))
+
+    def TotalMale(self):
+        TotalMales = 0
+        for i in range(len(self.genders)):
+            if self.genders[i] == MALE_SINGLE_TEXT:
+                TotalMales += 1
+        CreatePopup(STAT_TOTAL_MALE_TEXT + str(TotalMales))
+
+    def TotalSalary(self):
+        TotalSalary = 0
+        for salary in self.salaries:
+            TotalSalary += int(salary)
+        CreatePopup(STAT_TOTAL_SALARY_TEXT + str(TotalSalary))
+
+    def TotalTax(self):
+        TotalTax = 0
+        for salary in self.salaries:
+            TotalTax += CalculateTax(salary)
+        CreatePopup(STAT_TOTAL_TAX_TEXT + str(TotalTax))
+        
+    def AverageSalary(self):
+        TotalSalary = 0
+        for salary in self.salaries:
+            TotalSalary += int(salary)
+        AverageSalary = TotalSalary/len(self.salaries)
+        CreatePopup(STAT_AVERAGE_SALARY_TEXT + str(AverageSalary))
+
+    def AverageTax(self):
+        TotalTax = 0
+        for salary in self.salaries:
+            TotalTax += CalculateTax(salary)
+        AverageTax = TotalTax/len(self.salaries)
+        CreatePopup(STAT_AVERAGE_TAX_TEXT + str(AverageTax))
 
     def yview(self, *args):
         apply(listboxOne.yview, args)

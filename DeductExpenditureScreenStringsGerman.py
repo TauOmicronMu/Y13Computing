@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 #DeductExpenditureScreenStringsGerman
 
-DEDUCT_EXPENDITURE_HELP_TEXT = u"Here you can deduct expenditure from the total expenditure."
-ENTER_ADMIN_PASS_TEXT = u"Administrator Password: "
-EXPENDITURE_ONE_TEXT = u"Enter Expenditure to Deduct: "
-EXPENDITURE_TWO_TEXT = u"Reenter Expenditure: "
-SUBMIT_BUTTON_TEXT = u"Submit"
+DEDUCT_EXPENDITURE_HELP_TEXT = u"Hier können Sie die Ausgaben bei den Gesamtausgaben abziehen."
+ENTER_ADMIN_PASS_TEXT = u"Administrator-Kennwort: "
+EXPENDITURE_ONE_TEXT = u"Geben Sie Ausgaben abziehen: "
+EXPENDITURE_TWO_TEXT = u"Geben Sie Ausgaben: "
+SUBMIT_BUTTON_TEXT = u"Senden"
