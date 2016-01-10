@@ -1,0 +1,77 @@
+[2016-01-10 23:30:46] [] =====RESTART=====
+[2016-01-10 23:30:46] []Created/Wiped CurrentEmployee.txt
+[2016-01-10 23:30:46] [] Initiating first-time setup
+[2016-01-10 23:30:46] [] Created LoginNames.txt 
+[2016-01-10 23:30:46] [] Created Language.txt
+[2016-01-10 23:30:46] [] Created EmpCount.txt
+[2016-01-10 23:30:46] [] Created TotalSalary.txt
+[2016-01-10 23:30:46] [] Created TotalExpenditure.txt
+[2016-01-10 23:30:46] [] First time Admin password Setup
+[2016-01-10 23:30:46] [] Initialising InitSetupPopup window.
+[2016-01-10 23:30:46] [] Instance of InitSetupPopup Class initialised. Self : .50465648 Parent: .
+[2016-01-10 23:30:46] [] Menubar Initialised 
+[2016-01-10 23:30:46] [] Loaded Labels 
+[2016-01-10 23:30:46] [] Loaded Buttons 
+[2016-01-10 23:30:46] [] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:30:48] [] Quit Selected 
+[2016-01-10 23:31:00] [] Submit button pressed 
+[2016-01-10 23:31:00] [] Admin Password created. 
+[2016-01-10 23:31:00] [] Created InitialSetup.txt
+[2016-01-10 23:31:00] [] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:00] [] Instance of LoginScreen Class initialised. Self : .50465768 Parent: .
+[2016-01-10 23:31:00] [] Initialising LoginScreen UI 
+[2016-01-10 23:31:00] [] Menubar Initialised 
+[2016-01-10 23:31:00] [] Loaded Labels 
+[2016-01-10 23:31:00] [] Loaded Buttons 
+[2016-01-10 23:31:00] [] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:31:07] [] Register Button Pressed
+[2016-01-10 23:31:07] [] Login Window Terminated
+[2016-01-10 23:31:07] [] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:07] [] Instance of RegisterScreen Class initialised. Self : .50466368 Parent: .
+[2016-01-10 23:31:07] [] Initialising LoginScreen UI 
+[2016-01-10 23:31:07] [] Menubar Initialised 
+[2016-01-10 23:31:07] [] Loaded Labels 
+[2016-01-10 23:31:07] [] Loaded Buttons 
+[2016-01-10 23:31:07] [] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:31:18] [] Loaded LoginData.p 
+[2016-01-10 23:31:18] [] Account Creation initiated 
+[2016-01-10 23:31:18] [] Admin Pass Hash loaded. 
+[2016-01-10 23:31:18] [] New Employee Account : Tom created. 
+[2016-01-10 23:31:18] [] Back Button Pressed
+[2016-01-10 23:31:18] [] Register Window Terminated
+[2016-01-10 23:31:18] [] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:18] [] Instance of LoginScreen Class initialised. Self : .50465608 Parent: .
+[2016-01-10 23:31:18] [] Initialising LoginScreen UI 
+[2016-01-10 23:31:18] [] Menubar Initialised 
+[2016-01-10 23:31:18] [] Loaded Labels 
+[2016-01-10 23:31:18] [] Loaded Buttons 
+[2016-01-10 23:31:18] [] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:31:23] [] Login Button Pressed
+[2016-01-10 23:31:23] [] Attempted Login: Username = Tom
+[2016-01-10 23:31:23] [] Attempted Login: Password = -547305839
+[2016-01-10 23:31:23] [] Successful Login. 
+[2016-01-10 23:31:23] [] Updated Current Employee.txt 
+[2016-01-10 23:31:23] [Tom] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:23] [Tom] Main Screen - Loaded Total Salary. 
+[2016-01-10 23:31:25] [Tom] Create Employee Selected[2016-01-10 23:31:25] [Tom] Main Window Terminated
+[2016-01-10 23:31:25] [Tom] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:25] [Tom] Instance of CreateEmployeeScreen Class initialised. Self : .50465688 Parent: .
+[2016-01-10 23:31:25] [Tom] Menubar Initialised 
+[2016-01-10 23:31:25] [Tom] Loaded Labels 
+[2016-01-10 23:31:25] [Tom] Loaded Buttons 
+[2016-01-10 23:31:25] [Tom] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:31:27] [Tom] Back Selected 
+[2016-01-10 23:31:27] [Tom] Window Terminated 
+[2016-01-10 23:31:27] [Tom] Main Screen - Loaded Total Salary. 
+[2016-01-10 23:31:35] [Tom] Search Employees Selected
+[2016-01-10 23:31:35] [Tom] Main Window Terminated
+[2016-01-10 23:31:35] [Tom] Initialising window with geometry: 900x600+200+50
+[2016-01-10 23:31:35] [Tom] Instance of CreateEmployeeScreen Class initialised. Self : .50353856 Parent: .
+[2016-01-10 23:31:35] [Tom] Menubar Initialised 
+[2016-01-10 23:31:35] [Tom] SearchTypeDropdown Menu Initialised 
+[2016-01-10 23:31:35] [Tom] Loaded Buttons 
+[2016-01-10 23:31:35] [Tom] Initialised Grid. UI Initialisation Complete. 
+[2016-01-10 23:31:36] [Tom] Search Selected 
+[2016-01-10 23:31:37] [Tom] Instance of InitSetupPopup Class initialised. Self : .50355176 Parent: .
+[2016-01-10 23:31:37] [Tom] Menubar Initialised 
+[2016-01-10 23:31:37] [Tom] Initialised Grid. UI Initialisation Complete. 
